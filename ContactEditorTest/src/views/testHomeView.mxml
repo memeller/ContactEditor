@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="ActionSheet test">
+	<fx:Script>
+		<![CDATA[
+			
+			import pl.mllr.extensions.contactEditor.ContactEditor;
+			private var contactEditor:ContactEditor;
+
+			protected function addContact(event:MouseEvent):void
+			{
+				if(!contactEditor)
+					contactEditor=new ContactEditor();
+				contactEditor.addContact("imię","nazwisko","123123123","firma","adres@email.com","mllr.pl");				
+			}
+			protected function getContactCount(event:MouseEvent):void
+			{
+				if(!contactEditor)
+					contactEditor=new ContactEditor();
+				textArea.appendText("available contacts: " + contactEditor.getContactCount() + "\n");
+			}
+			protected function getContacts(event:MouseEvent):void
+			{
+				if(!contactEditor)
+					contactEditor=new ContactEditor();
+				var array:Array=contactEditor.getContacts();
+				if(array)
+				{
+					textArea.appendText("received contacts: " + array.length + "\n");
+					if(outputPrint.selected)
+					{
+					for(var i:int=0;i<array.length;i++)
+					{
+						textArea.appendText("--------------------------------------------\n");
+						for (var j:Object in array[i]) 
+						{
+							textArea.appendText(j + " : " + array[i][j] +  "\n");
+						}
+						
+					}
+					}
+				}
+				else
+					textArea.appendText("error receiving contact list\n");
+					
+			}
+			
+			
+		]]>
+	</fx:Script>
+	<s:Button x="5" y="6" width="259" label="addContact"
+			  click="addContact(event)"/>
+	<s:Button x="5" y="106" width="259" label="getContacts"
+			  click="getContacts(event)"/>
+	<s:Button x="5" y="57" width="259" label="getContactCount"
+			  click="getContactCount(event)"/>
+	<s:TextArea id="textArea" x="3" y="158" width="755" height="603"/>
+	<s:CheckBox id="outputPrint" x="272" y="111" label="print output"/>
+</s:View>
