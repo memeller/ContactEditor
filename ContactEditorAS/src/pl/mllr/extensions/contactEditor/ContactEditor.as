@@ -21,17 +21,25 @@ package pl.mllr.extensions.contactEditor
 	
 	public class ContactEditor
 	{
-		private static var extContext:ExtensionContext = null;
-		
+		public static const EXTENSION_ID : String = "pl.mllr.extensions.contactEditor";
 		private static var _instance:ContactEditor = null;
 		private static var _shouldCreateInstance:Boolean = false;
-		
+		private static var _set:Boolean = false;
+		private static var _isSupp:Boolean = false;
+		private static var context:ExtensionContext;
 		/**
 		 * initializes contacteditor
 		 */
 		public function ContactEditor()
 		{
-			extContext = ExtensionContext.createExtensionContext("pl.mllr.extensions.contactEditor",null);		
+			if(context==null){
+				try{
+					context = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
+				}catch(e:Error){
+					trace(e.message,e.errorID);
+				}
+			}
+					
 		}
 		/**
 		 *Adds contact to AddressBook 
@@ -46,7 +54,7 @@ package pl.mllr.extensions.contactEditor
 		public function addContact(name:String,lastname:String="",phone:String="",company:String="",email:String="",website:String=""):void
 		{  
 			
-			extContext.call("addContact",name,lastname,phone,company,email,website) ;
+			context.call("addContact",name,lastname,phone,company,email,website) ;
 		}
 		/**
 		 * gets all contacts from AddressBook 
@@ -56,7 +64,7 @@ package pl.mllr.extensions.contactEditor
 		public function getContacts():Array
 		{  
 			
-			return extContext.call("getContacts") as Array;
+			return context.call("getContacts") as Array;
 		}
 		/**
 		 *returns number of contacts in AddressBook 
@@ -65,7 +73,7 @@ package pl.mllr.extensions.contactEditor
 		 */		
 		public function getContactCount():int
 		{
-			return extContext.call("getContactCount") as int;
+			return context.call("getContactCount") as int;
 		}
 		/**
 		 *removes contact with specified recordId 
@@ -75,7 +83,24 @@ package pl.mllr.extensions.contactEditor
 		 */		
 		public function removeContact(recordId:int):Boolean
 		{
-			return extContext.call("removeContact",recordId) as Boolean;
+			return context.call("removeContact",recordId) as Boolean;
+		}
+		/**
+		 * Whether a Notification system is available on the device (true);<br>otherwise false
+		 */
+		public static function get isSupported():Boolean{
+			if(!_set){// checks if a value was set before
+				try{
+					_set = true;
+					if(context==null)
+						context = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
+					_isSupp = context.call("isSupported");
+				}catch(e:Error){
+					trace(e.message,e.errorID);
+					return _isSupp;
+				}
+			}	
+			return _isSupp;
 		}
 	}
 }

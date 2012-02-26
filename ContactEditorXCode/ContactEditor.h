@@ -1,10 +1,7 @@
-//
-//  ContactEditor.h
-//  ContactEditor
-//
-//  Created by me on 18.02.2012.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
-//
+/*
+Contact editor by memeller@gmail.com
+isSupported function by https://github.com/mateuszmackowiak
+*/
 
 #import <Foundation/Foundation.h>
 #include <AddressBook/AddressBook.h>
@@ -16,6 +13,7 @@
 {
     
 }
+FREObject isSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] );
 FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);

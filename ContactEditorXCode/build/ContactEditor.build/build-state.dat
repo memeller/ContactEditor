@@ -54,14 +54,14 @@ t1330171160
 s25720
 
 N/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/ContactEditor.h
-c000000004F49F4F9000000000000046C
-t1330246905
-s1132
+c000000004F4A986000000000000004A1
+t1330288736
+s1185
 
 N/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/ContactEditor.m
-c000000004F4A4F1B0000000000003873
-t1330269979
-s14451
+c000000004F4A985200000000000039FD
+t1330288722
+s14845
 
 N/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/FlashRuntimeExtensions.h
 c000000004ED77FAA0000000000004D52
@@ -74,12 +74,12 @@ t1330172220
 s133
 
 N/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o
-t1330269916
-s28104
+t1330269984
+s28124
 
 N/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/libContactEditor.a
-t1330269917
-s28600
+t1330269984
+s28624
 
 N/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bgzvzpacqgguzdfhnqfmxgumjmcs/Build/PrecompiledHeaders/ContactEditor-gjiufvxjqwaybpdjlkhzawkvbsbt/ContactEditor.pch.pth
 t2
@@ -93,7 +93,7 @@ r0
 
 CCheck dependencies
 r0
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies5fb7b09f86fab441^b536bd9f86fab441^---0#1#0#--18"Check dependencies
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies225198e3cffab441^8c66a5e3cffab441^---0#1#0#--18"Check dependencies
 
 CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o "/Users/me/Dropbox/ios aktualne/ContactEditor/ContactEditor.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s351864954.050801
@@ -109,8 +109,8 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Compile /Users/me/Dropbox/ios aktualne/ContactEditor/ContactEditor.mf3200d7a08f9b441^e082507a08f9b441^---0#0#0#-19%DVTDocumentLocation2@78"file://localhost/Users/me/Dropbox/ios%20aktualne/ContactEditor/ContactEditor.m0000000000000000^2104"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o ContactEditor.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/me/Dropbox/ios aktualne/ContactEditor"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.0 -iquote "/Users/me/Dropbox/ios aktualne/ContactEditor/build/ContactEditor.build/ContactEditor-generated-files.hmap" "-I/Users/me/Dropbox/ios aktualne/ContactEditor/build/ContactEditor.build/ContactEditor-own-target-headers.hmap" "-I/Users/me/Dropbox/ios aktualne/ContactEditor/build/ContactEditor.build/ContactEditor-all-target-headers.hmap" -iquote "/Users/me/Dropbox/ios aktualne/ContactEditor/build/ContactEditor.build/ContactEditor-project-headers.hmap" "-I/Users/me/Dropbox/ios aktualne/ContactEditor/build/include" "-I/Users/me/Dropbox/ios aktualne/ContactEditor/build/ContactEditor.build/DerivedSources/armv7" "-I/Users/me/Dropbox/ios aktualne/ContactEditor/build/ContactEditor.build/DerivedSources" "-F/Users/me/Dropbox/ios aktualne/ContactEditor/build" -MMD -MT dependencies -MF "/Users/me/Dropbox/ios aktualne/ContactEditor/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.d" -c "/Users/me/Dropbox/ios aktualne/ContactEditor/ContactEditor.m" -o "/Users/me/Dropbox/ios aktualne/ContactEditor/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o"
 
 CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/ContactEditor.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s351962783.741382
-e351962784.875190
+s351981539.746922
+e351981540.651710
 r1
 xCompileC
 xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditor.o
@@ -119,7 +119,7 @@ xnormal
 xarmv7
 xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/ContactEditor.mf2edbd9f86fab441^180ae0a086fab441^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/me/Dropbox/ios%20aktualne/contactEditorNative/ContactEditorXCode/ContactEditor.m0000000000000000^2404"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o ContactEditor.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.0 -iquote "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap" -iquote "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/include" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/DerivedSources" "-F/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build" -MMD -MT dependencies -MF "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.d" -c "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/ContactEditor.m" -o "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o"
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/ContactEditor.m276cbfe3cffab441^31d3a6e4cffab441^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/me/Dropbox/ios%20aktualne/contactEditorNative/ContactEditorXCode/ContactEditor.m0000000000000000^2404"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o ContactEditor.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.0 -iquote "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap" -iquote "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/include" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7" "-I/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/DerivedSources" "-F/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build" -MMD -MT dependencies -MF "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.d" -c "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/ContactEditor.m" -o "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o"
 
 CLibtool "/Users/me/Dropbox/ios aktualne/ContactEditor/build/libContactEditor.a" normal armv7
 s351864954.321387
@@ -133,15 +133,15 @@ o/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: -dynamic not 
 lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Libtool build/libContactEditor.a normal armv7c8ed537a08f9b441^1500577a08f9b441^---0#0#0#--809"Libtool build/libContactEditor.a normal armv7    cd "/Users/me/Dropbox/ios aktualne/ContactEditor"    setenv IPHONEOS_DEPLOYMENT_TARGET 4.0    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static -arch_only armv7 -syslibroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk "-L/Users/me/Dropbox/ios aktualne/ContactEditor/build" "-L/Users/me/Dropbox/ios aktualne/ContactEditor/build" -filelist "/Users/me/Dropbox/ios aktualne/ContactEditor/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.LinkFileList" -ObjC -framework AddressBook -framework Foundation -o "/Users/me/Dropbox/ios aktualne/ContactEditor/build/libContactEditor.a"
 
 CLibtool "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/libContactEditor.a" normal armv7
-s351962784.882882
-e351962784.913790
+s351981540.658553
+e351981540.694307
 r1
 xLibtool
 x/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/libContactEditor.a
 xnormal
 xarmv7
 o/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Libtool build/libContactEditor.a normal armv78719e2a086fab441^4aede9a086fab441^---0#0#0#--934"Libtool build/libContactEditor.a normal armv7    cd "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode"    setenv IPHONEOS_DEPLOYMENT_TARGET 4.0    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static -arch_only armv7 -syslibroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk "-L/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build" "-L/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build" -filelist "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.LinkFileList" -ObjC -framework AddressBook -framework Foundation -o "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/libContactEditor.a"
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Libtool build/libContactEditor.a normal armv7f7afa8e4cffab441^5ebeb1e4cffab441^---0#0#0#--934"Libtool build/libContactEditor.a normal armv7    cd "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode"    setenv IPHONEOS_DEPLOYMENT_TARGET 4.0    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static -arch_only armv7 -syslibroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk "-L/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build" "-L/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build" -filelist "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.LinkFileList" -ObjC -framework AddressBook -framework Foundation -o "/Users/me/Dropbox/ios aktualne/contactEditorNative/ContactEditorXCode/build/libContactEditor.a"
 
 CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bgzvzpacqgguzdfhnqfmxgumjmcs/Build/PrecompiledHeaders/ContactEditor-gjiufvxjqwaybpdjlkhzawkvbsbt/ContactEditor.pch.pth ContactEditor.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s351864431.905217

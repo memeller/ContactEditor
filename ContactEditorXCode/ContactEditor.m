@@ -1,7 +1,7 @@
 /*
  
  Contact editor by memeller@gmail.com
- 
+ isSupported function by https://github.com/mateuszmackowiak
  
  */
 #import "ContactEditor.h"
@@ -41,7 +41,14 @@ FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject
     return retBool;
 
 }
-
+FREObject isSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] ){
+    FREObject retVal;
+    if(FRENewObjectFromBool(YES, &retVal) == FRE_OK){
+        return retVal;
+    }else{
+        return nil;
+    }
+}
 FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
     addressBook=ABAddressBookCreate();
@@ -323,8 +330,8 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
                                      uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet) {
 	
     
-	*numFunctionsToTest = 4;
-	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * 4);
+	*numFunctionsToTest = 5;
+	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * 5);
     
 	func[0].name = (const uint8_t*)"addContact";
 	func[0].functionData = NULL;
@@ -338,7 +345,9 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
     func[3].name = (const uint8_t*)"removeContact";
 	func[3].functionData = NULL;
 	func[3].function = &removeContact;
-    
+    func[4].name = (const uint8_t*)"isSupported";
+	func[4].functionData = NULL;
+	func[4].function = &isSupported;
     
 	*functionsToSet = func;
     NSLog(@"Exiting ContextInitializer()");
