@@ -10,7 +10,37 @@
 
 ABAddressBookRef addressBook;
 
+FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
+{
+    FREObject retBool = nil;
+    uint32_t boolean=0;
+    uint32_t recordId;
+    if(FRE_OK==FREGetObjectAsUint32(argv[0], &recordId))
+    {
+        addressBook=ABAddressBookCreate();
+        ABRecordID abrecordId=recordId;
+        ABRecordRef aRecord = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
+        if(aRecord)
+        {
+            NSLog(@"record found, trying to remove %i",abrecordId);
+            ABAddressBookRemoveRecord(addressBook, aRecord, NULL);
+           // CFRelease(aRecord);
+            boolean=1;
+            NSLog(@"ContactRemoved");
+        }
+        if(ABAddressBookHasUnsavedChanges)
+            ABAddressBookSave(addressBook, NULL);
+        NSLog(@"Release");
+        CFRelease(addressBook);
+        NSLog(@"Return data");
+    }
+    else
+        NSLog(@"something wrong with value");
+    NSLog(@"setting returned value");
+    FRENewObjectFromBool(boolean, &retBool);
+    return retBool;
 
+}
 
 FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
@@ -79,7 +109,7 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
         ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
         ABMultiValueAddValueAndLabel(multi, (CFStringRef)usercontact, kABWorkLabel, NULL);
         ABRecordSetValue(aRecord, kABPersonPhoneProperty, multi, &anError);
-        CFRelease(multi);
+    //    CFRelease(multi);
     }
     // Company
     NSLog(@"Adding company");
@@ -94,7 +124,7 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
         ABMutableMultiValueRef multiemail = ABMultiValueCreateMutable(kABMultiStringPropertyType);
         ABMultiValueAddValueAndLabel(multiemail, (CFStringRef)useremail, kABWorkLabel, NULL);
         ABRecordSetValue(aRecord, kABPersonEmailProperty, multiemail, &anError);
-        CFRelease(multiemail);
+      //  CFRelease(multiemail);
     }
     // website
     NSLog(@"Adding website");
@@ -104,7 +134,7 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
         ABMutableMultiValueRef multiweb = ABMultiValueCreateMutable(kABMultiStringPropertyType);
         ABMultiValueAddValueAndLabel(multiweb, (CFStringRef)userwebsite, kABHomeLabel, NULL);
         ABRecordSetValue(aRecord, kABPersonURLProperty, multiweb, &anError);
-        CFRelease(multiweb);
+      //  CFRelease(multiweb);
     }
     // Function
     //ABRecordSetValue(aRecord, kABPersonJobTitleProperty, userrole, &anError);
@@ -122,14 +152,14 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
     ABAddressBookSave(addressBook, &error);
     
     NSLog(@"Releasing data");
-    CFRelease(aRecord);
-    [username release];
-    [usersurname release];
-    [usercontact release];
-    [usercompany release];
-    [useremail release];
-    [userwebsite release];
-   // CFRelease(addressBook);
+    //CFRelease(aRecord);
+    //[username release];
+    //[usersurname release];
+    //[usercontact release];
+    //[usercompany release];
+    //[useremail release];
+    //[userwebsite release];
+    CFRelease(addressBook);
     return NULL;
 }
 FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
@@ -293,8 +323,8 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
                                      uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet) {
 	
     
-	*numFunctionsToTest = 3;
-	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * 3);
+	*numFunctionsToTest = 4;
+	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * 4);
     
 	func[0].name = (const uint8_t*)"addContact";
 	func[0].functionData = NULL;
@@ -305,6 +335,9 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
     func[2].name = (const uint8_t*)"getContactCount";
 	func[2].functionData = NULL;
 	func[2].function = &getContactCount;
+    func[3].name = (const uint8_t*)"removeContact";
+	func[3].functionData = NULL;
+	func[3].function = &removeContact;
     
     
 	*functionsToSet = func;

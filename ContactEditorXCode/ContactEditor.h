@@ -16,7 +16,7 @@
 {
     
 }
-
+FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject getContactCount(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);

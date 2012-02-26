@@ -67,6 +67,16 @@ package pl.mllr.extensions.contactEditor
 		{
 			return extContext.call("getContactCount") as int;
 		}
+		/**
+		 *removes contact with specified recordId 
+		 * @param recordId record identifier, as set in AddressBook on the device
+		 * @return true if contact was removed, false if not found
+		 * 
+		 */		
+		public function removeContact(recordId:int):Boolean
+		{
+			return extContext.call("removeContact",recordId) as Boolean;
+		}
 	}
 }
 
