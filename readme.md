@@ -2,6 +2,7 @@
 author: memeller@gmail.com
 
 Currently supported:
+
 * getContactCount - gets the number of contacts in AddressBook
 * getContacts - gets contacts from AddressBook (name, lastname, compositename, phones, emails, recordid, birthdate)
 * addcontact - adds contact to AddressBook
