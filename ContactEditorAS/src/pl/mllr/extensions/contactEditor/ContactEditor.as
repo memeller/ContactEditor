@@ -67,6 +67,30 @@ package pl.mllr.extensions.contactEditor
 			return context.call("getContacts") as Array;
 		}
 		/**
+		 * gets all contacts from AddressBook 
+		 * @return an array of contacts with following: compositename, recordid;
+		 * 
+		 */	
+		public function getContactsSimple():Array
+		{  
+			
+			return context.call("getContactsSimple") as Array;
+		}
+		/**
+		 * gets details of specified contact from AddressBook 
+		 * @return an object with following: name, lastname, compositename, birthdate, recordid, phones (array), emails (array);
+		 * 
+		 */	
+		public function getContactDetails(recordId:int):Object
+		{  
+			
+			return context.call("getContactDetails",recordId) as Object;
+		}
+		public function dispose():void{
+			if(context)
+				context.dispose();
+		}
+		/**
 		 *returns number of contacts in AddressBook 
 		 * @return num of contacts
 		 * 
@@ -94,7 +118,7 @@ package pl.mllr.extensions.contactEditor
 					_set = true;
 					if(context==null)
 						context = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
-					_isSupp = context.call("isSupported");
+					_isSupp = context.call("contactEditorIsSupported");
 				}catch(e:Error){
 					trace(e.message,e.errorID);
 					return _isSupp;

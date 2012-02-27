@@ -13,7 +13,9 @@ isSupported function by https://github.com/mateuszmackowiak
 {
     
 }
-FREObject isSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] );
+FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+FREObject contactEditorIsSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] );
 FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);

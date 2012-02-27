@@ -41,7 +41,7 @@ FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject
     return retBool;
 
 }
-FREObject isSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] ){
+FREObject contactEditorIsSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] ){
     FREObject retVal;
     if(FRENewObjectFromBool(YES, &retVal) == FRE_OK){
         return retVal;
@@ -172,7 +172,7 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
 FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
     NSLog(@"Getting contact data");
-       addressBook=ABAddressBookCreate();
+    addressBook=ABAddressBookCreate();
     CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
     NSLog(@"Parsing data");
     FREObject returnedArray = NULL;
@@ -188,7 +188,7 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
         
         //person id
         int personId = (int)ABRecordGetRecordID(person);
-         NSLog(@"Adding person with id: %i",personId);
+        NSLog(@"Adding person with id: %i",personId);
         FREObject recordId;
         FRENewObjectFromInt32(personId, &recordId);
         FRESetObjectProperty(contact, (const uint8_t*)"recordId", recordId, NULL);
@@ -242,14 +242,18 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
         retStr=NULL;
         
         //birthdate
-        CFStringRef personBirthdate = ABRecordCopyValue(person, kABPersonBirthdayProperty);
+        NSDate *personBirthdate = (NSDate*)ABRecordCopyValue(person, kABPersonBirthdayProperty);
         if(personBirthdate)
         {
-            NSString *personBirthdateString = [NSString stringWithString:(NSString *)personBirthdate];
+            NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+            [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+            
+            NSString *personBirthdateString = [dateFormatter stringFromDate:personBirthdate];
             NSLog(@"Adding birthdate: %@",personBirthdateString);
             FRENewObjectFromUTF8(strlen([personBirthdateString UTF8String])+1, (const uint8_t*)[personBirthdateString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"birthdate", retStr, NULL);
-            [personBirthdateString release];
+            //[personBirthdateString release];
+            [dateFormatter release];
             //CFRelease(personBirthdate);
         }
         else
@@ -288,14 +292,14 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
                 FRENewObjectFromUTF8(strlen([phone UTF8String])+1, (const uint8_t*)[phone UTF8String], &retStr);
                 FRESetArrayElementAt(phonesArray, k, retStr);
                 [phone release];
-
+                
             }
             CFRelease(phones);
             FRESetObjectProperty(contact, (const uint8_t*)"phones", phonesArray, NULL);            
         }
         else
             FRESetObjectProperty(contact, (const uint8_t*)"phones", NULL, NULL);
-
+        
         //addContact to array*/
         NSLog(@"Adding element to array %ld",i);
         FRESetArrayElementAt(returnedArray, j, contact);
@@ -307,6 +311,189 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
     NSLog(@"Return data");
     return returnedArray;
 }
+FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
+{
+   
+    uint32_t argrecordId;
+    FREObject contact=NULL;
+    FRENewObject((const uint8_t*)"Object", 0, NULL, &contact,NULL);
+    if(FRE_OK==FREGetObjectAsUint32(argv[0], &argrecordId))
+    {
+        addressBook=ABAddressBookCreate();
+        ABRecordID abrecordId=argrecordId;
+        ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
+        FREObject retStr=NULL;
+        int personId = (int)ABRecordGetRecordID(person);
+        NSLog(@"Adding person with id: %i",personId);
+        FREObject recordId;
+        FRENewObjectFromInt32(personId, &recordId);
+        FRESetObjectProperty(contact, (const uint8_t*)"recordId", recordId, NULL);
+        
+        //composite name
+        CFStringRef personCompositeName = ABRecordCopyCompositeName(person);
+        retStr=NULL;
+        if(personCompositeName)
+        {
+            NSString *personCompositeString = [NSString stringWithString:(NSString *)personCompositeName];
+            NSLog(@"Adding composite name: %@",personCompositeString);
+            FRENewObjectFromUTF8(strlen([personCompositeString UTF8String])+1, (const uint8_t*)[personCompositeString UTF8String], &retStr);
+            FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
+            //[personCompositeString release];
+            CFRelease(personCompositeName);
+        }
+        else
+            FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
+        
+        retStr=NULL;
+        
+        
+        
+        //person first name
+        CFStringRef personName = ABRecordCopyValue(person, kABPersonFirstNameProperty);
+        if(personName)
+        {
+            NSString *personNameString = [NSString stringWithString:(NSString *)personName];
+            NSLog(@"Adding first name: %@",personNameString);
+            FRENewObjectFromUTF8(strlen([personNameString UTF8String])+1, (const uint8_t*)[personNameString UTF8String], &retStr);
+            FRESetObjectProperty(contact, (const uint8_t*)"name", retStr, NULL);
+            //[personNameString release];
+            CFRelease(personName);
+        }
+        else
+            FRESetObjectProperty(contact, (const uint8_t*)"name", retStr, NULL);
+        retStr=NULL;
+        //surname
+        CFStringRef personSurName = ABRecordCopyValue(person, kABPersonLastNameProperty);
+        if(personSurName)
+        {
+            NSString *personSurNameString = [NSString stringWithString:(NSString *)personSurName];
+            NSLog(@"Adding last name: %@",personSurNameString);
+            FRENewObjectFromUTF8(strlen([personSurNameString UTF8String])+1, (const uint8_t*)[personSurNameString UTF8String], &retStr);
+            FRESetObjectProperty(contact, (const uint8_t*)"lastname", retStr, NULL);
+            //[personSurNameString release];
+            CFRelease(personSurName);
+        }
+        else
+            FRESetObjectProperty(contact, (const uint8_t*)"lastname", retStr, NULL);
+        retStr=NULL;
+        
+        //birthdate
+        NSDate *personBirthdate = (NSDate*)ABRecordCopyValue(person, kABPersonBirthdayProperty);
+        if(personBirthdate)
+        {
+            NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+            [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+            
+            NSString *personBirthdateString = [dateFormatter stringFromDate:personBirthdate];
+            NSLog(@"Adding birthdate: %@",personBirthdateString);
+            FRENewObjectFromUTF8(strlen([personBirthdateString UTF8String])+1, (const uint8_t*)[personBirthdateString UTF8String], &retStr);
+            FRESetObjectProperty(contact, (const uint8_t*)"birthdate", retStr, NULL);
+            //[personBirthdateString release];
+            [dateFormatter release];
+            //CFRelease(personBirthdate);
+        }
+        else
+            FRESetObjectProperty(contact, (const uint8_t*)"birthdate", retStr, NULL);
+        
+        //emails
+        retStr=NULL;
+        FREObject emailsArray = NULL;
+        FRENewObject((const uint8_t*)"Array", 0, NULL, &emailsArray, nil);
+        
+        ABMultiValueRef emails = ABRecordCopyValue(person, kABPersonEmailProperty);
+        if(emails)
+        {
+            for (CFIndex k=0; k < ABMultiValueGetCount(emails); k++) {
+                NSString* email = (NSString*)ABMultiValueCopyValueAtIndex(emails, k);
+                NSLog(@"Adding email: %@",email);
+                FRENewObjectFromUTF8(strlen([email UTF8String])+1, (const uint8_t*)[email UTF8String], &retStr);
+                FRESetArrayElementAt(emailsArray, k, retStr);
+                [email release];
+            }
+            CFRelease(emails);
+            FRESetObjectProperty(contact, (const uint8_t*)"emails", emailsArray, NULL);
+        }
+        else
+            FRESetObjectProperty(contact, (const uint8_t*)"emails", NULL, NULL);
+        retStr=NULL;
+        //phones
+        FREObject phonesArray = NULL;
+        FRENewObject((const uint8_t*)"Array", 0, NULL, &phonesArray, nil);
+        ABMultiValueRef phones = ABRecordCopyValue(person, kABPersonPhoneProperty);
+        if(phones)
+        {
+            for (CFIndex k=0; k < ABMultiValueGetCount(phones); k++) {
+                NSString* phone = (NSString*)ABMultiValueCopyValueAtIndex(phones, k);
+                NSLog(@"Adding phone: %@",phone);
+                FRENewObjectFromUTF8(strlen([phone UTF8String])+1, (const uint8_t*)[phone UTF8String], &retStr);
+                FRESetArrayElementAt(phonesArray, k, retStr);
+                [phone release];
+                
+            }
+            CFRelease(phones);
+            FRESetObjectProperty(contact, (const uint8_t*)"phones", phonesArray, NULL);            
+        }
+        else
+            FRESetObjectProperty(contact, (const uint8_t*)"phones", NULL, NULL);
+        
+        //CFRelease(person);
+
+        
+        CFRelease(addressBook);
+    }
+    return contact;
+}
+
+FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
+{
+    NSLog(@"Getting contact data");
+       addressBook=ABAddressBookCreate();
+    CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    NSLog(@"Parsing data");
+    FREObject returnedArray = NULL;
+    FRENewObject((const uint8_t*)"Array", 0, NULL, &returnedArray, nil);
+    FRESetArrayLength(returnedArray, CFArrayGetCount(people));
+    int32_t j=0;
+    FREObject retStr=NULL;
+    for (CFIndex i = 0; i < CFArrayGetCount(people); i++) {
+        FREObject contact;
+        FRENewObject((const uint8_t*)"Object", 0, NULL, &contact,NULL);
+        
+        ABRecordRef person = CFArrayGetValueAtIndex(people, i);
+        
+        //person id
+        int personId = (int)ABRecordGetRecordID(person);
+         NSLog(@"Adding person with id: %i",personId);
+        FREObject recordId;
+        FRENewObjectFromInt32(personId, &recordId);
+        FRESetObjectProperty(contact, (const uint8_t*)"recordId", recordId, NULL);
+        
+        //composite name
+        CFStringRef personCompositeName = ABRecordCopyCompositeName(person);
+        retStr=NULL;
+        if(personCompositeName)
+        {
+            NSString *personCompositeString = [NSString stringWithString:(NSString *)personCompositeName];
+            NSLog(@"Adding composite name: %@",personCompositeString);
+            FRENewObjectFromUTF8(strlen([personCompositeString UTF8String])+1, (const uint8_t*)[personCompositeString UTF8String], &retStr);
+            FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
+            //[personCompositeString release];
+            CFRelease(personCompositeName);
+        }
+        else
+            FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
+        
+                NSLog(@"Adding element to array %ld",i);
+        FRESetArrayElementAt(returnedArray, j, contact);
+        j++;
+        CFRelease(person);
+    }
+    NSLog(@"Release");
+    CFRelease(addressBook);
+    NSLog(@"Return data");
+    return returnedArray;
+}
+
 FREObject getContactCount(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
         addressBook=ABAddressBookCreate();
@@ -330,8 +517,8 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
                                      uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet) {
 	
     
-	*numFunctionsToTest = 5;
-	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * 5);
+	*numFunctionsToTest = 7;
+	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * 7);
     
 	func[0].name = (const uint8_t*)"addContact";
 	func[0].functionData = NULL;
@@ -345,9 +532,15 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
     func[3].name = (const uint8_t*)"removeContact";
 	func[3].functionData = NULL;
 	func[3].function = &removeContact;
-    func[4].name = (const uint8_t*)"isSupported";
+    func[4].name = (const uint8_t*)"contactEditorIsSupported";
 	func[4].functionData = NULL;
-	func[4].function = &isSupported;
+	func[4].function = &contactEditorIsSupported;
+    func[5].name = (const uint8_t*)"getContactsSimple";
+	func[5].functionData = NULL;
+	func[5].function = &getContactsSimple;
+    func[6].name = (const uint8_t*)"getContactDetails";
+	func[6].functionData = NULL;
+	func[6].function = &getContactDetails;
     
 	*functionsToSet = func;
     NSLog(@"Exiting ContextInitializer()");
