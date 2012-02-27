@@ -1,0 +1,16 @@
+<extension xmlns="http://ns.adobe.com/air/extension/3.1">
+    <id>pl.mllr.extensions.contactEditor</id>
+    <versionNumber>0.0.1</versionNumber>
+    <platforms>
+        <platform name="iPhone-ARM">
+            <applicationDeployment>
+                <nativeLibrary>libContactEditor.a</nativeLibrary>
+                <initializer>ContactEditorExtInitializer</initializer>
+                <finalizer>ContactEditorExtFinalizer</finalizer>
+            </applicationDeployment>
+        </platform>
+        	 <platform name="default"> 
+            <applicationDeployment/> 
+        </platform>
+    </platforms>
+</extension>

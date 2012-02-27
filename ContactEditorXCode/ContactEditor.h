@@ -3,8 +3,6 @@ Contact editor by memeller@gmail.com
 isSupported function by https://github.com/mateuszmackowiak
 */
 
-#import <Foundation/Foundation.h>
-#include <AddressBook/AddressBook.h>
 #import "FlashRuntimeExtensions.h"
 
 

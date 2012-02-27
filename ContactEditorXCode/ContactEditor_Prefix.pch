@@ -1,0 +1,14 @@
+//
+// Prefix header for all source files of the 'CocoaTouchStaticLibrary' target in the 'CocoaTouchStaticLibrary' project.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+	#include <AddressBook/AddressBook.h>
+	#ifdef DEBUG
+	#    define DLog(...) NSLog(__VA_ARGS__)
+	#else
+	#    define DLog(...) /* */
+	#endif
+	#define ALog(...) NSLog(__VA_ARGS__)
+#endif
