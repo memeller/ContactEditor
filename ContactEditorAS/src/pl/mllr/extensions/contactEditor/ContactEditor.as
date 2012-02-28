@@ -8,23 +8,24 @@ package pl.mllr.extensions.contactEditor
 
 	public class ContactEditor extends EventDispatcher
 	{
-<<<<<<< HEAD
+
 		public static const EXTENSION_ID : String = "pl.mllr.extensions.contactEditor";
-=======
+
 		private static var context:ExtensionContext = null;
 		
->>>>>>> Android Support
+
 		private static var _instance:ContactEditor = null;
 		private static var _shouldCreateInstance:Boolean = false;
 		private static var _set:Boolean = false;
 		private static var _isSupp:Boolean = false;
-		private static var context:ExtensionContext;
+		
+		
 		/**
 		 * initializes contacteditor
 		 */
 		public function ContactEditor()
 		{
-<<<<<<< HEAD
+
 			if(context==null){
 				try{
 					context = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
@@ -32,8 +33,7 @@ package pl.mllr.extensions.contactEditor
 					trace(e.message,e.errorID);
 				}
 			}
-					
-=======
+
 			context = ExtensionContext.createExtensionContext("pl.mllr.extensions.contactEditor",null);
 			context.addEventListener(StatusEvent.STATUS, onStatus);
 		}
@@ -41,7 +41,7 @@ package pl.mllr.extensions.contactEditor
 		protected function onStatus(event:Event):void
 		{
 			this.dispatchEvent(event.clone());
->>>>>>> Android Support
+
 		}
 		/**
 		 *Adds contact to AddressBook 
@@ -68,10 +68,8 @@ package pl.mllr.extensions.contactEditor
 			
 			return context.call("getContacts") as Array;
 		}
-<<<<<<< HEAD
-=======
+
 		
->>>>>>> Android Support
 		/**
 		 * gets all contacts from AddressBook 
 		 * @return an array of contacts with following: compositename, recordid;
@@ -92,14 +90,13 @@ package pl.mllr.extensions.contactEditor
 			
 			return context.call("getContactDetails",recordId) as Object;
 		}
-<<<<<<< HEAD
-=======
+
 		
-		
->>>>>>> Android Support
 		public function dispose():void{
-			if(context)
+			if(context){
+				context.removeEventListener(StatusEvent.STATUS, onStatus);
 				context.dispose();
+			}
 		}
 		/**
 		 *returns number of contacts in AddressBook 
@@ -119,7 +116,7 @@ package pl.mllr.extensions.contactEditor
 		public function removeContact(recordId:int):Boolean
 		{
 			return context.call("removeContact",recordId) as Boolean;
-<<<<<<< HEAD
+
 		}
 		/**
 		 * Whether a Notification system is available on the device (true);<br>otherwise false
@@ -137,8 +134,7 @@ package pl.mllr.extensions.contactEditor
 				}
 			}	
 			return _isSupp;
-=======
->>>>>>> Android Support
+
 		}
 	}
 }

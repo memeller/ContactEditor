@@ -9,11 +9,7 @@
                 <finalizer>ContactEditorExtFinalizer</finalizer>
             </applicationDeployment>
         </platform>
-<<<<<<< HEAD
-        	 <platform name="default"> 
-=======
-        
-        
+
         <platform name="Android-ARM">
             <applicationDeployment>
                 <nativeLibrary>contactEditor.jar</nativeLibrary>
@@ -22,7 +18,6 @@
             </applicationDeployment>
         </platform>
         <platform name="default"> 
->>>>>>> Android Support
             <applicationDeployment/> 
         </platform>
     </platforms>
