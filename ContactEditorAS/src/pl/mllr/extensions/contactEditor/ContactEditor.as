@@ -13,7 +13,6 @@ package pl.mllr.extensions.contactEditor
 
 		private static var context:ExtensionContext = null;
 		
-
 		private static var _instance:ContactEditor = null;
 		private static var _shouldCreateInstance:Boolean = false;
 		private static var _set:Boolean = false;
@@ -29,19 +28,16 @@ package pl.mllr.extensions.contactEditor
 			if(context==null){
 				try{
 					context = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
+					context.addEventListener(StatusEvent.STATUS, onStatus);
 				}catch(e:Error){
 					trace(e.message,e.errorID);
 				}
 			}
-
-			context = ExtensionContext.createExtensionContext("pl.mllr.extensions.contactEditor",null);
-			context.addEventListener(StatusEvent.STATUS, onStatus);
 		}
 		
 		protected function onStatus(event:Event):void
 		{
 			this.dispatchEvent(event.clone());
-
 		}
 		/**
 		 *Adds contact to AddressBook 
