@@ -1,27 +1,19 @@
-
-/*
-
-ADOBE SYSTEMS INCORPORATED
-Copyright 2011 Adobe Systems Incorporated
-All Rights Reserved.
-
-NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the
-terms of the Adobe license agreement accompanying it.  If you have received this file from a
-source other than Adobe, then your use, modification, or distribution of it requires the prior
-written permission of Adobe.
-
-*/
-
-
 package pl.mllr.extensions.contactEditor
 {
+
+	import flash.events.Event;
+	import flash.events.EventDispatcher;
+	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
-	
-	import mx.core.mx_internal;
-	
-	public class ContactEditor
+
+	public class ContactEditor extends EventDispatcher
 	{
+<<<<<<< HEAD
 		public static const EXTENSION_ID : String = "pl.mllr.extensions.contactEditor";
+=======
+		private static var context:ExtensionContext = null;
+		
+>>>>>>> Android Support
 		private static var _instance:ContactEditor = null;
 		private static var _shouldCreateInstance:Boolean = false;
 		private static var _set:Boolean = false;
@@ -32,6 +24,7 @@ package pl.mllr.extensions.contactEditor
 		 */
 		public function ContactEditor()
 		{
+<<<<<<< HEAD
 			if(context==null){
 				try{
 					context = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
@@ -40,6 +33,15 @@ package pl.mllr.extensions.contactEditor
 				}
 			}
 					
+=======
+			context = ExtensionContext.createExtensionContext("pl.mllr.extensions.contactEditor",null);
+			context.addEventListener(StatusEvent.STATUS, onStatus);
+		}
+		
+		protected function onStatus(event:Event):void
+		{
+			this.dispatchEvent(event.clone());
+>>>>>>> Android Support
 		}
 		/**
 		 *Adds contact to AddressBook 
@@ -66,6 +68,10 @@ package pl.mllr.extensions.contactEditor
 			
 			return context.call("getContacts") as Array;
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> Android Support
 		/**
 		 * gets all contacts from AddressBook 
 		 * @return an array of contacts with following: compositename, recordid;
@@ -86,6 +92,11 @@ package pl.mllr.extensions.contactEditor
 			
 			return context.call("getContactDetails",recordId) as Object;
 		}
+<<<<<<< HEAD
+=======
+		
+		
+>>>>>>> Android Support
 		public function dispose():void{
 			if(context)
 				context.dispose();
@@ -108,6 +119,7 @@ package pl.mllr.extensions.contactEditor
 		public function removeContact(recordId:int):Boolean
 		{
 			return context.call("removeContact",recordId) as Boolean;
+<<<<<<< HEAD
 		}
 		/**
 		 * Whether a Notification system is available on the device (true);<br>otherwise false
@@ -125,6 +137,8 @@ package pl.mllr.extensions.contactEditor
 				}
 			}	
 			return _isSupp;
+=======
+>>>>>>> Android Support
 		}
 	}
 }
