@@ -1,110 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="ContactEditor test" creationComplete="onCreationComplete(event)">
+		xmlns:s="library://ns.adobe.com/flex/spark" title="ContactEditor test">
 	<fx:Script>
 		<![CDATA[
-			import mx.collections.ArrayList;
-			import mx.events.FlexEvent;
+			import mx.collections.ArrayCollection;
 			
 			import pl.mllr.extensions.contactEditor.ContactEditor;
-			[Bindable]
-			private var myDB:ArrayList;
-			[Bindable]
-			private var _isSupported:Boolean=false;
-			private var _contactEditor:ContactEditor;
 			
-			protected function get contactEditor():ContactEditor
-			{
-				if(!_contactEditor)
-					_contactEditor=new ContactEditor();
-				return _contactEditor;
-			}
+			import spark.events.TextOperationEvent;
+			[Bindable]
+			private var myDB:ArrayCollection;
+
+			protected var _filterUpper:String = "";
+			
+			private var contactEditor:ContactEditor;
+			
 			protected function addContact(event:MouseEvent):void
 			{
-
-				contactEditor.addContact("imię","nazwisko","123123123","firma","adres@email.com","mllr.pl");				
+				if(!contactEditor)
+					contactEditor=new ContactEditor();
+				contactEditor.addEventListener(StatusEvent.STATUS,onStatus);
+				contactEditor.addContact("imię","nazwisko","123123123","firma","adres@email.com","mllr.pl");		
 			}
 			protected function getContactCount(event:MouseEvent):void
 			{
+				if(!contactEditor)
+					contactEditor=new ContactEditor();
+				contactEditor.addEventListener(StatusEvent.STATUS,onStatus);
 				textArea.appendText("available contacts: " + contactEditor.getContactCount() + "\n");
 			}
 			protected function removeContact(event:MouseEvent):void
 			{
-				if(lista.selectedIndex!=-1)
-					textArea.appendText("trying to remove contact "+ lista.selectedItem.recordId + " : " + (contactEditor.removeContact(lista.selectedItem.recordId)?"ok":"not found") + "\nrefresh contacts to see changes\n");
-				else
-					textArea.appendText("select element from list");
+				try{
+					if(!contactEditor)
+						contactEditor=new ContactEditor();
+					contactEditor.addEventListener(StatusEvent.STATUS,onStatus);
+					if(lista.selectedItem.recordId is int)
+						textArea.appendText("is int");
+					if(lista.selectedItem.recordId is String)
+						textArea.appendText("is String");
+					if(lista.selectedIndex!=-1)
+						textArea.appendText("trying to remove contact "+ lista.selectedItem.recordId + " : " + (contactEditor.removeContact(lista.selectedItem.recordId)?"ok":"not found") + "\nrefresh contacts to see changes\n");
+					else
+						textArea.appendText("select element from list");
+				}catch(e:Error){
+					textArea.appendText(e.message+"\n");
+				}
 			}
 			protected function getContacts(event:MouseEvent):void
 			{
-				var array:Array=contactEditor.getContacts();
-				if(array)
-				{
-					myDB=new ArrayList(array.concat());
-					lista.dataProvider=myDB;
-					if(outputPrint.selected)
+				try{
+					busyInd.visible = true;
+					if(!contactEditor)
+						contactEditor=new ContactEditor();
+					contactEditor.addEventListener(StatusEvent.STATUS,onStatus);
+					var array:Array=null;
+					if(simpleMode.selected)
+						array = contactEditor.getContactsSimple();
+					else
+						array = contactEditor.getContacts();
+					if(array)
 					{
-						textArea.appendText("received contacts: " + array.length + "\n");
-						if(outputPrint.selected)
+						myDB=new ArrayCollection(array.concat());
+						myDB.filterFunction = filter;
+						lista.dataProvider=myDB;
+						/*if(outputPrint.selected)
 						{
-							for(var i:int=0;i<array.length;i++)
+							textArea.appendText("received contacts: " + array.length + "\n");
+							if(outputPrint.selected)
 							{
-								textArea.appendText("--------------------------------------------\n");
-								for (var j:Object in array[i]) 
+								for(var i:int=0;i<array.length;i++)
 								{
-									textArea.appendText(j + " : " + array[i][j] +  "\n");
+									textArea.appendText("--------------------------------------------\n");
+									for (var j:Object in array[i]) 
+									{
+										textArea.appendText(j + " : " + array[i][j] +  "\n");
+									}
+									
 								}
-								
 							}
-						}
+						}*/
 					}
+					else
+						textArea.appendText("error receiving contact list\n");
+				}catch(e:Error){
+					textArea.appendText(e.message+"\n");
 				}
-				else
-					textArea.appendText("error receiving contact list\n");
-				
+				busyInd.visible = false;
 			}
 			protected function getDetails(event:MouseEvent):void
 			{
 				if(lista.selectedIndex!=-1)
 				{
-					textArea.appendText("-details for selected contact:-------------\n");
-					for (var j:Object in lista.selectedItem) 
-					{
-						textArea.appendText(j + " : " + lista.selectedItem[j] +  "\n");
+					if(simpleMode.selected){
+						readDetails(contactEditor.getContactDetails(lista.selectedItem.recordId));
+					}else{
+						readDetails(lista.selectedItem);
 					}
-					textArea.appendText("-------------------------------------------\n");
 				}
 			}
 			
-			protected function onCreationComplete(event:FlexEvent):void
+			
+			private function readDetails(obj:Object):void
 			{
-				_isSupported=ContactEditor.isSupported;
-				if(!_isSupported)
+				if(obj==null)
+					return;
+				textArea.appendText("-details for selected contact:-------------\n");
+				for (var j:Object in obj)
 				{
-					textArea.appendText("Sorry, but this platform is currently not supported\n");
-					
+					textArea.appendText(j + " : " + obj[j] +  "\n");
+
 				}
+				textArea.appendText("-------------------------------------------\n");
 			}
 			
+			
+			protected function onStatus(event:StatusEvent):void
+			{
+				textArea.appendText(event.code+":     "+event.level+"\n");
+			}
+			
+			
+			
+			
+			/**
+			 * function dispached on every data in dataprovieder when the filter text changes 
+			 */
+			protected function filter(object:Object):Boolean
+			{
+				if(_filterUpper=="")
+					return true;
+				else if(object.hasOwnProperty("compositename") && object.compositename.toUpperCase().indexOf(_filterUpper) != -1)
+					return true;
+				return false;
+			}
+			protected function filterList(event:TextOperationEvent):void
+			{
+				if(myDB==null)
+					return;
+				
+				_filterUpper = TextInput(event.target).text.toUpperCase();
+				myDB.refresh();
+			}
 		]]>
 	</fx:Script>
 	<s:layout>
 		<s:VerticalLayout/>
 	</s:layout>
 	<s:HGroup width="100%" height="5%" horizontalAlign="center" verticalAlign="middle">
-		<s:Button x="-8" width="143" label="add contact" click="addContact(event)" enabled="{_isSupported}"/>
+		<s:TextInput prompt="search" change="filterList(event)"/>
+		<s:BusyIndicator id="busyInd" visible="false"/>
+		<s:Button x="-8" width="143" label="add contact" click="addContact(event)"/>
 		<s:Button width="87" label="get all"
-				  click="getContacts(event)"  enabled="{_isSupported}"/>
+				  click="getContacts(event)"/>
 		<s:Button width="112" label="get count"
-				  click="getContactCount(event)"  enabled="{_isSupported}"/>
+				  click="getContactCount(event)"/>
 		<s:Button width="112" label="details"
-				  click="getDetails(event)"  enabled="{_isSupported}"/>
+				  click="getDetails(event)"/>
 		<s:Button width="106" label="remove"
-				  click="removeContact(event)"  enabled="{_isSupported}"/>
-		<s:CheckBox id="outputPrint" width="194" height="47" label="output contacts"  enabled="{_isSupported}"/>
+				  click="removeContact(event)"/>
+		<s:CheckBox id="simpleMode" width="194" height="47" label="take simple" selected="true"/>
+		<!--<s:CheckBox id="outputPrint" width="194" height="47" label="output contacts"/>-->
 	</s:HGroup>
-
+	
 	
 	<s:List x="0" y="51" width="100%" height="50%" id="lista" labelField="compositename"></s:List>
-	<s:TextArea id="textArea" x="0" y="567" width="100%" height="40%"/>
+	<s:TextArea id="textArea" x="0" y="567" width="100%" height="40%" editable="false"/>
 </s:View>
