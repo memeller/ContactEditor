@@ -14,8 +14,18 @@ added after feedback from Mateusz(https://github.com/mateuszmackowiak)
 
 Mateusz added implementation for Android platform and cleaned up some mess i left in files, so big thanks to him for his work! :)
 
+As always android requires manifests. Just for accessing contacts informations:
+
+    < uses-permission android:name="android.permission.READ_CONTACTS" />
+  
+But more if Your app is going to add or remove any info:
+
+    < uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    #only if adding:
+    < uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
 ### ANE compilation ###
 To compile the ane, osx widh iOS SDK is needed. This ane uses AddressBook framework, which has to be linked during the compilation (sample ane build.sh is provided in build directory, it already includes the link to AddressBook framework).
 
 Not much, but still better than accesing the sql database directly ;)
-Tested on iPad, iOS 5.01
+Tested on iPad, iOS 5.01 / Andorid 3.1
