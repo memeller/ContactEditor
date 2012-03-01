@@ -7,11 +7,11 @@ import com.adobe.fre.FREWrongThreadException;
 
 /**
 *
-* @author Mateusz Maçkowiak
+* @author Mateusz MaÔøΩkowiak
 */
 public class isSupportedFunction implements FREFunction{
     
-    public static final String KEY = "isSupported";
+    public static final String KEY = "contactEditorIsSupported";
 
     @Override
     public FREObject call(FREContext context, FREObject[] args) {
