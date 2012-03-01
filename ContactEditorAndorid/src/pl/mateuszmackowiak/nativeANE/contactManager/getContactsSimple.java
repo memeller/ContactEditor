@@ -1,8 +1,9 @@
 package pl.mateuszmackowiak.nativeANE.contactManager;
 
-import android.content.ContentResolver;
+//import android.content.ContentResolver;
 import android.database.Cursor;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+
 
 import com.adobe.fre.FREArray;
 import com.adobe.fre.FREContext;
@@ -12,49 +13,47 @@ import com.adobe.fre.FREObject;
 public class getContactsSimple implements FREFunction {
 	public static final String KEY= "getContactsSimple";
 	@Override
-	public FREObject call(FREContext context, FREObject[] arg1) {
+	public FREObject call(FREContext context, FREObject[] args) {
 		try {
-			ContentResolver resolver = context.getActivity().getContentResolver();
-
 			
-			Cursor phones = resolver.query(Phone.CONTENT_URI, null,null,null, null);
+			Cursor contactCursor =  context.getActivity().managedQuery(Phone.CONTENT_URI, 
+					new String[] { Phone.CONTACT_ID, Phone.DISPLAY_NAME },null, null
+					,Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC");
 			
-			int count = phones.getCount();
+			int count = contactCursor.getCount();
 			
 			FREArray contacts = FREArray.newArray(count);
 				
 			FREObject contact = null;
 			int countNum = 0;
-			String compositename,id;
-
+			String compositename;
+			Integer id;
+			
 			if (count> 0) {
-				while (phones.moveToNext())
+				while (contactCursor.moveToNext())
 				{
 					try {
-					contact = FREObject.newObject("Object", null);
-					compositename =phones.getString(phones.getColumnIndex(Phone.DISPLAY_NAME));
-					id = phones.getString(phones.getColumnIndex(Phone.CONTACT_ID));
-					
-					
-					if(compositename!=null)
-					  contact.setProperty("compositename", FREObject.newObject(compositename));
-				 	if(id!=null)
-					  contact.setProperty("recordId", FREObject.newObject(id));
-				 	
-					//context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"phones.getString(phones.getColumnIndex(Phone.DELETED))   "+phones.getString(phones.getColumnIndex(Phone.DELETED)));
-				 	//if (Integer.parseInt(phones.getString(phones.getColumnIndex(Phone.DELETED))) > 0){
-				 		contacts.setObjectAt(countNum, contact);
+						contact = FREObject.newObject("Object", null);
+						compositename =contactCursor.getString(contactCursor.getColumnIndex(Phone.DISPLAY_NAME));
+
+						id = contactCursor.getInt(contactCursor.getColumnIndex(Phone.CONTACT_ID));
+
+						if(compositename!=null)
+						  contact.setProperty(Details.TYPE_COMPOSITENAME, FREObject.newObject(compositename));
+						contact.setProperty(Details.TYPE_RECORD_ID, FREObject.newObject(id));
+
+			 			contacts.setObjectAt(countNum, contact);
 					  	countNum++;
-				 	//}
+				  	
 					} catch (Exception e) {
-						context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"getContatcts "+e.toString());
+						context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,KEY+e.toString());
 					}
 				}
 			}
-			phones.close();
+			contactCursor.close();
 			return contacts;
 		} catch (Exception e) {
-			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"getContatcts "+e.toString());
+			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,KEY+e.toString());
 			e.printStackTrace();
 			return null;
 		}

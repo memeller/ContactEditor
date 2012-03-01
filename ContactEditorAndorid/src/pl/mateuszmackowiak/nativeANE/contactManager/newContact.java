@@ -14,16 +14,12 @@ import android.content.ContentProviderOperation;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 
-
-
-
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Organization;
-import android.provider.ContactsContract.CommonDataKinds.Website;
-
 import android.provider.ContactsContract.CommonDataKinds.Phone;
-
+import android.provider.ContactsContract.CommonDataKinds.StructuredName;
+import android.provider.ContactsContract.CommonDataKinds.Website;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
@@ -34,27 +30,33 @@ import com.adobe.fre.FREObject;
 public class newContact implements FREFunction, OnAccountsUpdateListener {
 
 	public static final String KEY = "addContact";
+	
 	private FREContext context = null;
 	private ArrayList<AccountData> acounts=null;
 	
 	String name,lastname,phone,company,email,website;
 	
 	@Override
-	public FREObject call(FREContext context, FREObject[] arg1) {
+	public FREObject call(FREContext context, FREObject[] arg) {
 		this.context = context;
 		try{
-			
-			name = arg1[0].getAsString();
-			lastname = arg1[1].getAsString();
-			phone = arg1[2].getAsString();
-			company = arg1[3].getAsString();
-			email = arg1[4].getAsString();
-			website = arg1[5].getAsString();
+			if(arg[0]!=null)
+				name = arg[0].getAsString();
+			if(arg.length>1 && arg[1]!=null)
+				lastname = arg[1].getAsString();
+			if(arg.length>2 && arg[2]!=null)
+				phone = arg[2].getAsString();
+			if(arg.length>3 && arg[3]!=null)
+				company = arg[3].getAsString();
+			if(arg.length>4 && arg[4]!=null)
+				email = arg[4].getAsString();
+			if(arg.length>5 && arg[5]!=null)
+				website = arg[5].getAsString();
 
 			AccountManager.get(context.getActivity()).addOnAccountsUpdatedListener(this, null, true);
 
 		}catch(Exception e){
-			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"new Contact "+e.toString());
+			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,KEY+"   "+e.toString());
 		}
 		return null;
 	}
@@ -89,7 +91,7 @@ public class newContact implements FREFunction, OnAccountsUpdateListener {
      * @param dictionary An array of AuthenticatorDescriptions, as returned by AccountManager.
      * @return The description for the specified account type.
      */
-    private static AuthenticatorDescription getAuthenticatorDescription(String type,
+    private AuthenticatorDescription getAuthenticatorDescription(String type,
             AuthenticatorDescription[] dictionary) {
         for (int i = 0; i < dictionary.length; i++) {
             if (dictionary[i].type.equals(type)) {
@@ -97,7 +99,8 @@ public class newContact implements FREFunction, OnAccountsUpdateListener {
             }
         }
         // No match found
-        throw new RuntimeException("Unable to find matching authenticator");
+        context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT, KEY+"   Unable to find matching authenticator");
+        return null;
     }
     
     
@@ -157,61 +160,67 @@ public class newContact implements FREFunction, OnAccountsUpdateListener {
 			if(lastname!=null)
 				displayName = displayName+"  "+name;
 		 	ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
+		 	
 	        ops.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
 	                .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, selectedAccount.getType())
 	                .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, selectedAccount.getName())
 	                .build());
-	        ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-	                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-	                .withValue(ContactsContract.Data.MIMETYPE,
-	                        ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-	                 .withValue(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME,name)
-	                 .withValue(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,lastname)
-	                .build());
-	        ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-	                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-	                .withValue(ContactsContract.Data.MIMETYPE,
-	                        ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
-	                .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phone)
-	                .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, Phone.TYPE_HOME)
-	                .build());
-	        ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-	                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-	                .withValue(ContactsContract.Data.MIMETYPE,
-	                        ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)
-	                .withValue(ContactsContract.CommonDataKinds.Email.DATA, email)
-	                .withValue(ContactsContract.CommonDataKinds.Email.TYPE, Email.TYPE_HOME)
-	                .build());
 	        
 	        ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
 	                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
 	                .withValue(ContactsContract.Data.MIMETYPE,
-	                        ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE)
-	                .withValue(ContactsContract.CommonDataKinds.Organization.DATA, company)
-	                .withValue(ContactsContract.CommonDataKinds.Organization.TYPE, Organization.TYPE_WORK)
+	                        StructuredName.CONTENT_ITEM_TYPE)
+	                 .withValue(StructuredName.GIVEN_NAME,name)
+	                 .withValue(StructuredName.FAMILY_NAME,lastname)
 	                .build());
+	        if(phone!=null && phone.isEmpty()==false){
+		        ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+		                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+		                .withValue(ContactsContract.Data.MIMETYPE,
+		                        Phone.CONTENT_ITEM_TYPE)
+		                .withValue(Phone.NUMBER, phone)
+		                .withValue(Phone.TYPE, Phone.TYPE_HOME)
+		                .build());
+	        }
+	        if(email!=null && email.isEmpty()==false){
+		        ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+		                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+		                .withValue(ContactsContract.Data.MIMETYPE,
+		                        Email.CONTENT_ITEM_TYPE)
+		                .withValue(Email.DATA, email)
+		                .withValue(Email.TYPE, Email.TYPE_HOME)
+		                .build());
+	        }
+	        if(company!=null && company.isEmpty()==false){
+		        ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+		                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+		                .withValue(ContactsContract.Data.MIMETYPE,Organization.CONTENT_ITEM_TYPE)
+		                .withValue(Organization.DATA, company)
+		                .withValue(Organization.TYPE, Organization.TYPE_WORK)
+		                .build());
+	        }
+	        if(website!=null && website.isEmpty()==false){
 	        ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
 	                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
 	                .withValue(ContactsContract.Data.MIMETYPE,
-	                        ContactsContract.CommonDataKinds.Website.CONTENT_ITEM_TYPE)
-	                .withValue(ContactsContract.CommonDataKinds.Website.DATA, company)
-	                .withValue(ContactsContract.CommonDataKinds.Website.TYPE, Website.TYPE_HOME)
+	                        Website.CONTENT_ITEM_TYPE)
+	                .withValue(Website.DATA, website)
+	                .withValue(Website.TYPE, Website.TYPE_HOME)
 	                .build());
-	        
-	         context.getActivity().getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+	        }
+	        context.getActivity().getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
 	         	
-	         name=null;
-		        lastname=null;
-		        phone=null;
-		        company=null;
-		        email=null;
-		        website=null;
-		        acounts = null;
-		        
-		     context.dispatchStatusEventAsync("contactAdded", "contact "+displayName+" added");
+			name=null;
+			lastname=null;
+			phone=null;
+			company=null;
+			email=null;
+			website=null;
+			acounts = null;
+			context.dispatchStatusEventAsync("contactAdded", "contact "+displayName+" added");
 		     
 		}catch(Exception e){
-			context.dispatchStatusEventAsync("error", e.toString());
+			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT, KEY+"   "+e.toString());
 		}
 	}
 	
@@ -244,7 +253,7 @@ public class newContact implements FREFunction, OnAccountsUpdateListener {
                 if (description.labelId != 0) {
                     mTypeLabel = pm.getText(packageName, description.labelId, null);
                     if (mTypeLabel == null) {
-                        throw new IllegalArgumentException("LabelID provided, but label not found");
+                        context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT, KEY+"   IllegalArgumentException ==> LabelID provided, but label not found");
                     }
                 } else {
                     mTypeLabel = "";

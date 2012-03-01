@@ -2,9 +2,8 @@ package pl.mateuszmackowiak.nativeANE.contactManager;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
-import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
-//import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 
 import com.adobe.fre.FREArray;
 import com.adobe.fre.FREContext;
@@ -20,72 +19,71 @@ public class getAllContacts implements FREFunction {
 	public FREObject call(FREContext context, FREObject[] args) {
 		try {
 			ContentResolver resolver = context.getActivity().getContentResolver();
-
 			
-			Cursor phones = resolver.query(Phone.CONTENT_URI, null,null,null, null);
+			Cursor contactCursor =  context.getActivity().managedQuery(Phone.CONTENT_URI, new String[] { Phone.CONTACT_ID, Phone.DISPLAY_NAME
+					},null, null
+					, Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC");
 			
-			int count = phones.getCount();
+			int count = contactCursor.getCount();
 			
-			FREArray contacts = FREArray.newArray(count);
-				
-			FREObject contact = null;
-			int countNum = 0;
-			String compositename;//,lastname,name;
+			FREArray paramArr,contacts = FREArray.newArray(count);
+			FREObject contact = null,paramObj;
+			String compositename,recordId;
 			Integer id;
-			FREArray notes,emails,numbers;
-			FREObject org;
+			
+			int countNum = 0;
+			
 			if (count> 0) {
-				while (phones.moveToNext())
+				while (contactCursor.moveToNext())
 				{
 					try {
 						contact = FREObject.newObject("Object", null);
-						compositename =phones.getString(phones.getColumnIndex(Phone.DISPLAY_NAME));
-						//name =phones.getString(phones.getColumnIndex(StructuredName.GIVEN_NAME));
-						//lastname =phones.getString(phones.getColumnIndex(StructuredName.FAMILY_NAME));
-						id = phones.getInt(phones.getColumnIndex(Phone.CONTACT_ID));
 						
-						notes = Details.getContactNotes(context, resolver, id.toString());
-						emails = Details.getEmailAddresses(context, resolver, id.toString());
-						numbers = Details.getPhoneNumbers(context, resolver, id.toString());
-						
-						/*if(lastname!=null)
-							  contact.setProperty("lastname", FREObject.newObject(lastname));
-						if(name!=null)
-							  contact.setProperty("name", FREObject.newObject(name));
-						*/
-						if(compositename!=null)
-						  contact.setProperty("compositename", FREObject.newObject(compositename));
-						contact.setProperty("recordId", FREObject.newObject(id));
-					 	if(notes!=null)
-					 		contact.setProperty("notes", notes);
-						if(numbers!=null)
-					 		contact.setProperty("phones", numbers);
-						if(emails!=null)
-					 		contact.setProperty("emails", emails);
-						
-						
-						String orgName = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Organization.DATA));
-			 			String title = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Organization.TITLE));
-			 			if (orgName.length() > 0) {
-			 				org =FREObject.newObject("Object", null);
-			 				if(orgName!=null)
-			 					org.setProperty("orgName", FREObject.newObject(orgName));
-			 				if(title!=null)
-			 					org.setProperty("title", FREObject.newObject(title));
-			 				contact.setProperty("company", org);
-			 			}
-			 			contacts.setObjectAt(countNum, contact);
-					  	countNum++;
-				  	
+						id = contactCursor.getInt(contactCursor.getColumnIndex(Phone.CONTACT_ID));
+						contact.setProperty(Details.TYPE_RECORD_ID, FREObject.newObject(id));
+						if(id!=null){
+							recordId = id.toString();
+							compositename =contactCursor.getString(contactCursor.getColumnIndex(Phone.DISPLAY_NAME));
+							if(compositename!=null)
+								  contact.setProperty(Details.TYPE_COMPOSITENAME, FREObject.newObject(compositename));
+
+					 		paramArr = Details.getPhoneNumbers(context, resolver, recordId);
+					 		if(paramArr!=null && paramArr.getLength()>0)
+					 			contact.setProperty(Details.TYPE_PHONES, paramArr);
+					 		
+					 		paramArr = Details.getEmailAddresses(context, resolver, recordId);
+					 		if(paramArr!=null && paramArr.getLength()>0)
+					 			contact.setProperty(Details.TYPE_EMAILS, paramArr);
+					 		
+					 		paramArr = Details.getContactNotes(context, resolver, recordId);
+					 		if(paramArr!=null && paramArr.getLength()>0)
+					 			contact.setProperty(Details.TYPE_NOTES, paramArr);
+					 		
+					 		paramArr = Details.getContactAddresses(context, resolver, recordId);
+					 		if(paramArr!=null && paramArr.getLength()>0)
+					 			contact.setProperty(Details.TYPE_ADRESS, paramArr);
+					 		
+					 		paramObj = Details.getContactOrg(context, resolver, recordId);
+					 		if(paramObj!=null)
+					 			contact.setProperty(Details.TYPE_ORGANIZAIOTN, paramObj);
+					 		
+					 		paramObj = Details.getCotactParam(context, resolver, recordId, CommonDataKinds.Phone.DISPLAY_NAME);
+					 		if(paramObj!=null)
+					 			contact.setProperty(Details.TYPE_COMPOSITENAME, paramObj);
+							
+							
+				 			contacts.setObjectAt(countNum, contact);
+						  	countNum++;
+						}
 					} catch (Exception e) {
-						context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"getContatcts "+e.toString());
+						context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,KEY+e.toString());
 					}
 				}
 			}
-			phones.close();
+			contactCursor.close();
 			return contacts;
 		} catch (Exception e) {
-			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"getContatcts "+e.toString());
+			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,KEY+e.toString());
 			e.printStackTrace();
 			return null;
 		}

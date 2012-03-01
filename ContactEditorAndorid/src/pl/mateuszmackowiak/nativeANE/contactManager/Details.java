@@ -3,6 +3,12 @@ package pl.mateuszmackowiak.nativeANE.contactManager;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds.Email;
+import android.provider.ContactsContract.CommonDataKinds.Note;
+import android.provider.ContactsContract.CommonDataKinds.Organization;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.CommonDataKinds.StructuredPostal;
+import android.provider.ContactsContract.Data;
 
 import com.adobe.fre.FREASErrorException;
 import com.adobe.fre.FREArray;
@@ -15,18 +21,28 @@ import com.adobe.fre.FRETypeMismatchException;
 import com.adobe.fre.FREWrongThreadException;
 
 public class Details  {
+	
+	public final static String TYPE_ORGANIZAIOTN ="organization";
+	public final static String TYPE_RECORD_ID ="recordId";
+	public final static String TYPE_NOTES ="notes";
+	public final static String TYPE_EMAILS ="emails";
+	public final static String TYPE_PHONES ="phones";
+	public final static String TYPE_ADRESS ="adress";
+	public final static String TYPE_COMPOSITENAME ="compositename";
+	
+	public final static String TYPE_NAME ="name";
+	public final static String TYPE_LASTNAME ="lastname";
+	
+	
 
-	public static FREArray getPhoneNumbers(FREContext context, ContentResolver resolver ,String id) {
-		try {
+	public static FREArray getPhoneNumbers(FREContext context, ContentResolver resolver ,String id) throws IllegalStateException, FREASErrorException, FREWrongThreadException, IllegalArgumentException, FREInvalidObjectException, FREReadOnlyException, FRETypeMismatchException {
 	 		FREArray phones = FREArray.newArray(0);
 	 		int count = 0;
- 		Cursor pCur = context.getActivity().managedQuery(
- 				ContactsContract.CommonDataKinds.Phone.CONTENT_URI, 
- 				null, 
- 				ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = ?", 
- 				new String[]{id}, null);
+	 		Cursor pCur = context.getActivity().managedQuery( Phone.CONTENT_URI, 
+	 				new String[] { Phone.NUMBER},Phone.CONTACT_ID +" = ?",new String[]{id}, null);
+	 		
 	 		while (pCur.moveToNext()) {
-	 			String phone = pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+	 			String phone = pCur.getString(pCur.getColumnIndex(Phone.NUMBER));
 	 			if (phone.length() > 0) {
 	 				phones.setLength(count+1);
 	 				phones.setObjectAt(count, FREObject.newObject(phone));
@@ -35,24 +51,19 @@ public class Details  {
 	 		} 
 	 		pCur.close();
 	 		return(phones);
-		} catch (Exception e){
- 			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"getPhoneNumbers "+e.toString());
- 			return null;
- 		}
  	}
  	
- 	public static FREArray getEmailAddresses(FREContext context, ContentResolver resolver ,String id) {
- 		try {
+ 	public static FREArray getEmailAddresses(FREContext context, ContentResolver resolver ,String id) throws IllegalStateException, FREASErrorException, FREWrongThreadException, IllegalArgumentException, FREInvalidObjectException, FREReadOnlyException, FRETypeMismatchException {
 	 		FREArray emails = FREArray.newArray(0);
 	 		int count = 0;
 	 		
 	 		Cursor emailCur = context.getActivity().managedQuery( 
-	 				ContactsContract.CommonDataKinds.Email.CONTENT_URI, 
-	 				null,
-	 				ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?", 
+	 				Email.CONTENT_URI, 
+	 				new String[] { Email.DATA},Email.CONTACT_ID + " = ?", 
 	 				new String[]{id}, null); 
+	 		
 	 		while (emailCur.moveToNext()) { 
-	 			String email = emailCur.getString(emailCur.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+	 			String email = emailCur.getString(emailCur.getColumnIndex(Email.DATA));
 	 			if (email.length() > 0) {
 	 				emails.setLength(count+1);
 	 				emails.setObjectAt(count, FREObject.newObject(email));
@@ -61,22 +72,18 @@ public class Details  {
 	 		} 
 	 		emailCur.close();
 	 		return(emails);
- 		} catch (Exception e){
- 			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"getEmailAddresses "+e.toString());
- 			return null;
- 		}
  	}
  	
- 	public static FREArray getContactNotes(FREContext context, ContentResolver resolver ,String id){
- 		try {
+ 	public static FREArray getContactNotes(FREContext context, ContentResolver resolver ,String id)throws IllegalStateException, FREASErrorException, FREWrongThreadException, IllegalArgumentException, FREInvalidObjectException, FREReadOnlyException, FRETypeMismatchException {
 	 		FREArray notes = FREArray.newArray(0);
 	 		int count = 0;
+	 		
 	 		String where = ContactsContract.Data.CONTACT_ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?"; 
 	 		String[] whereParameters = new String[]{id, 
-	 			ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE}; 
+	 			Note.CONTENT_ITEM_TYPE}; 
 	 		Cursor noteCur = resolver.query(ContactsContract.Data.CONTENT_URI, null, where, whereParameters, null); 
 	 		if (noteCur.moveToFirst()) { 
-	 			String note = noteCur.getString(noteCur.getColumnIndex(ContactsContract.CommonDataKinds.Note.NOTE));
+	 			String note = noteCur.getString(noteCur.getColumnIndex(Note.NOTE));
 	 			if (note.length() > 0) {
 	 				notes.setLength(count+1);
 	 				notes.setObjectAt(count, FREObject.newObject(note));
@@ -85,72 +92,77 @@ public class Details  {
 	 		} 
 	 		noteCur.close();
 	 		return(notes);
- 		} catch (Exception e){
- 			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"getContatctNotes "+e.toString());
- 			return null;
- 		}
  	}
  	
- 	public static FREArray getContactAddresses(FREContext context, ContentResolver resolver ,String id) {
- 		try {
+ 	public static FREArray getContactAddresses(FREContext context, ContentResolver resolver ,String id) throws IllegalStateException, FREASErrorException, FREWrongThreadException, IllegalArgumentException, FREInvalidObjectException, FREReadOnlyException, FRETypeMismatchException, FRENoSuchNameException {
 	 		FREArray adresses = FREArray.newArray(0);
 	 		FREObject adress =null;
+	 		boolean add=false;
 	 		int count = 0;
 	 		String where = ContactsContract.Data.CONTACT_ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?"; 
 	 		String[] whereParameters = new String[]{id, 
-	 				ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE}; 
+	 				StructuredPostal.CONTENT_ITEM_TYPE}; 
 	 		
 	 		Cursor addrCur = context.getActivity().managedQuery(ContactsContract.Data.CONTENT_URI, null, where, whereParameters, null);
 	 		while(addrCur.moveToNext()) {
-	 			String poBox = addrCur.getString(addrCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.POBOX));
-	 			String street = addrCur.getString(addrCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.STREET));
-	 			String city = addrCur.getString(addrCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.CITY));
-	 			String state = addrCur.getString(addrCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.REGION));
-	 			String postalCode = addrCur.getString(addrCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.POSTCODE));
-	 			String country = addrCur.getString(addrCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY));
-	 			String type = addrCur.getString(addrCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.TYPE));
+	 			String poBox = addrCur.getString(addrCur.getColumnIndex(StructuredPostal.POBOX));
+	 			String street = addrCur.getString(addrCur.getColumnIndex(StructuredPostal.STREET));
+	 			String city = addrCur.getString(addrCur.getColumnIndex(StructuredPostal.CITY));
+	 			String state = addrCur.getString(addrCur.getColumnIndex(StructuredPostal.REGION));
+	 			String postalCode = addrCur.getString(addrCur.getColumnIndex(StructuredPostal.POSTCODE));
+	 			String country = addrCur.getString(addrCur.getColumnIndex(StructuredPostal.COUNTRY));
+	 			String type = addrCur.getString(addrCur.getColumnIndex(StructuredPostal.TYPE));
 	 			adress = FREObject.newObject("Object", null);
-	 			if(poBox!=null)
+	 			if(poBox!=null){
 	 				adress.setProperty("poBox", FREObject.newObject(poBox));
-				if(street!=null)
+	 			}
+	 			if(street!=null){
 					adress.setProperty("title", FREObject.newObject(street));
-				
-				if(city!=null)
+					add=true;
+	 			}
+				if(city!=null){
 					adress.setProperty("city", FREObject.newObject(city));
-				if(state!=null)
+					add=true;
+	 			}
+				if(state!=null){
 					adress.setProperty("state", FREObject.newObject(state));
-				if(postalCode!=null)
+						add=true;
+				}
+				if(postalCode!=null){
 					adress.setProperty("postalCode", FREObject.newObject(postalCode));
-				if(country!=null)
+					add=true;
+				}
+				if(country!=null){
 					adress.setProperty("country", FREObject.newObject(country));
-				if(type!=null)
+					add=true;
+				}
+				if(type!=null){
 					adress.setProperty("type", FREObject.newObject(type));
-				
- 				adresses.setLength(count+1);
- 				adresses.setObjectAt(count, adress);
- 				count++;
-
+					add=true;
+				}
+				if(add){
+	 				adresses.setLength(count+1);
+	 				adresses.setObjectAt(count, adress);
+	 				count++;
+	 				add=false;
+				}
 	 		} 
 	 		addrCur.close();
 	 		return(adresses);
- 		} catch (Exception e){
- 			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,"getContactAddresses "+e.toString());
- 			return null;
- 		}
  	}
  	
 
  	public static FREObject getContactOrg(FREContext context, ContentResolver resolver ,String id) throws IllegalStateException, FRETypeMismatchException, FREInvalidObjectException, FREASErrorException, FRENoSuchNameException, FREWrongThreadException, FREReadOnlyException {
  		FREObject org = null;
- 		String where = ContactsContract.Data.CONTACT_ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?"; 
+ 		String where = Data.CONTACT_ID + " = ? AND " + Data.MIMETYPE + " = ?"; 
  		String[] whereParameters = new String[]{id, 
- 				ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE}; 
+ 				Organization.CONTENT_ITEM_TYPE}; 
  		
- 		Cursor orgCur = context.getActivity().managedQuery(ContactsContract.Data.CONTENT_URI, null, where, whereParameters, null);
+ 		Cursor orgCur = context.getActivity().managedQuery(Data.CONTENT_URI, null, where, whereParameters, null);
  
  		if (orgCur.moveToFirst()) { 
- 			String orgName = orgCur.getString(orgCur.getColumnIndex(ContactsContract.CommonDataKinds.Organization.DATA));
- 			String title = orgCur.getString(orgCur.getColumnIndex(ContactsContract.CommonDataKinds.Organization.TITLE));
+ 			String orgName = orgCur.getString(orgCur.getColumnIndex(Organization.DATA));
+ 			String title = orgCur.getString(orgCur.getColumnIndex(Organization.TITLE));
  			if (orgName.length() > 0) {
  				org =FREObject.newObject("Object", null);
  				if(orgName!=null)
@@ -163,16 +175,14 @@ public class Details  {
  		return(org);
  	}
  	
- 	
- 	
- 	
+
  	public static FREObject getCotactParam(FREContext context, ContentResolver resolver ,String id,String columnName) throws IllegalStateException, FRETypeMismatchException, FREInvalidObjectException, FREASErrorException, FRENoSuchNameException, FREWrongThreadException, FREReadOnlyException {
  		FREObject name = null;
 
  		Cursor pCur = context.getActivity().managedQuery( 
- 				ContactsContract.CommonDataKinds.Phone.CONTENT_URI, 
+ 				Phone.CONTENT_URI, 
  				null,
- 				ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?", 
+ 				Phone.CONTACT_ID + " = ?", 
  				new String[]{id}, null); 
  		
 
