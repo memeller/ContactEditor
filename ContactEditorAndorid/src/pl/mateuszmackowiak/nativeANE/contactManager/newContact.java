@@ -67,7 +67,7 @@ public class newContact implements FREFunction, OnAccountsUpdateListener {
      * OnAccountsUpdateListener implementation.
      */
     public void onAccountsUpdated(Account[] a) {
-
+    	AccountManager.get(context.getActivity()).removeOnAccountsUpdatedListener(this);
         // Get account data from system
         AuthenticatorDescription[] accountTypes = AccountManager.get(context.getActivity()).getAuthenticatorTypes();
         acounts = new ArrayList<AccountData>();

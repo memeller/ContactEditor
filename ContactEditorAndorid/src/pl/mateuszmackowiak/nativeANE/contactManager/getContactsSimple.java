@@ -1,6 +1,5 @@
 package pl.mateuszmackowiak.nativeANE.contactManager;
 
-//import android.content.ContentResolver;
 import android.database.Cursor;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 
@@ -16,7 +15,7 @@ public class getContactsSimple implements FREFunction {
 	public FREObject call(FREContext context, FREObject[] args) {
 		try {
 			
-			Cursor contactCursor =  context.getActivity().managedQuery(Phone.CONTENT_URI, 
+			Cursor contactCursor =  context.getActivity().getContentResolver().query(Phone.CONTENT_URI, 
 					new String[] { Phone.CONTACT_ID, Phone.DISPLAY_NAME },null, null
 					,Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC");
 			
@@ -34,9 +33,9 @@ public class getContactsSimple implements FREFunction {
 				{
 					try {
 						contact = FREObject.newObject("Object", null);
-						compositename =contactCursor.getString(contactCursor.getColumnIndex(Phone.DISPLAY_NAME));
+						compositename =contactCursor.getString(1);
 
-						id = contactCursor.getInt(contactCursor.getColumnIndex(Phone.CONTACT_ID));
+						id = contactCursor.getInt(0);
 
 						if(compositename!=null)
 						  contact.setProperty(Details.TYPE_COMPOSITENAME, FREObject.newObject(compositename));
@@ -50,7 +49,9 @@ public class getContactsSimple implements FREFunction {
 					}
 				}
 			}
+			
 			contactCursor.close();
+
 			return contacts;
 		} catch (Exception e) {
 			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,KEY+e.toString());

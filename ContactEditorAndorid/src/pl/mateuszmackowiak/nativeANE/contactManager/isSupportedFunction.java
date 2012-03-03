@@ -7,7 +7,7 @@ import com.adobe.fre.FREWrongThreadException;
 
 /**
 *
-* @author Mateusz MaÔøΩkowiak
+* @author Mateusz Maçkowiak
 */
 public class isSupportedFunction implements FREFunction{
     

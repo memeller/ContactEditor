@@ -2,6 +2,7 @@ package pl.mateuszmackowiak.nativeANE.contactManager;
 
 
 import android.content.ContentResolver;
+
 import android.provider.ContactsContract.CommonDataKinds;
 
 
@@ -31,35 +32,39 @@ public class getContactDetails implements FREFunction {
 			FREArray paramArr = null;
 	 		FREObject paramObj = null;
 
-	 		
 	 		ContentResolver resolver = context.getActivity().getContentResolver();
 	 		
-	 		paramArr = Details.getPhoneNumbers(context, resolver, recordId);
+	 		
+	 		paramArr = Details.getPhoneNumbers( resolver, recordId);
 	 		if(paramArr!=null && paramArr.getLength()>0)
 	 			details.setProperty(Details.TYPE_PHONES, paramArr);
 	 		
-	 		paramArr = Details.getEmailAddresses(context, resolver, recordId);
+	 		paramArr = Details.getEmailAddresses( resolver, recordId);
 	 		if(paramArr!=null && paramArr.getLength()>0)
 	 			details.setProperty(Details.TYPE_EMAILS, paramArr);
 	 		
-	 		paramArr = Details.getContactNotes(context, resolver, recordId);
+	 		paramArr = Details.getContactNotes( resolver, recordId);
 	 		if(paramArr!=null && paramArr.getLength()>0)
 	 			details.setProperty(Details.TYPE_NOTES, paramArr);
 	 		
-	 		paramArr = Details.getContactAddresses(context, resolver, recordId);
+	 		paramArr = Details.getContactAddresses( resolver, recordId);
 	 		if(paramArr!=null && paramArr.getLength()>0)
 	 			details.setProperty(Details.TYPE_ADRESS, paramArr);
 	 		
-	 		paramObj = Details.getContactOrg(context, resolver, recordId);
+	 		paramObj = Details.getContactOrg( resolver, recordId);
 	 		if(paramObj!=null)
 	 			details.setProperty(Details.TYPE_ORGANIZAIOTN, paramObj);
 	 		
-	 		paramObj = Details.getCotactParam(context, resolver, recordId, CommonDataKinds.Phone.DISPLAY_NAME);
+	 		paramObj = Details.getCotactParam( resolver, recordId, CommonDataKinds.Phone.DISPLAY_NAME);
 	 		if(paramObj!=null)
 	 			details.setProperty(Details.TYPE_COMPOSITENAME, paramObj);
 	 		
-	 		//name = Details.getCotactParam(context, resolver, recordId, CommonDataKinds.StructuredName.PHONETIC_GIVEN_NAME);
-	 		//lastname = Details.getCotactParam(context, resolver, recordId, CommonDataKinds.StructuredName.DISPLAY_NAME_PRIMARY);
+	 		paramObj = Details.getCotactParam( resolver, recordId, Details.TYPE_ACCOUNT_NAME);
+	 		if(paramObj!=null)
+	 			details.setProperty(Details.TYPE_ACCOUNT_NAME, paramObj);
+	 		
+	 		//name = Details.getCotactParam( resolver, recordId, CommonDataKinds.StructuredName.PHONETIC_GIVEN_NAME);
+	 		//lastname = Details.getCotactParam( resolver, recordId, CommonDataKinds.StructuredName.DISPLAY_NAME_PRIMARY);
 	 		
 	 		details.setProperty(Details.TYPE_RECORD_ID, FREObject.newObject(id));
 

@@ -5,16 +5,19 @@ package pl.mllr.extensions.contactEditor
 	import flash.events.EventDispatcher;
 	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
+	import flash.system.Capabilities;
 
 	public class ContactEditor extends EventDispatcher
 	{
 
 		public static const EXTENSION_ID : String = "pl.mllr.extensions.contactEditor";
 
-		private static var context:ExtensionContext = null;
+		public static const ANDORID_CONTACT_PICK_BY_COMPOSITENAME:String = "vnd.android.cursor.item/contact";
+		public static const ANDORID_CONTACT_PICK_BY_PHONE:String = "vnd.android.cursor.item/phone_v2";
+		public static const ANDORID_CONTACT_PICK_BY_ADRESS:String = "vnd.android.cursor.item/postal-address_v2";
 		
-		private static var _instance:ContactEditor = null;
-		private static var _shouldCreateInstance:Boolean = false;
+		
+		private var context:ExtensionContext = null;
 		private static var _set:Boolean = false;
 		private static var _isSupp:Boolean = false;
 		
@@ -24,20 +27,22 @@ package pl.mllr.extensions.contactEditor
 		 */
 		public function ContactEditor()
 		{
-
-			if(context==null){
-				try{
-					context = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
-					context.addEventListener(StatusEvent.STATUS, onStatus);
-				}catch(e:Error){
-					trace(e.message,e.errorID);
-				}
+			try{
+				context = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
+				context.addEventListener(StatusEvent.STATUS, onStatus);
+			}catch(e:Error){
+				trace(e.message,e.errorID);
 			}
 		}
 		
-		protected function onStatus(event:Event):void
+		protected function onStatus(event:StatusEvent):void
 		{
-			this.dispatchEvent(event.clone());
+			if(event.code==ContactEditorEvent.CONTACT_SELECTED)
+				this.dispatchEvent(new ContactEditorEvent(ContactEditorEvent.CONTACT_SELECTED,event.level));
+			else if(hasEventListener(StatusEvent.STATUS))
+				this.dispatchEvent(event.clone());
+			else
+				trace(event.type+"   "+event.code+"  "+event.level);
 		}
 		/**
 		 *Adds contact to AddressBook 
@@ -51,29 +56,54 @@ package pl.mllr.extensions.contactEditor
 		 */		
 		public function addContact(name:String,lastname:String="",phone:String="",company:String="",email:String="",website:String=""):void
 		{  
-			
 			context.call("addContact",name,lastname,phone,company,email,website) ;
 		}
-		/**
-		 * gets all contacts from AddressBook 
-		 * @return an array of contacts with following: name, lastname, compositename, birthdate, recordid, phones (array), emails (array);
-		 * 
-		 */		
-		public function getContacts():Array
-		{  
-			
-			return context.call("getContacts") as Array;
-		}
-
 		
 		/**
 		 * gets all contacts from AddressBook 
-		 * @return an array of contacts with following: compositename, recordid;
+		 * @return an array of contacts with following: name, lastname, compositename, birthdate, recordId, phones (array), emails (array);
+		 * 
+		 */		
+		public function getContacts():Array
+		{
+			return context.call("getContacts") as Array;
+		}
+
+		/**
+		 * temporary only on Android
+		 * On Andorid shows native window with contact picker 
+		 * Listen for ContactEditorEvent.CONTACT_SELECTED or StatusEvent for errors
+		 *
+		 * @param type - types are defined in this class as static const's
+		 */
+		public function pickContact(type:String=null):void
+		{  
+			try{
+				context.call("pickContact",type);
+			}catch(error:Error){
+				if(String(error.message).indexOf("pickContact"))
+					trace("pickContact is not supported on this platform");
+				else
+					throw new Error(error.message,error.errorID);
+			}
+		}
+		public function canclePickContact():void
+		{
+			try{
+				context.call("pickContact","finish");
+			}catch(error:Error){
+				if(String(error.message).indexOf("pickContact"))
+					trace("pickContact is not supported on this platform");
+			}
+		}
+		
+		/**
+		 * gets all contacts from AddressBook 
+		 * @return an array of contacts with following: compositename, recordId;
 		 * 
 		 */	
 		public function getContactsSimple():Array
 		{  
-			
 			return context.call("getContactsSimple") as Array;
 		}
 		/**
@@ -83,7 +113,6 @@ package pl.mllr.extensions.contactEditor
 		 */	
 		public function getContactDetails(recordId:int):Object
 		{  
-			
 			return context.call("getContactDetails",recordId) as Object;
 		}
 
@@ -112,18 +141,17 @@ package pl.mllr.extensions.contactEditor
 		public function removeContact(recordId:int):Boolean
 		{
 			return context.call("removeContact",recordId) as Boolean;
-
 		}
 		/**
-		 * Whether a Notification system is available on the device (true);<br>otherwise false
+		 * Whether the ContactEditor is available on the device (true);<br>otherwise false
 		 */
 		public static function get isSupported():Boolean{
 			if(!_set){// checks if a value was set before
 				try{
 					_set = true;
-					if(context==null)
-						context = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
-					_isSupp = context.call("contactEditorIsSupported");
+						var _context:ExtensionContext = ExtensionContext.createExtensionContext(EXTENSION_ID, null);
+						_isSupp = _context.call("contactEditorIsSupported");
+						_context.dispose();
 				}catch(e:Error){
 					trace(e.message,e.errorID);
 					return _isSupp;

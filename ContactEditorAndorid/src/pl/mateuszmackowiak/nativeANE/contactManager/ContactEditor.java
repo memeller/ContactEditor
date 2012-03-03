@@ -13,7 +13,7 @@ import com.adobe.fre.FREExtension;
 public class ContactEditor implements FREExtension {
 
 	public static final String ERROR_EVENT = "nativeError";
-	
+	public static final String CONTACT_SELECTED = "contactSelected";
 	@Override
 	public FREContext createContext(String arg0) {
 		return new ContactEditorContext();

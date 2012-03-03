@@ -3,6 +3,7 @@ package pl.mateuszmackowiak.nativeANE.contactManager;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.provider.ContactsContract.CommonDataKinds;
+import android.provider.ContactsContract.CommonDataKinds.Organization;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 
 import com.adobe.fre.FREArray;
@@ -20,7 +21,7 @@ public class getAllContacts implements FREFunction {
 		try {
 			ContentResolver resolver = context.getActivity().getContentResolver();
 			
-			Cursor contactCursor =  context.getActivity().managedQuery(Phone.CONTENT_URI, new String[] { Phone.CONTACT_ID, Phone.DISPLAY_NAME
+			Cursor contactCursor =  resolver.query(Phone.CONTENT_URI, new String[] { Phone.CONTACT_ID, Phone.DISPLAY_NAME,Organization.TITLE
 					},null, null
 					, Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC");
 			
@@ -47,30 +48,36 @@ public class getAllContacts implements FREFunction {
 							if(compositename!=null)
 								  contact.setProperty(Details.TYPE_COMPOSITENAME, FREObject.newObject(compositename));
 
-					 		paramArr = Details.getPhoneNumbers(context, resolver, recordId);
+					 		paramArr = Details.getPhoneNumbers( resolver, recordId);
 					 		if(paramArr!=null && paramArr.getLength()>0)
 					 			contact.setProperty(Details.TYPE_PHONES, paramArr);
 					 		
-					 		paramArr = Details.getEmailAddresses(context, resolver, recordId);
+					 		paramArr = Details.getEmailAddresses( resolver, recordId);
 					 		if(paramArr!=null && paramArr.getLength()>0)
 					 			contact.setProperty(Details.TYPE_EMAILS, paramArr);
 					 		
-					 		paramArr = Details.getContactNotes(context, resolver, recordId);
+					 		paramArr = Details.getContactNotes( resolver, recordId);
 					 		if(paramArr!=null && paramArr.getLength()>0)
 					 			contact.setProperty(Details.TYPE_NOTES, paramArr);
 					 		
-					 		paramArr = Details.getContactAddresses(context, resolver, recordId);
+					 		paramArr = Details.getContactAddresses( resolver, recordId);
 					 		if(paramArr!=null && paramArr.getLength()>0)
 					 			contact.setProperty(Details.TYPE_ADRESS, paramArr);
 					 		
-					 		paramObj = Details.getContactOrg(context, resolver, recordId);
+					 		paramObj = Details.getContactOrg( resolver, recordId);
 					 		if(paramObj!=null)
 					 			contact.setProperty(Details.TYPE_ORGANIZAIOTN, paramObj);
 					 		
-					 		paramObj = Details.getCotactParam(context, resolver, recordId, CommonDataKinds.Phone.DISPLAY_NAME);
+					 		paramObj = Details.getCotactParam( resolver, recordId, CommonDataKinds.Phone.DISPLAY_NAME);
 					 		if(paramObj!=null)
 					 			contact.setProperty(Details.TYPE_COMPOSITENAME, paramObj);
+					 		
+					 		paramObj = Details.getCotactParam( resolver, recordId, Details.TYPE_ACCOUNT_NAME);
+					 		if(paramObj!=null)
+					 			contact.setProperty(Details.TYPE_ACCOUNT_NAME, paramObj);
 							
+					 		 //Uri uri = ContentUris.withAppendedId(People.CONTENT_URI, id);
+					           // Bitmap bitmap = People.loadContactPhoto(context, uri, R.drawable.icon, null);
 							
 				 			contacts.setObjectAt(countNum, contact);
 						  	countNum++;
@@ -81,6 +88,7 @@ public class getAllContacts implements FREFunction {
 				}
 			}
 			contactCursor.close();
+			
 			return contacts;
 		} catch (Exception e) {
 			context.dispatchStatusEventAsync(ContactEditor.ERROR_EVENT,KEY+e.toString());
