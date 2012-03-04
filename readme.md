@@ -3,6 +3,7 @@
 author: memeller@gmail.com & Mateusz Maćkowiak (https://github.com/mateuszmackowiak)
 Currently supported:
 
+* (NEW) pickContact - shows system contact picker, that enables user to select desired contact from list. After selecting the picker is dismissed, and the selected recordId is sent using ContactEditorEvent.CONTACT_SELECTED 
 * getContactCount - gets the number of contacts in AddressBook
 * getContacts - gets contacts from AddressBook (name, lastname, compositename, phones, emails, recordid, birthdate)
 * addcontact - adds contact to AddressBook

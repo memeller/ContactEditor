@@ -70,8 +70,8 @@ package pl.mllr.extensions.contactEditor
 		}
 
 		/**
-		 * temporary only on Android
-		 * On Andorid shows native window with contact picker 
+		 * 
+		 * Shows native window with contact picker 
 		 * Listen for ContactEditorEvent.CONTACT_SELECTED or StatusEvent for errors
 		 *
 		 * @param type - types are defined in this class as static const's
