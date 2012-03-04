@@ -5,10 +5,23 @@
  
  */
 #import "ContactEditor.h"
+#import "ContactEditorHelper.h"
 @implementation ContactEditor
 
-
+ContactEditorHelper *contactEditorHelper;
 ABAddressBookRef addressBook;
+FREObject showContactPicker(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] )
+{
+    if (!contactEditorHelper) {
+        contactEditorHelper = [[ContactEditorHelper alloc] init];
+    }
+    
+    [contactEditorHelper setContext:ctx];
+    [contactEditorHelper showContactPicker];
+    
+    
+    return NULL;    
+}
 
 FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
@@ -24,7 +37,7 @@ FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject
         {
             DLog(@"record found, trying to remove %i",abrecordId);
             ABAddressBookRemoveRecord(addressBook, aRecord, NULL);
-           // CFRelease(aRecord);
+            // CFRelease(aRecord);
             boolean=1;
             DLog(@"ContactRemoved");
         }
@@ -39,7 +52,7 @@ FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject
     DLog(@"setting returned value");
     FRENewObjectFromBool(boolean, &retBool);
     return retBool;
-
+    
 }
 FREObject contactEditorIsSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] ){
     FREObject retVal;
@@ -116,7 +129,7 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
         ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
         ABMultiValueAddValueAndLabel(multi, (CFStringRef)usercontact, kABWorkLabel, NULL);
         ABRecordSetValue(aRecord, kABPersonPhoneProperty, multi, &anError);
-    //    CFRelease(multi);
+        //    CFRelease(multi);
     }
     // Company
     DLog(@"Adding company");
@@ -131,7 +144,7 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
         ABMutableMultiValueRef multiemail = ABMultiValueCreateMutable(kABMultiStringPropertyType);
         ABMultiValueAddValueAndLabel(multiemail, (CFStringRef)useremail, kABWorkLabel, NULL);
         ABRecordSetValue(aRecord, kABPersonEmailProperty, multiemail, &anError);
-      //  CFRelease(multiemail);
+        //  CFRelease(multiemail);
     }
     // website
     DLog(@"Adding website");
@@ -141,7 +154,7 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
         ABMutableMultiValueRef multiweb = ABMultiValueCreateMutable(kABMultiStringPropertyType);
         ABMultiValueAddValueAndLabel(multiweb, (CFStringRef)userwebsite, kABHomeLabel, NULL);
         ABRecordSetValue(aRecord, kABPersonURLProperty, multiweb, &anError);
-      //  CFRelease(multiweb);
+        //  CFRelease(multiweb);
     }
     // Function
     //ABRecordSetValue(aRecord, kABPersonJobTitleProperty, userrole, &anError);
@@ -156,7 +169,7 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
 		DLog(@"error while creating..");
 	} 
     if(ABAddressBookHasUnsavedChanges)
-    ABAddressBookSave(addressBook, &error);
+        ABAddressBookSave(addressBook, &error);
     
     DLog(@"Releasing data");
     //CFRelease(aRecord);
@@ -313,7 +326,7 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
 }
 FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
-   
+    
     uint32_t argrecordId;
     FREObject contact=NULL;
     FRENewObject((const uint8_t*)"Object", 0, NULL, &contact,NULL);
@@ -437,7 +450,7 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
             FRESetObjectProperty(contact, (const uint8_t*)"phones", NULL, NULL);
         
         //CFRelease(person);
-
+        
         
         CFRelease(addressBook);
     }
@@ -447,7 +460,7 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
 FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
     DLog(@"Getting contact data");
-       addressBook=ABAddressBookCreate();
+    addressBook=ABAddressBookCreate();
     CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
     DLog(@"Parsing data");
     FREObject returnedArray = NULL;
@@ -463,7 +476,7 @@ FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREOb
         
         //person id
         int personId = (int)ABRecordGetRecordID(person);
-         DLog(@"Adding person with id: %i",personId);
+        DLog(@"Adding person with id: %i",personId);
         FREObject recordId;
         FRENewObjectFromInt32(personId, &recordId);
         FRESetObjectProperty(contact, (const uint8_t*)"recordId", recordId, NULL);
@@ -483,7 +496,7 @@ FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREOb
         else
             FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
         
-                DLog(@"Adding element to array %ld",i);
+        DLog(@"Adding element to array %ld",i);
         FRESetArrayElementAt(returnedArray, j, contact);
         j++;
         CFRelease(person);
@@ -496,15 +509,15 @@ FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREOb
 
 FREObject getContactCount(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
-        addressBook=ABAddressBookCreate();
+    addressBook=ABAddressBookCreate();
     DLog(@"Getting emails");
     CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
     
     FREObject contactCount;
     FRENewObjectFromInt32(CFArrayGetCount(people), &contactCount);
-        // create an instance of Object and save it to FREObject position
+    // create an instance of Object and save it to FREObject position
     DLog(@"Release");
-     CFRelease(addressBook);
+    CFRelease(addressBook);
     DLog(@"Return data");
     return contactCount;
 }
@@ -517,8 +530,8 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
                                      uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet) {
 	
     
-	*numFunctionsToTest = 7;
-	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * 7);
+	*numFunctionsToTest = 8;
+	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * 8);
     
 	func[0].name = (const uint8_t*)"addContact";
 	func[0].functionData = NULL;
@@ -541,9 +554,12 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
     func[6].name = (const uint8_t*)"getContactDetails";
 	func[6].functionData = NULL;
 	func[6].function = &getContactDetails;
+    func[7].name = (const uint8_t*)"showContactPicker";
+	func[7].functionData = NULL;
+	func[7].function = &showContactPicker;
     
 	*functionsToSet = func;
-    DLog(@"Exiting ContextInitializer()");
+    DLog(@"Exiting ContactEditorContextInitializer()");
 }
 
 
@@ -557,7 +573,9 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
 
 void ContactEditorContextFinalizer(FREContext ctx) {
 	
-    
+    [contactEditorHelper setContext:NULL];
+	[contactEditorHelper release];
+	contactEditorHelper = nil;
     // Nothing to clean up.
     
 	return;

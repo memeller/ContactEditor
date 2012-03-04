@@ -1,7 +1,6 @@
 <platform xmlns="http://ns.adobe.com/air/extension/3.1">
-    <sdkVersion>5.0</sdkVersion>
+    <sdkVersion>4.2</sdkVersion>
     <linkerOptions>
-	    <!-- to use the MessageUI framework -->
-        <option>-framework AddressBook</option>
+        <option>-framework AddressBook -framework AddressBookUI</option>
     </linkerOptions>
 </platform>
