@@ -6,12 +6,55 @@
  */
 #import "ContactEditor.h"
 #import "ContactEditorHelper.h"
+#import "ContactEditorAddContactHelper.h"
+#import "ContactEditorViewDetailsHelper.h"
 @implementation ContactEditor
 
 ContactEditorHelper *contactEditorHelper;
+ContactEditorViewDetailsHelper *contactEditorViewDetailsHelper;
+ContactEditorAddContactHelper *contactEditorAddContactHelper;
 ABAddressBookRef addressBook;
+
+FREObject showContactDetailsInWindow(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] )
+{
+    DLog(@"showing contact details using native window");
+    if (!contactEditorViewDetailsHelper) {
+        contactEditorViewDetailsHelper = [[ContactEditorViewDetailsHelper alloc] init];
+    }
+    uint32_t recordId;
+    if(FRE_OK==FREGetObjectAsUint32(argv[0], &recordId))
+    {
+        uint32_t boolean;
+        FREGetObjectAsBool(argv[1], &boolean);
+        addressBook=ABAddressBookCreate();
+        ABRecordID abrecordId=recordId;
+        ABRecordRef aRecord = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
+        if(aRecord)
+        {
+            [contactEditorViewDetailsHelper setContext:ctx];
+            [contactEditorViewDetailsHelper showContactDetailsInWindow:aRecord isEditable:boolean];
+        }
+        //CFRelease(addressBook);    
+    }
+    
+    return NULL;    
+}
+FREObject addContactInWindow(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] )
+{
+    DLog(@"adding contact using native window");
+    if (!contactEditorAddContactHelper) {
+        contactEditorAddContactHelper = [[ContactEditorAddContactHelper alloc] init];
+    }
+    
+    [contactEditorAddContactHelper setContext:ctx];
+    [contactEditorAddContactHelper addContactInWindow];
+    
+    
+    return NULL;    
+}
 FREObject showContactPicker(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] )
 {
+    DLog(@"showing contact picker using native window");
     if (!contactEditorHelper) {
         contactEditorHelper = [[ContactEditorHelper alloc] init];
     }
@@ -22,7 +65,6 @@ FREObject showContactPicker(FREContext ctx, void* funcData, uint32_t argc, FREOb
     
     return NULL;    
 }
-
 FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
     FREObject retBool = nil;
@@ -312,7 +354,60 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
         }
         else
             FRESetObjectProperty(contact, (const uint8_t*)"phones", NULL, NULL);
-        
+        retStr=NULL;
+        FREObject addressesArray = NULL;
+        ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
+        if(addresses)
+        {
+            
+            for (CFIndex k = 0; k<ABMultiValueGetCount(addresses);k++){
+                FREObject addressObj=NULL;
+                CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(addresses, k);
+                CFStringRef typeTmp = ABMultiValueCopyLabelAtIndex(addresses, k);
+                CFStringRef labeltype = ABAddressBookCopyLocalizedLabel(typeTmp);
+                if(labeltype)
+                    FRENewObjectFromUTF8(strlen([(NSString *)labeltype UTF8String])+1, (const uint8_t*)[(NSString *)labeltype UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"type", retStr, NULL);
+                retStr=NULL;
+                NSString *street = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStreetKey) copy];
+                if(street)
+                    FRENewObjectFromUTF8(strlen([street UTF8String])+1, (const uint8_t*)[street UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"street", retStr, NULL);
+                retStr=NULL;
+                NSString *city = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressCityKey) copy];
+                if(city)
+                    FRENewObjectFromUTF8(strlen([city UTF8String])+1, (const uint8_t*)[city UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"city", retStr, NULL);
+                retStr=NULL;  
+                NSString *state = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStateKey) copy];
+                if(state)
+                    FRENewObjectFromUTF8(strlen([state UTF8String])+1, (const uint8_t*)[state UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"state", retStr, NULL);
+                retStr=NULL;  
+                NSString *zip = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressZIPKey) copy];
+                if(zip)
+                    FRENewObjectFromUTF8(strlen([zip UTF8String])+1, (const uint8_t*)[zip UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"zip", retStr, NULL);
+                retStr=NULL;  
+                NSString *country = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressCountryKey) copy];
+                if(country)
+                    FRENewObjectFromUTF8(strlen([country UTF8String])+1, (const uint8_t*)[country UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"country", retStr, NULL);
+                retStr=NULL;  
+                
+                FRESetArrayElementAt(addressesArray, k, addressObj);
+                [street release];
+                [city release];
+                [state release];
+                [zip release];
+                [country release];
+                CFRelease(dict);
+                CFRelease(labeltype);
+                CFRelease(typeTmp);
+            }
+            CFRelease(addresses);
+            
+        }
         //addContact to array*/
         DLog(@"Adding element to array %ld",i);
         FRESetArrayElementAt(returnedArray, j, contact);
@@ -448,13 +543,201 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
         }
         else
             FRESetObjectProperty(contact, (const uint8_t*)"phones", NULL, NULL);
-        
-        //CFRelease(person);
-        
+        retStr=NULL;
+        FREObject addressesArray = NULL;
+        FRENewObject((const uint8_t*)"Array", 0, NULL, &addressesArray, nil);
+        ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
+        if(addresses)
+        {
+            DLog(@"found addresses");
+            int32_t addressNum=0;
+            for (CFIndex k = 0; k<ABMultiValueGetCount(addresses);k++){
+                DLog(@"found address %i",addressNum);
+                 FREObject addressObj=NULL;
+                FRENewObject((const uint8_t*)"Object", 0, NULL, &addressObj,NULL);
+                CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(addresses, k);
+                CFStringRef typeTmp = ABMultiValueCopyLabelAtIndex(addresses, k);
+                CFStringRef labeltype = ABAddressBookCopyLocalizedLabel(typeTmp);
+                if(labeltype)
+                    FRENewObjectFromUTF8(strlen([(NSString *)labeltype UTF8String])+1, (const uint8_t*)[(NSString *)labeltype UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"type", retStr, NULL);
+                retStr=NULL;
+                NSString *street = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStreetKey) copy];
+                if(street)
+                 FRENewObjectFromUTF8(strlen([street UTF8String])+1, (const uint8_t*)[street UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"street", retStr, NULL);
+                retStr=NULL;
+                NSString *city = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressCityKey) copy];
+                if(city)
+                FRENewObjectFromUTF8(strlen([city UTF8String])+1, (const uint8_t*)[city UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"city", retStr, NULL);
+                retStr=NULL;  
+                NSString *state = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStateKey) copy];
+                if(state)
+                    FRENewObjectFromUTF8(strlen([state UTF8String])+1, (const uint8_t*)[state UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"state", retStr, NULL);
+                retStr=NULL;  
+                NSString *zip = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressZIPKey) copy];
+                if(zip)
+                    FRENewObjectFromUTF8(strlen([zip UTF8String])+1, (const uint8_t*)[zip UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"zip", retStr, NULL);
+                retStr=NULL;  
+                NSString *country = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressCountryKey) copy];
+                if(country)
+                    FRENewObjectFromUTF8(strlen([country UTF8String])+1, (const uint8_t*)[country UTF8String], &retStr);
+                FRESetObjectProperty(addressObj, (const uint8_t*)"country", retStr, NULL);
+                retStr=NULL;  
+               
+                FRESetArrayElementAt(addressesArray, k, addressObj);
+                [street release];
+                [city release];
+                [state release];
+                [zip release];
+                [country release];
+                CFRelease(dict);
+                CFRelease(labeltype);
+                CFRelease(typeTmp);
+                addressNum++;
+            }
+            CFRelease(addresses);
+       
+        }
+            FRESetObjectProperty(contact, (const uint8_t*)"addresses", addressesArray, NULL);
         
         CFRelease(addressBook);
     }
     return contact;
+}
+FREObject getBitmapDimensions(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+    uint32_t argrecordId;
+    FREObject size=NULL;
+    FRENewObject((const uint8_t*)"flash.geom.Point", 0, NULL, &size,NULL);
+    if(FRE_OK==FREGetObjectAsUint32(argv[0], &argrecordId))
+    {
+        addressBook=ABAddressBookCreate();
+        ABRecordID abrecordId=argrecordId;
+        ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
+        
+        
+        if (ABPersonHasImageData(person))
+        {
+            DLog(@"found image");
+            UIImage *image;
+            //iOS 4.1 and before from http://goddess-gate.com/dc2/index.php/post/421
+            if ( &ABPersonCopyImageDataWithFormat != nil ) {
+                // iOS >= 4.1
+                image= [UIImage imageWithData:[(NSData *)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail)autorelease]];
+            } else {
+                // iOS < 4.1
+                image= [UIImage imageWithData:[(NSData *)ABPersonCopyImageData(person)autorelease]];
+            }
+            
+            //FREReleaseByteArray( objectByteArray );
+            UIGraphicsEndImageContext();
+            
+            // Now we'll pull the raw pixels values out of the image data
+            CGImageRef imageRef = [image CGImage];
+            NSUInteger width = CGImageGetWidth(imageRef);
+            NSUInteger height = CGImageGetHeight(imageRef);
+            DLog(@"found image with dimensions %i, %i",width,height);
+            
+            CFRelease(addressBook);
+            FREObject temp;
+            FRENewObjectFromUint32(width, &temp);
+            FRESetObjectProperty(size, (const uint8_t*)"x", temp, NULL);
+            FRENewObjectFromUint32(height, &temp);
+            FRESetObjectProperty(size, (const uint8_t*)"y", temp, NULL);
+            
+        }
+    }
+    return size;
+}
+FREObject drawToBitmap(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+    // grab the AS3 bitmapData object for writing to
+    uint32_t argrecordId;
+    FREObject contact=NULL;
+    FRENewObject((const uint8_t*)"Object", 0, NULL, &contact,NULL);
+    if(FRE_OK==FREGetObjectAsUint32(argv[1], &argrecordId))
+    {
+        addressBook=ABAddressBookCreate();
+        ABRecordID abrecordId=argrecordId;
+        ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
+        
+    FREBitmapData bmd;
+    FREAcquireBitmapData(argv[0], &bmd);
+    
+    if (ABPersonHasImageData(person))
+    {
+        DLog(@"found image");
+        UIImage *image;
+        //iOS 4.1 and before from http://goddess-gate.com/dc2/index.php/post/421
+        if ( &ABPersonCopyImageDataWithFormat != nil ) {
+            // iOS >= 4.1
+            image= [UIImage imageWithData:[(NSData *)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail)autorelease]];
+        } else {
+            // iOS < 4.1
+            image= [UIImage imageWithData:[(NSData *)ABPersonCopyImageData(person)autorelease]];
+        }
+        
+        //FREReleaseByteArray( objectByteArray );
+    UIGraphicsEndImageContext();
+    //drawing uiimage to as3 bitmapdata from http://tyleregeto.com/drawing-ios-uiviews-to-as3-bitmapdata-via-air
+    // Now we'll pull the raw pixels values out of the image data
+    CGImageRef imageRef = [image CGImage];
+    NSUInteger width = CGImageGetWidth(imageRef);
+    NSUInteger height = CGImageGetHeight(imageRef);
+        DLog(@"found image with dimensions %i, %i",width,height);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    // Pixel color values will be written here 
+    unsigned char *rawData = malloc(height * width * 4);
+    NSUInteger bytesPerPixel = 4;
+    NSUInteger bytesPerRow = bytesPerPixel * width;
+    NSUInteger bitsPerComponent = 8;
+    CGContextRef context = CGBitmapContextCreate(rawData, width, height,
+                                                 bitsPerComponent, bytesPerRow, colorSpace,
+                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    CGColorSpaceRelease(colorSpace);
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+    CGContextRelease(context);
+    
+    // Pixels are now in rawData in the format RGBA8888
+    // We'll now loop over each pixel write them into the AS3 bitmapData memory
+    int x, y;
+    // There may be extra pixels in each row due to the value of
+    // bmd.lineStride32, we'll skip over those as needed
+    int offset = bmd.lineStride32 - bmd.width;
+    int offset2 = bytesPerRow - bmd.width*4;
+    int byteIndex = 0;
+    uint32_t *bmdPixels = bmd.bits32;
+    DLog(@"processing image");
+    // NOTE: In this example we are assuming that our AS3 bitmapData and our native UIView are the same dimensions to keep things simple.
+    for(y=0; y<bmd.height; y++) {
+        for(x=0; x<bmd.width; x++, bmdPixels ++, byteIndex += 4) {
+            // Values are currently in RGBA8888, so each colour
+            // value is currently a separate number
+            int red   = (rawData[byteIndex]);
+            int green = (rawData[byteIndex + 1]);
+            int blue  = (rawData[byteIndex + 2]);
+            int alpha = (rawData[byteIndex + 3]);
+            // Combine values into ARGB32
+            * bmdPixels = (alpha << 24) | (red << 16) | (green << 8) | blue;
+        }
+        
+        bmdPixels += offset;
+        byteIndex += offset2;
+    }
+    DLog(@"releasing image");
+    // free the the memory we allocated
+    free(rawData);
+      
+    // Tell Flash which region of the bitmapData changes (all of it here)
+    FREInvalidateBitmapDataRect(argv[0], 0, 0, bmd.width, bmd.height);
+    // Release our control over the bitmapData
+    FREReleaseBitmapData(argv[0]);
+         CFRelease(addressBook);
+    }
+    }
+    return NULL;
 }
 
 FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
@@ -530,8 +813,8 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
                                      uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet) {
 	
     
-	*numFunctionsToTest = 8;
-	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * 8);
+	*numFunctionsToTest = 12;
+	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * (*numFunctionsToTest));
     
 	func[0].name = (const uint8_t*)"addContact";
 	func[0].functionData = NULL;
@@ -557,6 +840,18 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
     func[7].name = (const uint8_t*)"showContactPicker";
 	func[7].functionData = NULL;
 	func[7].function = &showContactPicker;
+    func[8].name = (const uint8_t*)"addContactInWindow";
+	func[8].functionData = NULL;
+	func[8].function = &addContactInWindow;
+    func[9].name = (const uint8_t*)"showContactDetailsInWindow";
+	func[9].functionData = NULL;
+	func[9].function = &showContactDetailsInWindow;
+    func[10].name = (const uint8_t*)"drawToBitmap";
+	func[10].functionData = NULL;
+	func[10].function = &drawToBitmap;
+    func[11].name = (const uint8_t*)"getBitmapDimensions";
+	func[11].functionData = NULL;
+    func[11].function = &getBitmapDimensions;
     
 	*functionsToSet = func;
     DLog(@"Exiting ContactEditorContextInitializer()");
@@ -572,11 +867,25 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
 // ContextFinalizer().
 
 void ContactEditorContextFinalizer(FREContext ctx) {
-	
-    [contactEditorHelper setContext:NULL];
-	[contactEditorHelper release];
-	contactEditorHelper = nil;
-    // Nothing to clean up.
+	if(contactEditorHelper)
+    {
+        [contactEditorHelper setContext:NULL];
+        [contactEditorHelper release];
+        contactEditorHelper = nil;
+    }
+    if(contactEditorAddContactHelper)
+    {
+        [contactEditorAddContactHelper setContext:NULL];
+        [contactEditorAddContactHelper release];
+        contactEditorHelper = nil;
+    }
+    if(contactEditorViewDetailsHelper)
+    {
+        [contactEditorViewDetailsHelper setContext:NULL];
+        [contactEditorViewDetailsHelper release];
+        contactEditorViewDetailsHelper = nil;
+    }
+        // Nothing to clean up.
     
 	return;
 }

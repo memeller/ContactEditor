@@ -1,11 +1,13 @@
 package pl.mllr.extensions.contactEditor
 {
 
+	import flash.display.BitmapData;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
 	import flash.system.Capabilities;
+	import flash.geom.Point;
 
 	public class ContactEditor extends EventDispatcher
 	{
@@ -83,6 +85,72 @@ package pl.mllr.extensions.contactEditor
 			}catch(error:Error){
 				if(String(error.message).indexOf("pickContact"))
 					trace("pickContact is not supported on this platform");
+				else
+					throw new Error(error.message,error.errorID);
+			}
+		}
+		/**
+		 * 
+		 * Gets user image if available
+		 * 
+		 *
+		 * @param recordId - id of contact
+		 */
+		public function getContactBitmapData(recordId:int):BitmapData
+		{
+			try{
+				//BitmapData is created on as3 side, since i have no idea how to do this in objective c
+				//First we get the dimensions of the image
+				var point:Point=context.call("getBitmapDimensions",recordId) as Point;
+				if(point && point.x>0)
+				{
+					//then we create the bitmapdata of specified size
+					var bmp:BitmapData=new BitmapData(point.x,point.y);
+					//and transfer the actual image to it
+					context.call("drawToBitmap",bmp,recordId);
+					return bmp;
+				}
+				
+			}catch(error:Error){
+				if(String(error.message).indexOf("drawToBitmap"))
+					trace("drawToBitmap is not supported on this platform");
+				else
+					throw new Error(error.message,error.errorID);
+			}
+			return null;
+		}
+		
+		/**
+		 * 
+		 * Shows native window that enables contact adding
+		 * Listen for ContactEditorEvent.CONTACT_ADDED or StatusEvent for errors
+		 *
+		 */
+		public function addContactInWindow():void
+		{
+			try{
+				context.call("addContactInWindow");
+			}catch(error:Error){
+				if(String(error.message).indexOf("addContactInWindow"))
+					trace("addContactInWindow is not supported on this platform");
+				else
+					throw new Error(error.message,error.errorID);
+			}
+		}
+		/**
+		 * 
+		 * Shows native window with contact details
+		 * @param recordId recordId of contact in address book
+		 * @param isEditable is "edit" button displayed in contact details
+		 *
+		 */
+		public function showContactDetailsInWindow(recordId:int,isEditable:Boolean=false):void
+		{
+			try{
+				context.call("showContactDetailsInWindow",recordId,isEditable);
+			}catch(error:Error){
+				if(String(error.message).indexOf("showContactDetailsInWindow"))
+					trace("showContactDetailsInWindow is not supported on this platform");
 				else
 					throw new Error(error.message,error.errorID);
 			}

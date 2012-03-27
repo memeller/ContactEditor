@@ -14,10 +14,10 @@ static  NSString *event_name = @"contactSelected";
 
 -(void) showContactPicker
 {
-    
+   
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
 	picker.peoplePickerDelegate = self;
-        //show mail composer
+  
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentModalViewController:picker animated:YES];
    
 	[picker release];
