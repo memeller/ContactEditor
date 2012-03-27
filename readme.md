@@ -5,7 +5,7 @@ Currently supported:
 
 * (new, iOS only) getContactBitmapData - returns bitmap data of image used as contact photo
 * (new, iOS only) addContactInWindow - shows native window for adding new contact
-* (new, iOS only) showContactDetailsInNativeWindow - shows native windows for viewing contact details. If 'isEditable' parameter is set to true, enables editing of contact details.
+* (new, iOS only) showContactDetailsInWindow - shows native window for viewing contact details. If 'isEditable' parameter is set to true, enables editing of contact details.
 * pickContact - shows system contact picker, that enables user to select desired contact from list. After selecting the picker is dismissed, and the selected recordId is sent using ContactEditorEvent.CONTACT_SELECTED 
 * getContactCount - gets the number of contacts in AddressBook
 * getContacts - gets contacts from AddressBook (name, lastname, compositename, phones, emails, recordid, birthdate, (NEW) addresses)
@@ -15,6 +15,7 @@ Currently supported:
 added after feedback from Mateusz(https://github.com/mateuszmackowiak)
 * getContactsSimple - gets contacts from AddressBook(compositename, recordid), shoud be faster than getContacts, because it requires less processing.
 * getContactDetails - gets details for specified contact
+
 
 Mateusz added implementation for Android platform and cleaned up some mess i left in files, so big thanks to him for his work! :)
 
