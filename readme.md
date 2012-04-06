@@ -28,7 +28,13 @@ But more if Your app is going to add or remove any info:
     < uses-permission android:name="android.permission.WRITE_CONTACTS" />
     #only if adding:
     < uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
+    
+To pick a contact it is necessary to ad also : 
+			
+			<application>
+				<activity android:name="pl.mateuszmackowiak.nativeANE.contactManager.PickContactHandler" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+			</application>
+			
 ### ANE compilation ###
 To compile the ane, osx widh iOS SDK is needed. This ane uses AddressBook framework, which has to be linked during the compilation (sample ane build.sh is provided in build directory, it already includes the link to AddressBook framework).
 

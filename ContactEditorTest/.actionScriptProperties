@@ -27,8 +27,8 @@
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_agent.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
-      <libraryPathEntry kind="3" linkType="1" path="/Users/me/Dropbox/ios aktualne/contactEditorNative/build/ContactEditor.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="5" linkType="2" path="/Users/me/Dropbox/ios aktualne/contactEditorNative/build/iOS_ContactEditor.ane"/>
+      <libraryPathEntry kind="3" linkType="1" path="/Users/mmmackowiak/Documents/git/ContactEditor/build/ContactEditor.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="5" linkType="2" path="/Users/mmmackowiak/Documents/git/ContactEditor/build/ContactEditor.ane"/>
     </libraryPath>
     <sourceAttachmentPath/>
   </compiler>
@@ -41,12 +41,12 @@
   <buildCSSFiles/>
   <flashCatalyst validateFlashCatalystCompatibility="false"/>
   <buildTargets>
-    <buildTarget buildTargetName="com.adobe.flexide.multiplatform.ios.platform" iosSettingsVersion="1" provisioningFile="" releasePackageType="">
-      <multiPlatformSettings enabled="true" includePlatformLibs="false" platformID="com.adobe.flexide.multiplatform.ios.platform" version="2"/>
-      <airSettings airCertificatePath="" airTimestamp="true" anePathSet="true" version="1">
+    <buildTarget buildTargetName="com.adobe.flexide.multiplatform.ios.platform" iosSettingsVersion="1" provisioningFile="/Users/mmmackowiak/Documents/Adobe Flash Builder 4.6/CERTYFIKATY/iOS_Team_Provisioning_Profile_.mobileprovision" releasePackageType="">
+      <multiPlatformSettings enabled="true" includePlatformLibs="false" nativeSDKPathString="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk" platformID="com.adobe.flexide.multiplatform.ios.platform" version="2"/>
+      <airSettings airCertificatePath="/Users/mmmackowiak/Documents/Adobe Flash Builder 4.6/CERTYFIKATY/iphone_dev.p12" airTimestamp="true" anePathSet="true" version="1">
         <airExcludes/>
         <anePaths>
-          <anePathEntry path="/Users/me/Dropbox/ios aktualne/contactEditorNative/build/iOS_ContactEditor.ane"/>
+          <anePathEntry path="/Users/mmmackowiak/Documents/git/ContactEditor/build/ContactEditor.ane"/>
         </anePaths>
       </airSettings>
       <actionScriptSettings version="1"/>
@@ -59,12 +59,14 @@
       </airSettings>
       <actionScriptSettings version="1"/>
     </buildTarget>
-    <buildTarget airDownloadURL="" androidSettingsVersion="1" buildTargetName="com.adobe.flexide.multiplatform.android.platform">
-      <multiPlatformSettings enabled="false" includePlatformLibs="false" platformID="com.adobe.flexide.multiplatform.android.platform" version="2"/>
-      <airSettings airCertificatePath="" airTimestamp="true" anePathSet="true" version="1">
+    <buildTarget airDownloadURL="https://market.android.com/details?id=com.adobe.air" androidSettingsVersion="1" buildTargetName="com.adobe.flexide.multiplatform.android.platform">
+      <airSettings airCertificatePath="/Users/mmmackowiak/Documents/Adobe Flash Builder 4.6/CERTYFIKATY/android.p12" airTimestamp="true" anePathSet="true" version="1">
         <airExcludes/>
-        <anePaths/>
+        <anePaths>
+          <anePathEntry path="/Users/mmmackowiak/Documents/git/ContactEditor/build/ContactEditor.ane"/>
+        </anePaths>
       </airSettings>
+      <multiPlatformSettings enabled="true" includePlatformLibs="false" platformID="com.adobe.flexide.multiplatform.android.platform" version="2"/>
       <actionScriptSettings version="1"/>
     </buildTarget>
     <buildTarget buildTargetName="default">

@@ -22,6 +22,9 @@
 				<uses-permission android:name="android.permission.READ_CONTACTS" />
 				<uses-permission android:name="android.permission.WRITE_CONTACTS" />
 				<uses-permission android:name="android.permission.INTERNET"/>
+                <application>
+                    <activity android:name="pl.mateuszmackowiak.nativeANE.contactManager.PickContactHandler" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+                </application>
 			</manifest>
 			
 		]]></manifestAdditions>

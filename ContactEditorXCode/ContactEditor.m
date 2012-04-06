@@ -837,7 +837,7 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
     func[6].name = (const uint8_t*)"getContactDetails";
 	func[6].functionData = NULL;
 	func[6].function = &getContactDetails;
-    func[7].name = (const uint8_t*)"showContactPicker";
+    func[7].name = (const uint8_t*)"pickContact";
 	func[7].functionData = NULL;
 	func[7].function = &showContactPicker;
     func[8].name = (const uint8_t*)"addContactInWindow";
