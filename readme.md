@@ -16,6 +16,9 @@ added after feedback from Mateusz(https://github.com/mateuszmackowiak)
 * getContactsSimple - gets contacts from AddressBook(compositename, recordid), shoud be faster than getContacts, because it requires less processing.
 * getContactDetails - gets details for specified contact
 
+### Info about rotation issues on iOS ###
+On iPad system dialogs sometimes have problems with rotation (for example if the application is using landscape orientation, the window is shown in portrait / after pressing 'done' the view is dismissed, but the application is rotated (portrait instead of landscape / landscape instead of portrait). It appears to be a bug in Adobe AIR, since in simulator it runs well. It is fixed in AIR 3.3 (currently available from labs.adobe.com), so just compile your app using 3.3 and everything should work well.
+
 
 Mateusz added implementation for Android platform and cleaned up some mess i left in files, so big thanks to him for his work! :)
 
@@ -38,5 +41,5 @@ To pick a contact it is necessary to ad also :
 ### ANE compilation ###
 To compile the ane, osx widh iOS SDK is needed. This ane uses AddressBook framework, which has to be linked during the compilation (sample ane build.sh is provided in build directory, it already includes the link to AddressBook framework).
 
-Not much, but still better than accesing the sql database directly ;)
-Tested on iPad, iOS 5.01 / Andorid 3.1
+Tested on iPad, iOS 5.01 / Andorid 3.1,4.03
+(on ICS a system dialog pops up asking for permission to access AddressBook, which is a standard system action)
