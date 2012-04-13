@@ -3,6 +3,7 @@
 author: memeller@gmail.com & Mateusz Maćkowiak (https://github.com/mateuszmackowiak)
 Currently supported:
 
+* (new, iOS only) setContactImage - sets new image used as contact photo
 * (new, iOS only) getContactBitmapData - returns bitmap data of image used as contact photo
 * (new, iOS only) addContactInWindow - shows native window for adding new contact
 * (new, iOS only) showContactDetailsInWindow - shows native window for viewing contact details. If 'isEditable' parameter is set to true, enables editing of contact details.
