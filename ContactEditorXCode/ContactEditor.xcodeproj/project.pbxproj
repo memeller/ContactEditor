@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C058D26153887FE00498079 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C058D25153887FE00498079 /* CoreGraphics.framework */; };
 		8C267C2A14F19DDF0079F62A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C267C2914F19DDF0079F62A /* AddressBook.framework */; };
 		8C2BE0221506B265007563FC /* ContactEditorAddContactHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C2BE0201506B265007563FC /* ContactEditorAddContactHelper.h */; };
 		8C2BE0231506B265007563FC /* ContactEditorAddContactHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2BE0211506B265007563FC /* ContactEditorAddContactHelper.m */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C058D25153887FE00498079 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8C267C2914F19DDF0079F62A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		8C267C3A14F1A5E30079F62A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8C2BE0201506B265007563FC /* ContactEditorAddContactHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactEditorAddContactHelper.h; sourceTree = "<group>"; };
@@ -36,6 +38,7 @@
 		8C2FE0AB1502A7FF00EEDFA8 /* ContactEditorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactEditorHelper.m; sourceTree = "<group>"; };
 		8C4AB85D14F1638100211B16 /* ContactEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactEditor.m; sourceTree = "<group>"; };
 		8C4AB86314F1658E00211B16 /* ContactEditor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = ContactEditor.h; sourceTree = "<group>"; };
+		8CCA2F47153747260026446E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AEF9D848148552CF00CB2153 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AEF9D8591485532600CB2153 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C058D26153887FE00498079 /* CoreGraphics.framework in Frameworks */,
 				8C2FE0A01502A7CE00EEDFA8 /* AddressBookUI.framework in Frameworks */,
 				8C267C2A14F19DDF0079F62A /* AddressBook.framework in Frameworks */,
 				AEF9D849148552CF00CB2153 /* Foundation.framework in Frameworks */,
@@ -57,6 +61,8 @@
 		AEF9D83A148552CF00CB2153 = {
 			isa = PBXGroup;
 			children = (
+				8C058D25153887FE00498079 /* CoreGraphics.framework */,
+				8CCA2F47153747260026446E /* SystemConfiguration.framework */,
 				8C2BE0281506B619007563FC /* ContactEditorViewDetailsHelper.h */,
 				8C2BE0291506B619007563FC /* ContactEditorViewDetailsHelper.m */,
 				8C2BE0201506B265007563FC /* ContactEditorAddContactHelper.h */,
@@ -174,12 +180,14 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -190,13 +198,15 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Release;
 		};
@@ -209,17 +219,19 @@
 				GCC_LINK_WITH_DYNAMIC_LIBRARIES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ContactEditor_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/build\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ContactEditor;
 				SHARED_PRECOMPS_DIR = build;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = iphoneos;
-				VALID_ARCHS = armv7;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALID_ARCHS = "i386 armv7 armv6";
 			};
 			name = Debug;
 		};
@@ -232,17 +244,19 @@
 				GCC_LINK_WITH_DYNAMIC_LIBRARIES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ContactEditor_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/build\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ContactEditor;
 				SHARED_PRECOMPS_DIR = build;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = iphoneos;
-				VALID_ARCHS = armv7;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALID_ARCHS = "i386 armv7 armv6";
 			};
 			name = Release;
 		};

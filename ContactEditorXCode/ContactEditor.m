@@ -652,6 +652,59 @@ FREObject getBitmapDimensions(FREContext ctx, void* funcData, uint32_t argc, FRE
     }
     return size;
 }
+FREObject setContactImage(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+    uint32_t argrecordId;
+    if(FRE_OK==FREGetObjectAsUint32(argv[1], &argrecordId))
+    {
+        NSLog(@"found record id");
+        addressBook=ABAddressBookCreate();
+        ABRecordID abrecordId=argrecordId;
+        ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
+        FREBitmapData bitmapData;
+        //BitmapData to CGImageRef from http://forums.adobe.com/message/4201451
+        FREAcquireBitmapData(argv[0], &bitmapData);
+        int width       = bitmapData.width;
+        int height      = bitmapData.height;
+
+        
+        // make data provider from buffer
+        CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, bitmapData.bits32, (width * height * 4), NULL);
+        
+        // set up for CGImage creation
+        int                     bitsPerComponent    = 8;
+        int                     bitsPerPixel        = 32;
+        int                     bytesPerRow         = 4 * width;
+        CGColorSpaceRef         colorSpaceRef       = CGColorSpaceCreateDeviceRGB();   
+        CGBitmapInfo            bitmapInfo;
+        
+        if( bitmapData.hasAlpha )
+        {
+            if( bitmapData.isPremultiplied )
+                bitmapInfo = kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst;
+            else
+                bitmapInfo = kCGBitmapByteOrder32Little | kCGImageAlphaFirst;           
+        }
+        else
+        {
+            bitmapInfo = kCGBitmapByteOrder32Little | kCGImageAlphaNoneSkipFirst; 
+        }
+        
+        CGColorRenderingIntent  renderingIntent     = kCGRenderingIntentDefault;
+        CGImageRef              imageRef            = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+        UIImage *myImage = [UIImage imageWithCGImage:imageRef];   
+        NSData * dataRef = UIImagePNGRepresentation(myImage);
+        ABPersonSetImageData(person,(CFDataRef)dataRef,nil);
+        ABAddressBookAddRecord(addressBook, person, nil);
+        ABAddressBookSave(addressBook, nil);
+        FREReleaseBitmapData(argv[0]);
+        CFRelease(addressBook);
+        CGColorSpaceRelease(colorSpaceRef);
+        CGImageRelease(imageRef);
+        CGDataProviderRelease(provider);   
+        
+    }
+        return NULL;
+}
 FREObject drawToBitmap(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
     // grab the AS3 bitmapData object for writing to
     uint32_t argrecordId;
@@ -813,7 +866,7 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
                                      uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet) {
 	
     
-	*numFunctionsToTest = 12;
+	*numFunctionsToTest = 13;
 	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction) * (*numFunctionsToTest));
     
 	func[0].name = (const uint8_t*)"addContact";
@@ -852,7 +905,9 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
     func[11].name = (const uint8_t*)"getBitmapDimensions";
 	func[11].functionData = NULL;
     func[11].function = &getBitmapDimensions;
-    
+    func[12].name = (const uint8_t*)"setContactImage";
+	func[12].functionData = NULL;
+    func[12].function = &setContactImage;
 	*functionsToSet = func;
     DLog(@"Exiting ContactEditorContextInitializer()");
 }

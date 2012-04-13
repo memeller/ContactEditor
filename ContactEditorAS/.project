@@ -15,11 +15,4 @@
 		<nature>com.adobe.flexbuilder.project.flexlibnature</nature>
 		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>bin-debug</name>
-			<type>2</type>
-			<location>/Users/mmmackowiak/Documents/git/ContactEditor/build</location>
-		</link>
-	</linkedResources>
 </projectDescription>

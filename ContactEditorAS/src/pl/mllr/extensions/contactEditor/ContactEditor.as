@@ -6,8 +6,8 @@ package pl.mllr.extensions.contactEditor
 	import flash.events.EventDispatcher;
 	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
-	import flash.system.Capabilities;
 	import flash.geom.Point;
+	import flash.system.Capabilities;
 
 	public class ContactEditor extends EventDispatcher
 	{
@@ -88,6 +88,25 @@ package pl.mllr.extensions.contactEditor
 				else
 					throw new Error(error.message,error.errorID);
 			}
+		}
+		/**
+		 * 
+		 * Sets user image if available
+		 * 
+		 *
+		 * @param recordId - id of contact
+		 */
+		public function setContactImage(bitmapData:BitmapData,recordId:int):void
+		{
+			try{
+				context.call("setContactImage",bitmapData,recordId);		
+			}catch(error:Error){
+				if(String(error.message).indexOf("setContactImage"))
+					trace("setContactImage is not supported on this platform");
+			else
+				throw new Error(error.message,error.errorID);
+			}
+			
 		}
 		/**
 		 * 
