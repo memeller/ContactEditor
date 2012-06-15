@@ -1,6 +1,6 @@
 <platform xmlns="http://ns.adobe.com/air/extension/3.1">
     <sdkVersion>4.2</sdkVersion>
-    <linkerOptions>
-        <option>-framework AddressBook -framework AddressBookUI</option>
+    <linkerOptions>        
+        <option>-framework AddressBook -framework AddressBookUI -w</option>
     </linkerOptions>
 </platform>
