@@ -1,8 +1,10 @@
 # Contact Editor - AddressBook Native Extension #
 ### now for iOS and Android ###
 author: memeller@gmail.com & Mateusz Maćkowiak (https://github.com/mateuszmackowiak)
+
 Currently supported:
 
+* experimental iOS 6 support (info below) 
 * (new, iOS only) setContactImage - sets new image used as contact photo
 * (new, iOS only) getContactBitmapData - returns bitmap data of image used as contact photo
 * (new, iOS only) addContactInWindow - shows native window for adding new contact
@@ -44,3 +46,7 @@ To compile the ane, osx widh iOS SDK is needed. This ane uses AddressBook framew
 
 Tested on iPad, iOS 5.01 / Andorid 3.1,4.03
 (on ICS a system dialog pops up asking for permission to access AddressBook, which is a standard system action)
+
+### iOS 6 support ###
+AddressBook access was changed in iOS 6, unfortunatelly with no backwards compatibility. I've added the updated code under ios6 branch, i've only had a chance to test it under ios simulator, everything worked well. To compile, AIR 3.5 is needed (or earlier version with ios6 sdk linked using platformsdk switch or flash builder 4.7). The compilation works (if you get any errors connected with 'Undefined symbols for architecture armv7:' you have not included ios6 sdk or are not using AIR 3.5), and the ane should also work without problems. Since iOS 6 also brought some changes to presentModalViewController and dismissModalViewControllerAnimated these function calls were also updated. This branch removes the old 'getContacts' method, which is no longer supported (use getContactsSimple + getContactDetails), due to changes in permissions a new function (hasPermission) has been introduced to determine the status of permissions to use address book. Again - ios6 branch is experimental, it has not been yet fully tested on real devices running iOS 6 (Apple, why u not bring iOS 6 to older devices?), so it should not be used in production environment.
+
