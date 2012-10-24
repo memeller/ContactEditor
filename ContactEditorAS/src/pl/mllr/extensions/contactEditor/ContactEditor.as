@@ -194,6 +194,13 @@ package pl.mllr.extensions.contactEditor
 			return context.call("getContactsSimple") as Array;
 		}
 		/**
+		 * checks if the user blocked access to address book for this app
+		 */
+		public function hasPermission():Boolean
+		{  
+			return context.call("hasPermission") as Boolean;
+		}
+		/**
 		 * gets details of specified contact from AddressBook 
 		 * @return an object with following: name, lastname, compositename, birthdate, recordid, phones (array), emails (array);
 		 * 

@@ -2,12 +2,12 @@
 <application xmlns="http://ns.adobe.com/air/application/3.3">
 
 
-	<id>ContactEditor</id>
+	<id>ContactEditor.debug</id>
 	<filename>ContactEditor</filename>
-	<name>ContactEditor</name>
+	<name>ContactEditor-debug</name>
 	<versionNumber>0.0.0</versionNumber>
 	<initialWindow>
-		<content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
+		<content>test.swf</content>
 	<autoOrients>true</autoOrients>
         <fullScreen>false</fullScreen>
         <visible>true</visible>
