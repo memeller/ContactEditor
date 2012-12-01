@@ -1,11 +1,12 @@
 # Contact Editor - AddressBook Native Extension #
 ### now for iOS and Android ###
 author: memeller@gmail.com & Mateusz Maćkowiak (https://github.com/mateuszmackowiak)
+
 patched by: Julian Xhokaxhiu <xhokaxhiujulian@gmail.com>
 
 Currently supported:
 
-* (new, iOS only) Now compatibile with iOS6. ANE rebuilt upon ARC build of libContactEditor.a
+* (new, iOS only) **Now compatibile with iOS6. ANE rebuilt upon ARC build of libContactEditor.a**
 * (new, iOS only) setContactImage - sets new image used as contact photo
 * (new, iOS only) getContactBitmapData - returns bitmap data of image used as contact photo
 * (new, iOS only) addContactInWindow - shows native window for adding new contact
