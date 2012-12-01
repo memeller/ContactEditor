@@ -61,8 +61,6 @@
 		AEF9D83A148552CF00CB2153 = {
 			isa = PBXGroup;
 			children = (
-				8C058D25153887FE00498079 /* CoreGraphics.framework */,
-				8CCA2F47153747260026446E /* SystemConfiguration.framework */,
 				8C2BE0281506B619007563FC /* ContactEditorViewDetailsHelper.h */,
 				8C2BE0291506B619007563FC /* ContactEditorViewDetailsHelper.m */,
 				8C2BE0201506B265007563FC /* ContactEditorAddContactHelper.h */,
@@ -81,6 +79,8 @@
 		AEF9D847148552CF00CB2153 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C058D25153887FE00498079 /* CoreGraphics.framework */,
+				8CCA2F47153747260026446E /* SystemConfiguration.framework */,
 				8C2FE09F1502A7CE00EEDFA8 /* AddressBookUI.framework */,
 				8C267C3A14F1A5E30079F62A /* UIKit.framework */,
 				8C267C2914F19DDF0079F62A /* AddressBook.framework */,
@@ -131,7 +131,7 @@
 		AEF9D83C148552CF00CB2153 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = Randori;
 			};
 			buildConfigurationList = AEF9D83F148552CF00CB2153 /* Build configuration list for PBXProject "ContactEditor" */;
@@ -171,6 +171,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -180,14 +181,15 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "i386 armv6 armv7";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -196,31 +198,34 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "i386 armv6 armv7";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
 		AEF9D853148552CF00CB2153 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = build;
 				CONFIGURATION_TEMP_DIR = build;
 				DSTROOT = /tmp/ContactEditor.dst;
 				GCC_LINK_WITH_DYNAMIC_LIBRARIES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ContactEditor_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				GCC_VERSION = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/build\"",
@@ -231,21 +236,23 @@
 				SHARED_PRECOMPS_DIR = build;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				VALID_ARCHS = "i386 armv7 armv6";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7s armv7";
 			};
 			name = Debug;
 		};
 		AEF9D854148552CF00CB2153 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = "build-release";
 				CONFIGURATION_TEMP_DIR = build;
 				DSTROOT = /tmp/ContactEditor.dst;
 				GCC_LINK_WITH_DYNAMIC_LIBRARIES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ContactEditor_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				GCC_VERSION = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/build\"",
@@ -256,7 +263,8 @@
 				SHARED_PRECOMPS_DIR = build;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				VALID_ARCHS = "i386 armv7 armv6";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7s armv7";
 			};
 			name = Release;
 		};

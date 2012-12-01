@@ -22,11 +22,11 @@ static  NSString *event_name = @"contactNotFound";
         picker.allowsEditing = isEditable;
         picker.personViewDelegate = self;
         picker.displayedPerson = person;
-        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:picker] autorelease];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:picker];
         [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentModalViewController:navController animated:YES];
         picker.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back",nil) style:UIBarButtonItemStylePlain target:self action:@selector(ReturnFromPersonView)];
     }
-    [picker release];
+    //[picker release];
 
 }
 - (void)ReturnFromPersonView{

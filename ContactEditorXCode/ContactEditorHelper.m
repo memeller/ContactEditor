@@ -19,8 +19,6 @@ static  NSString *event_name = @"contactSelected";
 	picker.peoplePickerDelegate = self;
   
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentModalViewController:picker animated:YES];
-   
-	[picker release];
 
 }
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
