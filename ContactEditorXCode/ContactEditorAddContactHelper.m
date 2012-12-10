@@ -21,7 +21,7 @@ static  NSString *event_name = @"contactAdded";
                                                        initWithRootViewController:view];
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentModalViewController:picker animated:YES];
    
-	[picker release];
+	//[picker release];
 
 }
 - (void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person;
@@ -32,7 +32,7 @@ static  NSString *event_name = @"contactAdded";
         DLog(@"Got person with id: %i",personId);
         NSString * s = [NSString stringWithFormat:@"%i", personId];
         FREDispatchStatusEventAsync(context, (uint8_t*)[event_name UTF8String], (uint8_t*) (uint8_t*)[s UTF8String]);
-        [s release];
+        //[s release];
     }
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] dismissModalViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:UIDeviceOrientationDidChangeNotification object:nil];

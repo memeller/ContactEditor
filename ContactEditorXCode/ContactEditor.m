@@ -162,14 +162,14 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
     
     DLog(@"Adding name");
     // Username
-    ABRecordSetValue(aRecord, kABPersonFirstNameProperty, username, &anError);
-    ABRecordSetValue(aRecord, kABPersonLastNameProperty, usersurname, &anError);
+    ABRecordSetValue(aRecord, kABPersonFirstNameProperty, (__bridge CFTypeRef)(username), &anError);
+    ABRecordSetValue(aRecord, kABPersonLastNameProperty, (__bridge CFTypeRef)(usersurname), &anError);
     // Phone Number.
     if(usercontact)
     {
         DLog(@"Adding phone number");
         ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
-        ABMultiValueAddValueAndLabel(multi, (CFStringRef)usercontact, kABWorkLabel, NULL);
+        ABMultiValueAddValueAndLabel(multi, (__bridge CFStringRef)usercontact, kABWorkLabel, NULL);
         ABRecordSetValue(aRecord, kABPersonPhoneProperty, multi, &anError);
         //    CFRelease(multi);
     }
@@ -177,14 +177,14 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
     DLog(@"Adding company");
     if(usercompany)
     {
-        ABRecordSetValue(aRecord, kABPersonOrganizationProperty, usercompany, &anError);
+        ABRecordSetValue(aRecord, kABPersonOrganizationProperty, (__bridge CFTypeRef)(usercompany), &anError);
     }
     //// email
     DLog(@"Adding email");
     if(usercompany)
     {
         ABMutableMultiValueRef multiemail = ABMultiValueCreateMutable(kABMultiStringPropertyType);
-        ABMultiValueAddValueAndLabel(multiemail, (CFStringRef)useremail, kABWorkLabel, NULL);
+        ABMultiValueAddValueAndLabel(multiemail, (__bridge CFStringRef)useremail, kABWorkLabel, NULL);
         ABRecordSetValue(aRecord, kABPersonEmailProperty, multiemail, &anError);
         //  CFRelease(multiemail);
     }
@@ -194,7 +194,7 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
     if(userwebsite)
     {
         ABMutableMultiValueRef multiweb = ABMultiValueCreateMutable(kABMultiStringPropertyType);
-        ABMultiValueAddValueAndLabel(multiweb, (CFStringRef)userwebsite, kABHomeLabel, NULL);
+        ABMultiValueAddValueAndLabel(multiweb, (__bridge CFStringRef)userwebsite, kABHomeLabel, NULL);
         ABRecordSetValue(aRecord, kABPersonURLProperty, multiweb, &anError);
         //  CFRelease(multiweb);
     }
@@ -253,7 +253,7 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
         retStr=NULL;
         if(personCompositeName)
         {
-            NSString *personCompositeString = [NSString stringWithString:(NSString *)personCompositeName];
+            NSString *personCompositeString = [NSString stringWithString:(__bridge NSString *)personCompositeName];
             DLog(@"Adding composite name: %@",personCompositeString);
             FRENewObjectFromUTF8(strlen([personCompositeString UTF8String])+1, (const uint8_t*)[personCompositeString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
@@ -271,7 +271,7 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
         CFStringRef personName = ABRecordCopyValue(person, kABPersonFirstNameProperty);
         if(personName)
         {
-            NSString *personNameString = [NSString stringWithString:(NSString *)personName];
+            NSString *personNameString = [NSString stringWithString:(__bridge NSString *)personName];
             DLog(@"Adding first name: %@",personNameString);
             FRENewObjectFromUTF8(strlen([personNameString UTF8String])+1, (const uint8_t*)[personNameString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"name", retStr, NULL);
@@ -285,7 +285,7 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
         CFStringRef personSurName = ABRecordCopyValue(person, kABPersonLastNameProperty);
         if(personSurName)
         {
-            NSString *personSurNameString = [NSString stringWithString:(NSString *)personSurName];
+            NSString *personSurNameString = [NSString stringWithString:(__bridge NSString *)personSurName];
             DLog(@"Adding last name: %@",personSurNameString);
             FRENewObjectFromUTF8(strlen([personSurNameString UTF8String])+1, (const uint8_t*)[personSurNameString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"lastname", retStr, NULL);
@@ -297,7 +297,7 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
         retStr=NULL;
         
         //birthdate
-        NSDate *personBirthdate = (NSDate*)ABRecordCopyValue(person, kABPersonBirthdayProperty);
+        NSDate *personBirthdate = (__bridge NSDate*)ABRecordCopyValue(person, kABPersonBirthdayProperty);
         if(personBirthdate)
         {
             NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
@@ -308,7 +308,7 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
             FRENewObjectFromUTF8(strlen([personBirthdateString UTF8String])+1, (const uint8_t*)[personBirthdateString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"birthdate", retStr, NULL);
             //[personBirthdateString release];
-            [dateFormatter release];
+            //[dateFormatter release];
             //CFRelease(personBirthdate);
         }
         else
@@ -323,11 +323,11 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
         if(emails)
         {
             for (CFIndex k=0; k < ABMultiValueGetCount(emails); k++) {
-                NSString* email = (NSString*)ABMultiValueCopyValueAtIndex(emails, k);
+                NSString* email = (__bridge NSString*)ABMultiValueCopyValueAtIndex(emails, k);
                 DLog(@"Adding email: %@",email);
                 FRENewObjectFromUTF8(strlen([email UTF8String])+1, (const uint8_t*)[email UTF8String], &retStr);
                 FRESetArrayElementAt(emailsArray, k, retStr);
-                [email release];
+                //[email release];
             }
             CFRelease(emails);
             FRESetObjectProperty(contact, (const uint8_t*)"emails", emailsArray, NULL);
@@ -342,11 +342,11 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
         if(phones)
         {
             for (CFIndex k=0; k < ABMultiValueGetCount(phones); k++) {
-                NSString* phone = (NSString*)ABMultiValueCopyValueAtIndex(phones, k);
+                NSString* phone = (__bridge NSString*)ABMultiValueCopyValueAtIndex(phones, k);
                 DLog(@"Adding phone: %@",phone);
                 FRENewObjectFromUTF8(strlen([phone UTF8String])+1, (const uint8_t*)[phone UTF8String], &retStr);
                 FRESetArrayElementAt(phonesArray, k, retStr);
-                [phone release];
+                //[phone release];
                 
             }
             CFRelease(phones);
@@ -366,7 +366,7 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
                 CFStringRef typeTmp = ABMultiValueCopyLabelAtIndex(addresses, k);
                 CFStringRef labeltype = ABAddressBookCopyLocalizedLabel(typeTmp);
                 if(labeltype)
-                    FRENewObjectFromUTF8(strlen([(NSString *)labeltype UTF8String])+1, (const uint8_t*)[(NSString *)labeltype UTF8String], &retStr);
+                    FRENewObjectFromUTF8(strlen([(__bridge NSString *)labeltype UTF8String])+1, (const uint8_t*)[(__bridge NSString *)labeltype UTF8String], &retStr);
                 FRESetObjectProperty(addressObj, (const uint8_t*)"type", retStr, NULL);
                 retStr=NULL;
                 NSString *street = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStreetKey) copy];
@@ -396,11 +396,11 @@ FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject a
                 retStr=NULL;  
                 
                 FRESetArrayElementAt(addressesArray, k, addressObj);
-                [street release];
-                [city release];
-                [state release];
-                [zip release];
-                [country release];
+                //[street release];
+                //[city release];
+                //[state release];
+                //[zip release];
+                //[country release];
                 CFRelease(dict);
                 CFRelease(labeltype);
                 CFRelease(typeTmp);
@@ -442,7 +442,7 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
         retStr=NULL;
         if(personCompositeName)
         {
-            NSString *personCompositeString = [NSString stringWithString:(NSString *)personCompositeName];
+            NSString *personCompositeString = [NSString stringWithString:(__bridge NSString *)personCompositeName];
             DLog(@"Adding composite name: %@",personCompositeString);
             FRENewObjectFromUTF8(strlen([personCompositeString UTF8String])+1, (const uint8_t*)[personCompositeString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
@@ -460,7 +460,7 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
         CFStringRef personName = ABRecordCopyValue(person, kABPersonFirstNameProperty);
         if(personName)
         {
-            NSString *personNameString = [NSString stringWithString:(NSString *)personName];
+            NSString *personNameString = [NSString stringWithString:(__bridge NSString *)personName];
             DLog(@"Adding first name: %@",personNameString);
             FRENewObjectFromUTF8(strlen([personNameString UTF8String])+1, (const uint8_t*)[personNameString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"name", retStr, NULL);
@@ -474,7 +474,7 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
         CFStringRef personSurName = ABRecordCopyValue(person, kABPersonLastNameProperty);
         if(personSurName)
         {
-            NSString *personSurNameString = [NSString stringWithString:(NSString *)personSurName];
+            NSString *personSurNameString = [NSString stringWithString:(__bridge NSString *)personSurName];
             DLog(@"Adding last name: %@",personSurNameString);
             FRENewObjectFromUTF8(strlen([personSurNameString UTF8String])+1, (const uint8_t*)[personSurNameString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"lastname", retStr, NULL);
@@ -486,7 +486,7 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
         retStr=NULL;
         
         //birthdate
-        NSDate *personBirthdate = (NSDate*)ABRecordCopyValue(person, kABPersonBirthdayProperty);
+        NSDate *personBirthdate = (__bridge NSDate*)ABRecordCopyValue(person, kABPersonBirthdayProperty);
         if(personBirthdate)
         {
             NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
@@ -497,7 +497,7 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
             FRENewObjectFromUTF8(strlen([personBirthdateString UTF8String])+1, (const uint8_t*)[personBirthdateString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"birthdate", retStr, NULL);
             //[personBirthdateString release];
-            [dateFormatter release];
+            //[dateFormatter release];
             //CFRelease(personBirthdate);
         }
         else
@@ -512,11 +512,11 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
         if(emails)
         {
             for (CFIndex k=0; k < ABMultiValueGetCount(emails); k++) {
-                NSString* email = (NSString*)ABMultiValueCopyValueAtIndex(emails, k);
+                NSString* email = (__bridge NSString*)ABMultiValueCopyValueAtIndex(emails, k);
                 DLog(@"Adding email: %@",email);
                 FRENewObjectFromUTF8(strlen([email UTF8String])+1, (const uint8_t*)[email UTF8String], &retStr);
                 FRESetArrayElementAt(emailsArray, k, retStr);
-                [email release];
+                //[email release];
             }
             CFRelease(emails);
             FRESetObjectProperty(contact, (const uint8_t*)"emails", emailsArray, NULL);
@@ -531,11 +531,11 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
         if(phones)
         {
             for (CFIndex k=0; k < ABMultiValueGetCount(phones); k++) {
-                NSString* phone = (NSString*)ABMultiValueCopyValueAtIndex(phones, k);
+                NSString* phone = (__bridge NSString*)ABMultiValueCopyValueAtIndex(phones, k);
                 DLog(@"Adding phone: %@",phone);
                 FRENewObjectFromUTF8(strlen([phone UTF8String])+1, (const uint8_t*)[phone UTF8String], &retStr);
                 FRESetArrayElementAt(phonesArray, k, retStr);
-                [phone release];
+                //[phone release];
                 
             }
             CFRelease(phones);
@@ -559,7 +559,7 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
                 CFStringRef typeTmp = ABMultiValueCopyLabelAtIndex(addresses, k);
                 CFStringRef labeltype = ABAddressBookCopyLocalizedLabel(typeTmp);
                 if(labeltype)
-                    FRENewObjectFromUTF8(strlen([(NSString *)labeltype UTF8String])+1, (const uint8_t*)[(NSString *)labeltype UTF8String], &retStr);
+                    FRENewObjectFromUTF8(strlen([(__bridge NSString *)labeltype UTF8String])+1, (const uint8_t*)[(__bridge NSString *)labeltype UTF8String], &retStr);
                 FRESetObjectProperty(addressObj, (const uint8_t*)"type", retStr, NULL);
                 retStr=NULL;
                 NSString *street = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStreetKey) copy];
@@ -589,11 +589,11 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
                 retStr=NULL;  
                
                 FRESetArrayElementAt(addressesArray, k, addressObj);
-                [street release];
-                [city release];
-                [state release];
-                [zip release];
-                [country release];
+                //[street release];
+                //[city release];
+                //[state release];
+                //[zip release];
+                //[country release];
                 CFRelease(dict);
                 CFRelease(labeltype);
                 CFRelease(typeTmp);
@@ -626,10 +626,10 @@ FREObject getBitmapDimensions(FREContext ctx, void* funcData, uint32_t argc, FRE
             //iOS 4.1 and before from http://goddess-gate.com/dc2/index.php/post/421
             if ( &ABPersonCopyImageDataWithFormat != nil ) {
                 // iOS >= 4.1
-                image= [UIImage imageWithData:[(NSData *)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail)autorelease]];
+                image= [UIImage imageWithData:(__bridge NSData *)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail)];
             } else {
                 // iOS < 4.1
-                image= [UIImage imageWithData:[(NSData *)ABPersonCopyImageData(person)autorelease]];
+                image= [UIImage imageWithData:(__bridge NSData *)ABPersonCopyImageData(person)];
             }
             
             //FREReleaseByteArray( objectByteArray );
@@ -693,7 +693,7 @@ FREObject setContactImage(FREContext ctx, void* funcData, uint32_t argc, FREObje
         CGImageRef              imageRef            = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
         UIImage *myImage = [UIImage imageWithCGImage:imageRef];   
         NSData * dataRef = UIImagePNGRepresentation(myImage);
-        ABPersonSetImageData(person,(CFDataRef)dataRef,nil);
+        ABPersonSetImageData(person,(__bridge CFDataRef)dataRef,nil);
         ABAddressBookAddRecord(addressBook, person, nil);
         ABAddressBookSave(addressBook, nil);
         FREReleaseBitmapData(argv[0]);
@@ -726,10 +726,10 @@ FREObject drawToBitmap(FREContext ctx, void* funcData, uint32_t argc, FREObject 
         //iOS 4.1 and before from http://goddess-gate.com/dc2/index.php/post/421
         if ( &ABPersonCopyImageDataWithFormat != nil ) {
             // iOS >= 4.1
-            image= [UIImage imageWithData:[(NSData *)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail)autorelease]];
+            image= [UIImage imageWithData:(__bridge NSData *)ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail)];
         } else {
             // iOS < 4.1
-            image= [UIImage imageWithData:[(NSData *)ABPersonCopyImageData(person)autorelease]];
+            image= [UIImage imageWithData:(__bridge NSData *)ABPersonCopyImageData(person)];
         }
         
         //FREReleaseByteArray( objectByteArray );
@@ -822,7 +822,7 @@ FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREOb
         retStr=NULL;
         if(personCompositeName)
         {
-            NSString *personCompositeString = [NSString stringWithString:(NSString *)personCompositeName];
+            NSString *personCompositeString = [NSString stringWithString:(__bridge NSString *)personCompositeName];
             DLog(@"Adding composite name: %@",personCompositeString);
             FRENewObjectFromUTF8(strlen([personCompositeString UTF8String])+1, (const uint8_t*)[personCompositeString UTF8String], &retStr);
             FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
@@ -925,19 +925,19 @@ void ContactEditorContextFinalizer(FREContext ctx) {
 	if(contactEditorHelper)
     {
         [contactEditorHelper setContext:NULL];
-        [contactEditorHelper release];
+        //[contactEditorHelper release];
         contactEditorHelper = nil;
     }
     if(contactEditorAddContactHelper)
     {
         [contactEditorAddContactHelper setContext:NULL];
-        [contactEditorAddContactHelper release];
+        //[contactEditorAddContactHelper release];
         contactEditorHelper = nil;
     }
     if(contactEditorViewDetailsHelper)
     {
         [contactEditorViewDetailsHelper setContext:NULL];
-        [contactEditorViewDetailsHelper release];
+        //[contactEditorViewDetailsHelper release];
         contactEditorViewDetailsHelper = nil;
     }
         // Nothing to clean up.

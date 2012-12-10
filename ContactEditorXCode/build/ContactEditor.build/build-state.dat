@@ -1,501 +1,0 @@
-TContactEditor
-v3
-r1
-cCheck dependencies
-cProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch.gch ContactEditor_Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditor.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cLibtool /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/libContactEditor.a normal i386
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk
-c000000004D9A119B0000000000000110
-t1301942683
-s272
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
-c000000004D93E35A00000000000CE260
-t1301537626
-s844384
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/AddressBook.framework/Headers/AddressBook.h
-c000000004D93E34F0000000000000424
-t1301537615
-s1060
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
-c000000004D99FE66000000000026B860
-t1301937766
-s2537568
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/AddressBookUI.framework/Headers/AddressBookUI.h
-c000000004D99FE450000000000000202
-t1301937733
-s514
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004D93E13C00000000003532B0
-t1301537084
-s3486384
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004D93E1FD00000000003E22F0
-t1301537277
-s4072176
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004D93E1E60000000000001466
-t1301537254
-s5222
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/stdint.h
-c000000004D4F6E9000000000000018EF
-t1297051280
-s6383
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
-c000000004D93ED360000000000000110
-t1301540150
-s272
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
-c000000004D93E34A0000000000078770
-t1301537610
-s493424
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/AddressBook.framework/Headers/AddressBook.h
-c000000004D93E3420000000000000424
-t1301537602
-s1060
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
-c000000004D99FAA50000000000168430
-t1301936805
-s1475632
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/AddressBookUI.framework/Headers/AddressBookUI.h
-c000000004D99FA990000000000000202
-t1301936793
-s514
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004D93DF6900000000002999B0
-t1301536617
-s2726320
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004D93DFEA000000000029DA70
-t1301536746
-s2742896
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004D93DFDD0000000000001466
-t1301536733
-s5222
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/stdint.h
-c000000004D4F6E9900000000000018EF
-t1297051289
-s6383
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.h
-c000000004F8709B30000000000000761
-t1334249907
-s1889
-i"FlashRuntimeExtensions.h"
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m
-c000000004F87C0A9000000000000A25A
-t1334296745
-s41562
-i"ContactEditor.h"
-i"ContactEditorHelper.h"
-i"ContactEditorAddContactHelper.h"
-i"ContactEditorViewDetailsHelper.h"
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.h
-c000000004F567BA60000000000000152
-t1331067814
-s338
-i"FlashRuntimeExtensions.h"
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m
-c000000004F7170DD00000000000005CF
-t1332834525
-s1487
-i"ContactEditorAddContactHelper.h"
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.h
-c000000004F5348500000000000000150
-t1330858064
-s336
-i"FlashRuntimeExtensions.h"
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m
-c000000004F7170DD00000000000007F5
-t1332834525
-s2037
-i"ContactEditorHelper.h"
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.h
-c000000004F6EF50D0000000000000188
-t1332671757
-s392
-i"FlashRuntimeExtensions.h"
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m
-c000000004F7170DD00000000000006AD
-t1332834525
-s1709
-i"ContactEditorViewDetailsHelper.h"
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor_Prefix.pch
-c000000004F5271A70000000000000188
-t1330803111
-s392
-i<Foundation/Foundation.h>
-i<AddressBook/AddressBook.h>
-i<addressBookUI/AddressBookUI.h>
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/FlashRuntimeExtensions.h
-c000000004ED77FAA0000000000004D52
-t1322745770
-s19794
-i<stdint.h>
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/libContactEditor.a
-t1334333568
-s181648
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv6/ContactEditor.LinkFileList
-c00000000000000000000000000000000
-t2
-s0
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv6/ContactEditor.o
-t2
-s0
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv6/ContactEditorAddContactHelper.o
-t2
-s0
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv6/ContactEditorHelper.o
-t2
-s0
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv6/ContactEditorViewDetailsHelper.o
-t2
-s0
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.LinkFileList
-c000000004F870A6E000000000000021B
-t1334250094
-s539
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o
-t1334296748
-s54192
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o
-t1334252950
-s40616
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o
-t1334252950
-s45072
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o
-t1334252950
-s41768
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.LinkFileList
-c000000004F870FDC0000000000000217
-t1334251484
-s535
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.o
-t1334296786
-s51424
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o
-t1334251486
-s41420
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o
-t1334251486
-s44140
-
-N/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o
-t1334251486
-s42536
-
-N/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-clbjyfjqydamvpgdchjdgjxezdxu/ContactEditor_Prefix.pch.pth
-t1330803842
-s3558100
-
-N/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch.gch
-t1334251485
-s12156752
-
-N/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dspzypbsbdpsltazjcwkzcjuwwqn/ContactEditor_Prefix.pch.gch
-t1334252948
-s8358152
-
-N/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-ggypiobmtmhmfnekhckhvvnuzmwh/ContactEditor_Prefix.pch.gch
-t2
-s0
-
-CBuild AST from /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m
-r0
-
-CBuild AST from /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m
-r0
-
-CBuild AST from /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m
-r0
-
-CBuild AST from /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m
-r0
-
-CCheck dependencies
-r0
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies7cb8385c8838b541^384b4d5c8838b541^---0#1#0#--18"Check dependencies
-
-CCompileC build/ContactEditor.build/Objects-normal/armv6/ContactEditor.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m normal armv6 objective-c com.apple.compilers.llvmgcc42
-r0
-
-CCompileC build/ContactEditor.build/Objects-normal/armv6/ContactEditorAddContactHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m normal armv6 objective-c com.apple.compilers.llvmgcc42
-r0
-
-CCompileC build/ContactEditor.build/Objects-normal/armv6/ContactEditorHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m normal armv6 objective-c com.apple.compilers.llvmgcc42
-r0
-
-CCompileC build/ContactEditor.build/Objects-normal/armv6/ContactEditorViewDetailsHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m normal armv6 objective-c com.apple.compilers.llvmgcc42
-r0
-
-CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s355943057.467079
-e355943057.735812
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditor.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m35b277914237b541^c05bbc914237b541^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m0000000000000000^2498"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o ContactEditor.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.0 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-clbjyfjqydamvpgdchjdgjxezdxu/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.d -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o
-
-CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m normal armv7 objective-c com.apple.compilers.llvmgcc42
-s355989547.247601
-e355989548.179431
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditor.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m5f993f2bf837b541^18ed2d2cf837b541^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m0000000000000000^2023"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o ContactEditor.m normal armv7 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb -miphoneos-version-min=4.0 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dspzypbsbdpsltazjcwkzcjuwwqn/ContactEditor_Prefix.pch -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o
-
-CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s355942894.605128
-e355942895.374159
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m4b3ba1ee4137b541^ecc25fef4137b541^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m0000000000000000^2578"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o ContactEditorAddContactHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.0 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-clbjyfjqydamvpgdchjdgjxezdxu/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.d -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o
-
-CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m normal armv7 objective-c com.apple.compilers.llvmgcc42
-s355945748.828150
-e355945750.808989
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.mb81fd4144d37b541^b519cf164d37b541^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m0000000000000000^2087"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o ContactEditorAddContactHelper.m normal armv7 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb -miphoneos-version-min=4.0 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dspzypbsbdpsltazjcwkzcjuwwqn/ContactEditor_Prefix.pch -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o
-
-CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s355942894.605125
-e355942895.374131
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m8639a1ee4137b541^19e75fef4137b541^---0#0#0#-19%DVTDocumentLocation2@99"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m0000000000000000^2528"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o ContactEditorHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.0 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-clbjyfjqydamvpgdchjdgjxezdxu/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.d -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o
-
-CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m normal armv7 objective-c com.apple.compilers.llvmgcc42
-s355945748.827943
-e355945750.840195
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m9a22d4144d37b541^242bd7164d37b541^---0#0#0#-19%DVTDocumentLocation2@99"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m0000000000000000^2047"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o ContactEditorHelper.m normal armv7 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb -miphoneos-version-min=4.0 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dspzypbsbdpsltazjcwkzcjuwwqn/ContactEditor_Prefix.pch -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o
-
-CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s355942894.605134
-e355942895.374171
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m4738a1ee4137b541^c8ed5fef4137b541^---0#0#0#-19%DVTDocumentLocation2@110"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m0000000000000000^2583"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o ContactEditorViewDetailsHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.0 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-clbjyfjqydamvpgdchjdgjxezdxu/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.d -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o
-
-CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m normal armv7 objective-c com.apple.compilers.llvmgcc42
-s355945748.828271
-e355945750.984818
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-o/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m:11: warning: 'event_name' defined but not used
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m302fd4144d37b541^a27d24174d37b541^-142"/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m:11: warning: 'event_name' defined but not used1(21%IDEActivityLogMessage2@33"'event_name' defined but not used-355945750#0#142#-1#-23%DVTTextDocumentLocation3@110"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m0000000000000000^10#18446744073709551615#10#18446744073709551615#18446744073709551615#0#24"'*' defined but not used--0#0#0#-19%DVTDocumentLocation4@110"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m0000000000000000^2091"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o ContactEditorViewDetailsHelper.m normal armv7 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb -miphoneos-version-min=4.0 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dspzypbsbdpsltazjcwkzcjuwwqn/ContactEditor_Prefix.pch -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o
-
-CCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditor.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s355989585.556594
-e355989586.314522
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/i386/ContactEditor.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.mcc988e51f837b541^45835052f837b541^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m0000000000000000^2148"CompileC build/ContactEditor.build/Objects-normal/i386/ContactEditor.o ContactEditor.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40000 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.o
-
-CCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s355944285.866706
-e355944286.186872
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m9702de5d4737b541^2595555e4737b541^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m0000000000000000^2212"CompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o ContactEditorAddContactHelper.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40000 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorAddContactHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o
-
-CCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s355944285.866741
-e355944286.170050
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m3106de5d4737b541^a088555e4737b541^---0#0#0#-19%DVTDocumentLocation2@99"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m0000000000000000^2172"CompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o ContactEditorHelper.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40000 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o
-
-CCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s355944285.866717
-e355944286.173647
-r1
-xCompileC
-xbuild/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-o/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m:11: warning: 'event_name' defined but not used
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.meb02de5d4737b541^6d90555e4737b541^-142"/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m:11: warning: 'event_name' defined but not used1(21%IDEActivityLogMessage2@33"'event_name' defined but not used-355944286#0#142#-1#-23%DVTTextDocumentLocation3@110"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m0000000000000000^10#18446744073709551615#10#18446744073709551615#18446744073709551615#0#24"'*' defined but not used--0#0#0#-19%DVTDocumentLocation4@110"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m0000000000000000^2216"CompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o ContactEditorViewDetailsHelper.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40000 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditorViewDetailsHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o
-
-CLibtool /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/libContactEditor.a normal armv6
-r0
-
-CLibtool /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/libContactEditor.a normal armv7
-s355989548.186274
-e355989548.222833
-r1
-xLibtool
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/libContactEditor.a
-xnormal
-xarmv7
-o/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Libtool build-release/libContactEditor.a normal armv747c92f2cf837b541^890a392cf837b541^---0#0#0#--933"Libtool build-release/libContactEditor.a normal armv7    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv IPHONEOS_DEPLOYMENT_TARGET 4.0    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static -arch_only armv7 -syslibroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -L/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -L/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build -filelist /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.LinkFileList -ObjC -framework AddressBookUI -framework AddressBook -framework Foundation -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/libContactEditor.a
-
-CLibtool /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/libContactEditor.a normal i386
-s356026368.229366
-e356026368.295501
-r1
-xLibtool
-x/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/libContactEditor.a
-xnormal
-xi386
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection52"Libtool build-release/libContactEditor.a normal i38669ff3b008838b541^72a44b008838b541^---0#0#0#--981"Libtool build-release/libContactEditor.a normal i386    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool -static -arch_only i386 -syslibroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -L/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build -filelist /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.LinkFileList -ObjC -framework CoreGraphics -framework AddressBookUI -framework AddressBook -framework Foundation -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/libContactEditor.a
-
-CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-clbjyfjqydamvpgdchjdgjxezdxu/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch.gch ContactEditor_Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42
-s355944284.241182
-e355944285.858329
-r1
-xProcessPCH
-x/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch.gch
-xContactEditor_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection35"Precompile ContactEditor_Prefix.pchadda3d5c4737b541^99badb5d4737b541^---0#0#0#-19%DVTDocumentLocation2@102"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor_Prefix.pch0000000000000000^2177"ProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch.gch ContactEditor_Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40000 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor_Prefix.pch -o /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dlzxpjpewcfztnbsvbktdryoutdm/ContactEditor_Prefix.pch.gch
-
-CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dspzypbsbdpsltazjcwkzcjuwwqn/ContactEditor_Prefix.pch.gch ContactEditor_Prefix.pch normal armv7 objective-c com.apple.compilers.llvmgcc42
-s355945747.390673
-e355945748.820864
-r1
-xProcessPCH
-x/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dspzypbsbdpsltazjcwkzcjuwwqn/ContactEditor_Prefix.pch.gch
-xContactEditor_Prefix.pch
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection35"Precompile ContactEditor_Prefix.pch0c2064134d37b541^9222d2144d37b541^---0#0#0#-19%DVTDocumentLocation2@102"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor_Prefix.pch0000000000000000^2050"ProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dspzypbsbdpsltazjcwkzcjuwwqn/ContactEditor_Prefix.pch.gch ContactEditor_Prefix.pch normal armv7 objective-c com.apple.compilers.llvmgcc42    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c-header -arch armv7 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -gdwarf-2 -mthumb -miphoneos-version-min=4.0 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/build-release -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditorXCode/ContactEditor_Prefix.pch -o /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-dspzypbsbdpsltazjcwkzcjuwwqn/ContactEditor_Prefix.pch.gch
-
-CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Build/PrecompiledHeaders/ContactEditor_Prefix-ggypiobmtmhmfnekhckhvvnuzmwh/ContactEditor_Prefix.pch.gch ContactEditor_Prefix.pch normal armv6 objective-c com.apple.compilers.llvmgcc42
-r0
-
-CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Index/PrecompiledHeaders/ContactEditor_Prefix-cdblftyumnujsygqczzvkffkhbrk_ast/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
-CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Index/PrecompiledHeaders/ContactEditor_Prefix-dimwjsntytgftqeyrkymckmnbmnm_ast/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
-CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-bxmevwrewikxzddwxxjuruggvkfu/Index/PrecompiledHeaders/ContactEditor_Prefix-gnuttrzpegyooxdbctanvziktxai_ast/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
