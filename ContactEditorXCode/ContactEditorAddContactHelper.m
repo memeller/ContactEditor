@@ -19,7 +19,12 @@ static  NSString *event_name = @"contactAdded";
     
     UINavigationController *picker = [[UINavigationController alloc]
                                                        initWithRootViewController:view];
-    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentModalViewController:picker animated:YES];
+    /* includes ios6 function and older, depreciated for ios5 */
+    if([[[[[UIApplication sharedApplication] windows] objectAtIndex:0] rootViewController] respondsToSelector:@selector(presentViewController:animated:completion:)])
+        [[[[[UIApplication sharedApplication] windows] objectAtIndex:0] rootViewController] presentViewController:picker animated:YES completion:^{/* done */}];
+    else
+        [[[[[UIApplication sharedApplication] windows] objectAtIndex:0] rootViewController] presentModalViewController:picker animated:YES];
+    
    
 	//[picker release];
 
@@ -34,7 +39,12 @@ static  NSString *event_name = @"contactAdded";
         FREDispatchStatusEventAsync(context, (uint8_t*)[event_name UTF8String], (uint8_t*) (uint8_t*)[s UTF8String]);
         //[s release];
     }
-    [[[[UIApplication sharedApplication] keyWindow] rootViewController] dismissModalViewControllerAnimated:YES];
+    /* includes ios6 function and older for ios5 */
+    if([[[[UIApplication sharedApplication] keyWindow] rootViewController] respondsToSelector:@selector(dismissViewControllerAnimated:completion:)])
+        [[[[UIApplication sharedApplication] keyWindow] rootViewController] dismissViewControllerAnimated:(YES) completion:nil];
+    else if([[[[UIApplication sharedApplication] keyWindow] rootViewController] respondsToSelector:@selector(dismissModalViewControllerAnimated:)])
+        [[[[UIApplication sharedApplication] keyWindow] rootViewController] dismissModalViewControllerAnimated:YES];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:UIDeviceOrientationDidChangeNotification object:nil];
 }
 

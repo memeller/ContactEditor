@@ -9,13 +9,13 @@
 {
     
 }
-
+BOOL createOwnAddressBook(void);
 FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject contactEditorIsSupported(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] );
 FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
-FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+FREObject hasPermission(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject getContactCount(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject showContactPicker(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] );
 FREObject addContactInWindow(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] );

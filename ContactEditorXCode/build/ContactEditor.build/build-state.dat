@@ -1,0 +1,372 @@
+TContactEditor
+v5
+r1
+cCheck dependencies
+cProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/libContactEditor.a normal armv7
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk
+c00000000503C83D40000000000000132
+t1346143188
+s306
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
+c000000005075A37F000000000014A1D0
+t1349886847
+s1352144
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/AddressBook.framework/Headers/AddressBook.h
+c000000005075A37F0000000000000621
+t1349886847
+s1569
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
+c000000005075A37F00000000002AC100
+t1349886847
+s2801920
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/AddressBookUI.framework/Headers/AddressBookUI.h
+c000000005075A37F0000000000000196
+t1349886847
+s406
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000005075A3800000000000322740
+t1349886848
+s3286848
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000005075A3820000000000629C80
+t1349886850
+s6462592
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000005075A38100000000000015F7
+t1349886849
+s5623
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk
+c00000000504916AD0000000000000110
+t1346967213
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
+c000000005075A3A200000000000C0EF0
+t1349886882
+s790256
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/AddressBook.framework/Headers/AddressBook.h
+c000000005075A3A20000000000000621
+t1349886882
+s1569
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
+c000000005075A3A30000000000193640
+t1349886883
+s1652288
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/AddressBookUI.framework/Headers/AddressBookUI.h
+c000000005075A3A20000000000000196
+t1349886882
+s406
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000005075A3A40000000000228FD0
+t1349886884
+s2265040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000005075A3A600000000003DCEF0
+t1349886886
+s4050672
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000005075A3A500000000000015F7
+t1349886885
+s5623
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.h
+c0000000050DEC3900000000000000783
+t1356776336
+s1923
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m
+c0000000050DEDFB20000000000008742
+t1356783538
+s34626
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.h
+c0000000050CA1CC70000000000000152
+t1355422919
+s338
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m
+c0000000050CA1D940000000000000964
+t1355423124
+s2404
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.h
+c0000000050CA1CC70000000000000150
+t1355422919
+s336
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m
+c0000000050CA1D6E0000000000000DC9
+t1355423086
+s3529
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.h
+c0000000050CA1CC70000000000000188
+t1355422919
+s392
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m
+c0000000050CA1DA80000000000000A4D
+t1355423144
+s2637
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor_Prefix.pch
+c0000000050CA1CC70000000000000188
+t1355422919
+s392
+i<Foundation/Foundation.h>
+i<AddressBook/AddressBook.h>
+i<addressBookUI/AddressBookUI.h>
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/FlashRuntimeExtensions.h
+c0000000050CA1CC70000000000004D52
+t1355422919
+s19794
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/libContactEditor.a
+t2
+s0
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.LinkFileList
+c0000000050CA20B8000000000000026B
+t1355423928
+s619
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o
+t1356782700
+s65480
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o
+t1355423937
+s80080
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o
+t1355423937
+s84804
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o
+t1355423937
+s81756
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.LinkFileList
+c0000000050CA20D20000000000000267
+t1355423954
+s615
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.o
+t1356783544
+s58424
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o
+t1355423956
+s79516
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o
+t1355423956
+s83640
+
+N/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o
+t1355423956
+s80880
+
+N/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch.pth
+t1355423956
+s4921112
+
+N/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch.pth
+t1355423934
+s4854136
+
+CBuild AST from /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m
+r0
+
+CBuild AST from /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m
+r0
+
+CBuild AST from /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m
+r0
+
+CBuild AST from /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesebc7224f178fb641^f031384f178fb641^---0#1#0#--18"Check dependencies36"F7EBEAF5-3526-4770-A5E3-5EC615B9FDF5-
+
+CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s378476367.231520
+e378476367.721849
+r1
+xCompileC
+xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditor.o
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.mc07b3b4f178fb641^c8b3bb4f178fb641^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m0000000000000000^3697"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o ContactEditor.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.d --serialize-diagnostics /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.o36"BF852F91-A111-4B2E-AE09-EF799459D520-
+
+CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s377116735.276396
+e377116737.442418
+r1
+xCompileC
+xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection121"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m92e7463f587ab641^31457141587ab641^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m0000000000000000^3793"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o ContactEditorAddContactHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.d --serialize-diagnostics /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorAddContactHelper.o36"7884A9C1-7824-4B2F-8500-FB066FFAF798-
+
+CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s377116735.275992
+e377116737.431623
+r1
+xCompileC
+xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m2fdf463f587ab641^7b696e41587ab641^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m0000000000000000^3733"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o ContactEditorHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.d --serialize-diagnostics /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorHelper.o36"0D95C784-E013-4CF5-9F82-5DC57CAE0C0C-
+
+CCompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s377116735.277097
+e377116737.442539
+r1
+xCompileC
+xbuild/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection122"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m7923473f587ab641^19567141587ab641^---0#0#0#-19%DVTDocumentLocation2@130"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m0000000000000000^3799"CompileC build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o ContactEditorViewDetailsHelper.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.d --serialize-diagnostics /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditorViewDetailsHelper.o36"44C628C3-9906-455B-AD73-33C4F44AFE59-
+
+CCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditor.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s378476342.637554
+e378476344.459926
+r1
+xCompileC
+xbuild/ContactEditor.build/Objects-normal/i386/ContactEditor.o
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.mbe68a336178fb641^c7bd7538178fb641^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m0000000000000000^3786"CompileC build/ContactEditor.build/Objects-normal/i386/ContactEditor.o ContactEditor.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.d --serialize-diagnostics /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.o36"2A969FF6-2853-4862-9282-481ACD400C06-
+
+CCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s377116756.090634
+e377116756.415101
+r1
+xCompileC
+xbuild/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection121"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m9f581754587ab641^a4506a54587ab641^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m0000000000000000^3882"CompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o ContactEditorAddContactHelper.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.d --serialize-diagnostics /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorAddContactHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorAddContactHelper.o36"61FD4F2F-1E3C-4B7B-BCCE-599382CA9CAC-
+
+CCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s377116756.089736
+e377116756.416729
+r1
+xCompileC
+xbuild/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m9a231754587ab641^eab06a54587ab641^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m0000000000000000^3822"CompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o ContactEditorHelper.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.d --serialize-diagnostics /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorHelper.o36"F14BAF13-3328-403F-BEDB-747A1F8D750C-
+
+CCompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s377116756.089956
+e377116756.413361
+r1
+xCompileC
+xbuild/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection122"Compile /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m0e2c1754587ab641^c6dc6954587ab641^---0#0#0#-19%DVTDocumentLocation2@130"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m0000000000000000^3888"CompileC build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o ContactEditorViewDetailsHelper.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -include /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch -MMD -MT dependencies -MF /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.d --serialize-diagnostics /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditorViewDetailsHelper.m -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditorViewDetailsHelper.o36"E4C9FA84-94A8-43B7-876B-4DD01512D533-
+
+CLibtool /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/libContactEditor.a normal armv7
+s378476367.728268
+e378476367.743638
+r1
+xLibtool
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/libContactEditor.a
+xnormal
+xarmv7
+o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Libtool build-release/libContactEditor.a normal armv7718eba4f178fb641^7862be4f178fb641^-159"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC -0#0#0#--1183"Libtool build-release/libContactEditor.a normal armv7    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv IPHONEOS_DEPLOYMENT_TARGET 4.3    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only armv7 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk -L/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -L/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build -filelist /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/armv7/ContactEditor.LinkFileList -ObjC -framework CoreGraphics -framework AddressBookUI -framework AddressBook -framework Foundation -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/libContactEditor.a36"B2FF23BF-427A-4CEF-941E-90F716798567-
+
+CLibtool /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/libContactEditor.a normal i386
+s378476344.466806
+e378476344.520153
+r1
+xLibtool
+x/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/libContactEditor.a
+xnormal
+xi386
+o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection52"Libtool build-release/libContactEditor.a normal i386889f7738178fb641^0a2f8538178fb641^-159"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC -0#0#0#--1201"Libtool build-release/libContactEditor.a normal i386    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv IPHONEOS_DEPLOYMENT_TARGET 4.3    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -L/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release -L/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build -filelist /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/Objects-normal/i386/ContactEditor.LinkFileList -ObjC -framework CoreGraphics -framework AddressBookUI -framework AddressBook -framework Foundation -o /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/libContactEditor.a36"EBC672CD-D592-4A5F-B37D-95D968EF76B9-
+
+CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s377116754.709388
+e377116756.082193
+r1
+xProcessPCH
+x/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch.pth
+xContactEditor_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection35"Precompile ContactEditor_Prefix.pch93c3b752587ab641^3d0c1554587ab641^---0#0#0#-19%DVTDocumentLocation2@122"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor_Prefix.pch0000000000000000^3931"ProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/i386 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release --serialize-diagnostics /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor_Prefix.pch -o /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch.pth -MMD -MT dependencies -MF /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-azuhydxmjkvxijgxexgodqtwwhwj/ContactEditor_Prefix.pch.d36"52C37969-5220-49CC-9E00-9D52FCDC1757-
+
+CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s377116728.837462
+e377116735.268595
+r1
+xProcessPCH
+x/Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch.pth
+xContactEditor_Prefix.pch
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection35"Precompile ContactEditor_Prefix.pch9f8fd638587ab641^5dbf443f587ab641^---0#0#0#-19%DVTDocumentLocation2@122"file://localhost/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor_Prefix.pch0000000000000000^3838"ProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch armv7 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=4.3 -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-generated-files.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-own-target-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-all-target-headers.hmap -iquote /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/ContactEditor-project-headers.hmap -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources/armv7 -I/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build/ContactEditor.build/DerivedSources -F/Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/build-release --serialize-diagnostics /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch.dia -c /Users/me/Documents/gitrepos/ContactEditor/ContactEditor_newer/ContactEditorXCode/ContactEditor_Prefix.pch -o /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch.pth -MMD -MT dependencies -MF /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Build/Intermediates/PrecompiledHeaders/ContactEditor_Prefix-bckzrgtwpwpgheaxiedkdasabyax/ContactEditor_Prefix.pch.d36"2FBAA825-26EE-4FFB-AC6C-354E1C97AC0A-
+
+CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Index/PrecompiledHeaders/ContactEditor_Prefix-beqkwcdezjqbljejrqneraezkkzu_ast/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /Users/me/Library/Developer/Xcode/DerivedData/ContactEditor-axrnssoayqzlxdhciuetozgdnqtc/Index/PrecompiledHeaders/ContactEditor_Prefix-bfjmpygvuscnodavfzbeprbvuwyf_ast/ContactEditor_Prefix.pch.pth ContactEditor_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+

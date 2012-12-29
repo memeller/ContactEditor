@@ -15,6 +15,63 @@ ContactEditorViewDetailsHelper *contactEditorViewDetailsHelper;
 ContactEditorAddContactHelper *contactEditorAddContactHelper;
 ABAddressBookRef addressBook;
 
+BOOL createOwnAddressBook(void)
+{
+    
+    __block BOOL isAllowed=NO;
+    if (&ABAddressBookCreateWithOptions != NULL) {
+        CFErrorRef error = nil;
+        switch (ABAddressBookGetAuthorizationStatus()){
+            case kABAuthorizationStatusAuthorized:{
+                addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+                isAllowed=YES;
+                break;
+            }
+            case kABAuthorizationStatusDenied:{
+                isAllowed=NO;
+                break;
+            }
+            case kABAuthorizationStatusNotDetermined:{
+                addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+                ABAddressBookRequestAccessWithCompletion
+                (addressBook, ^(bool granted, CFErrorRef error) {
+                    if (granted){
+                        isAllowed=YES;
+                        DLog(@"Access was granted");
+                    } else {
+                        isAllowed=NO;
+                        DLog(@"Access was not granted");
+                    }
+                    
+                });
+                break;
+            }
+            case kABAuthorizationStatusRestricted:{
+                isAllowed=NO;
+                break;
+            }
+        }
+        addressBook = ABAddressBookCreateWithOptions(NULL,&error);
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            // callback can occur in background, address book must be accessed on thread it was created on
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    isAllowed=NO;
+                } else if (!granted) {
+                    isAllowed=NO;
+                } else {
+                    isAllowed=YES;
+                }
+            });
+        });
+    } else {
+        // iOS 4/5
+        addressBook = ABAddressBookCreate();
+        isAllowed=YES;
+    }
+    return isAllowed;
+}
+
 FREObject showContactDetailsInWindow(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] )
 {
     DLog(@"showing contact details using native window");
@@ -26,15 +83,17 @@ FREObject showContactDetailsInWindow(FREContext ctx, void* funcData, uint32_t ar
     {
         uint32_t boolean;
         FREGetObjectAsBool(argv[1], &boolean);
-        addressBook=ABAddressBookCreate();
-        ABRecordID abrecordId=recordId;
-        ABRecordRef aRecord = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
-        if(aRecord)
+        if(createOwnAddressBook())
         {
-            [contactEditorViewDetailsHelper setContext:ctx];
-            [contactEditorViewDetailsHelper showContactDetailsInWindow:aRecord isEditable:boolean];
+            ABRecordID abrecordId=recordId;
+            ABRecordRef aRecord = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
+            if(aRecord)
+            {
+                [contactEditorViewDetailsHelper setContext:ctx];
+                [contactEditorViewDetailsHelper showContactDetailsInWindow:aRecord isEditable:boolean];
+            }
         }
-        //CFRelease(addressBook);    
+        
     }
     
     return NULL;    
@@ -42,25 +101,29 @@ FREObject showContactDetailsInWindow(FREContext ctx, void* funcData, uint32_t ar
 FREObject addContactInWindow(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] )
 {
     DLog(@"adding contact using native window");
-    if (!contactEditorAddContactHelper) {
-        contactEditorAddContactHelper = [[ContactEditorAddContactHelper alloc] init];
+    if(createOwnAddressBook())
+    {
+        if (!contactEditorAddContactHelper) {
+            contactEditorAddContactHelper = [[ContactEditorAddContactHelper alloc] init];
+        }
+    
+        [contactEditorAddContactHelper setContext:ctx];
+        [contactEditorAddContactHelper addContactInWindow];
+    
     }
-    
-    [contactEditorAddContactHelper setContext:ctx];
-    [contactEditorAddContactHelper addContactInWindow];
-    
-    
     return NULL;    
 }
 FREObject showContactPicker(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[] )
 {
-    DLog(@"showing contact picker using native window");
-    if (!contactEditorHelper) {
-        contactEditorHelper = [[ContactEditorHelper alloc] init];
-    }
+    if(createOwnAddressBook())
+    {
+        if (!contactEditorHelper) {
+            contactEditorHelper = [[ContactEditorHelper alloc] init];
+        }
     
-    [contactEditorHelper setContext:ctx];
-    [contactEditorHelper showContactPicker];
+        [contactEditorHelper setContext:ctx];
+        [contactEditorHelper showContactPicker];
+    }
     
     
     return NULL;    
@@ -72,22 +135,24 @@ FREObject removeContact(FREContext ctx, void* funcData, uint32_t argc, FREObject
     uint32_t recordId;
     if(FRE_OK==FREGetObjectAsUint32(argv[0], &recordId))
     {
-        addressBook=ABAddressBookCreate();
-        ABRecordID abrecordId=recordId;
-        ABRecordRef aRecord = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
-        if(aRecord)
+        if(createOwnAddressBook())
         {
-            DLog(@"record found, trying to remove %i",abrecordId);
-            ABAddressBookRemoveRecord(addressBook, aRecord, NULL);
-            // CFRelease(aRecord);
-            boolean=1;
-            DLog(@"ContactRemoved");
+            ABRecordID abrecordId=recordId;
+            ABRecordRef aRecord = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
+            if(aRecord)
+            {
+                DLog(@"record found, trying to remove %i",abrecordId);
+                ABAddressBookRemoveRecord(addressBook, aRecord, NULL);
+                    // CFRelease(aRecord);
+                    boolean=1;
+                DLog(@"ContactRemoved");
+            }
+            if(ABAddressBookHasUnsavedChanges)
+                ABAddressBookSave(addressBook, NULL);
+            DLog(@"Release");
+            CFRelease(addressBook);
+            DLog(@"Return data");
         }
-        if(ABAddressBookHasUnsavedChanges)
-            ABAddressBookSave(addressBook, NULL);
-        DLog(@"Release");
-        CFRelease(addressBook);
-        DLog(@"Return data");
     }
     else
         DLog(@"something wrong with value");
@@ -106,7 +171,8 @@ FREObject contactEditorIsSupported(FREContext ctx, void* funcData, uint32_t argc
 }
 FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
-    addressBook=ABAddressBookCreate();
+    if(createOwnAddressBook())
+    {
 	uint32_t usernameLength;
     const uint8_t *name;
     uint32_t surnameLength;
@@ -222,202 +288,21 @@ FREObject addContact(FREContext ctx, void* funcData, uint32_t argc, FREObject ar
     //[useremail release];
     //[userwebsite release];
     CFRelease(addressBook);
+    }
     return NULL;
 }
-FREObject getContacts(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
+FREObject hasPermission(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
-    DLog(@"Getting contact data");
-    addressBook=ABAddressBookCreate();
-    CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    DLog(@"Parsing data");
-    FREObject returnedArray = NULL;
-    FRENewObject((const uint8_t*)"Array", 0, NULL, &returnedArray, nil);
-    FRESetArrayLength(returnedArray, CFArrayGetCount(people));
-    int32_t j=0;
-    FREObject retStr=NULL;
-    for (CFIndex i = 0; i < CFArrayGetCount(people); i++) {
-        FREObject contact;
-        FRENewObject((const uint8_t*)"Object", 0, NULL, &contact,NULL);
-        
-        ABRecordRef person = CFArrayGetValueAtIndex(people, i);
-        
-        //person id
-        int personId = (int)ABRecordGetRecordID(person);
-        DLog(@"Adding person with id: %i",personId);
-        FREObject recordId;
-        FRENewObjectFromInt32(personId, &recordId);
-        FRESetObjectProperty(contact, (const uint8_t*)"recordId", recordId, NULL);
-        
-        //composite name
-        CFStringRef personCompositeName = ABRecordCopyCompositeName(person);
-        retStr=NULL;
-        if(personCompositeName)
-        {
-            NSString *personCompositeString = [NSString stringWithString:(__bridge NSString *)personCompositeName];
-            DLog(@"Adding composite name: %@",personCompositeString);
-            FRENewObjectFromUTF8(strlen([personCompositeString UTF8String])+1, (const uint8_t*)[personCompositeString UTF8String], &retStr);
-            FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
-            //[personCompositeString release];
-            CFRelease(personCompositeName);
-        }
-        else
-            FRESetObjectProperty(contact, (const uint8_t*)"compositename", retStr, NULL);
-        
-        retStr=NULL;
-        
-        
-        
-        //person first name
-        CFStringRef personName = ABRecordCopyValue(person, kABPersonFirstNameProperty);
-        if(personName)
-        {
-            NSString *personNameString = [NSString stringWithString:(__bridge NSString *)personName];
-            DLog(@"Adding first name: %@",personNameString);
-            FRENewObjectFromUTF8(strlen([personNameString UTF8String])+1, (const uint8_t*)[personNameString UTF8String], &retStr);
-            FRESetObjectProperty(contact, (const uint8_t*)"name", retStr, NULL);
-            //[personNameString release];
-            CFRelease(personName);
-        }
-        else
-            FRESetObjectProperty(contact, (const uint8_t*)"name", retStr, NULL);
-        retStr=NULL;
-        //surname
-        CFStringRef personSurName = ABRecordCopyValue(person, kABPersonLastNameProperty);
-        if(personSurName)
-        {
-            NSString *personSurNameString = [NSString stringWithString:(__bridge NSString *)personSurName];
-            DLog(@"Adding last name: %@",personSurNameString);
-            FRENewObjectFromUTF8(strlen([personSurNameString UTF8String])+1, (const uint8_t*)[personSurNameString UTF8String], &retStr);
-            FRESetObjectProperty(contact, (const uint8_t*)"lastname", retStr, NULL);
-            //[personSurNameString release];
-            CFRelease(personSurName);
-        }
-        else
-            FRESetObjectProperty(contact, (const uint8_t*)"lastname", retStr, NULL);
-        retStr=NULL;
-        
-        //birthdate
-        NSDate *personBirthdate = (__bridge NSDate*)ABRecordCopyValue(person, kABPersonBirthdayProperty);
-        if(personBirthdate)
-        {
-            NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-            [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-            
-            NSString *personBirthdateString = [dateFormatter stringFromDate:personBirthdate];
-            DLog(@"Adding birthdate: %@",personBirthdateString);
-            FRENewObjectFromUTF8(strlen([personBirthdateString UTF8String])+1, (const uint8_t*)[personBirthdateString UTF8String], &retStr);
-            FRESetObjectProperty(contact, (const uint8_t*)"birthdate", retStr, NULL);
-            //[personBirthdateString release];
-            //[dateFormatter release];
-            //CFRelease(personBirthdate);
-        }
-        else
-            FRESetObjectProperty(contact, (const uint8_t*)"birthdate", retStr, NULL);
-        
-        //emails
-        retStr=NULL;
-        FREObject emailsArray = NULL;
-        FRENewObject((const uint8_t*)"Array", 0, NULL, &emailsArray, nil);
-        
-        ABMultiValueRef emails = ABRecordCopyValue(person, kABPersonEmailProperty);
-        if(emails)
-        {
-            for (CFIndex k=0; k < ABMultiValueGetCount(emails); k++) {
-                NSString* email = (__bridge NSString*)ABMultiValueCopyValueAtIndex(emails, k);
-                DLog(@"Adding email: %@",email);
-                FRENewObjectFromUTF8(strlen([email UTF8String])+1, (const uint8_t*)[email UTF8String], &retStr);
-                FRESetArrayElementAt(emailsArray, k, retStr);
-                //[email release];
-            }
-            CFRelease(emails);
-            FRESetObjectProperty(contact, (const uint8_t*)"emails", emailsArray, NULL);
-        }
-        else
-            FRESetObjectProperty(contact, (const uint8_t*)"emails", NULL, NULL);
-        retStr=NULL;
-        //phones
-        FREObject phonesArray = NULL;
-        FRENewObject((const uint8_t*)"Array", 0, NULL, &phonesArray, nil);
-        ABMultiValueRef phones = ABRecordCopyValue(person, kABPersonPhoneProperty);
-        if(phones)
-        {
-            for (CFIndex k=0; k < ABMultiValueGetCount(phones); k++) {
-                NSString* phone = (__bridge NSString*)ABMultiValueCopyValueAtIndex(phones, k);
-                DLog(@"Adding phone: %@",phone);
-                FRENewObjectFromUTF8(strlen([phone UTF8String])+1, (const uint8_t*)[phone UTF8String], &retStr);
-                FRESetArrayElementAt(phonesArray, k, retStr);
-                //[phone release];
-                
-            }
-            CFRelease(phones);
-            FRESetObjectProperty(contact, (const uint8_t*)"phones", phonesArray, NULL);            
-        }
-        else
-            FRESetObjectProperty(contact, (const uint8_t*)"phones", NULL, NULL);
-        retStr=NULL;
-        FREObject addressesArray = NULL;
-        ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
-        if(addresses)
-        {
-            
-            for (CFIndex k = 0; k<ABMultiValueGetCount(addresses);k++){
-                FREObject addressObj=NULL;
-                CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(addresses, k);
-                CFStringRef typeTmp = ABMultiValueCopyLabelAtIndex(addresses, k);
-                CFStringRef labeltype = ABAddressBookCopyLocalizedLabel(typeTmp);
-                if(labeltype)
-                    FRENewObjectFromUTF8(strlen([(__bridge NSString *)labeltype UTF8String])+1, (const uint8_t*)[(__bridge NSString *)labeltype UTF8String], &retStr);
-                FRESetObjectProperty(addressObj, (const uint8_t*)"type", retStr, NULL);
-                retStr=NULL;
-                NSString *street = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStreetKey) copy];
-                if(street)
-                    FRENewObjectFromUTF8(strlen([street UTF8String])+1, (const uint8_t*)[street UTF8String], &retStr);
-                FRESetObjectProperty(addressObj, (const uint8_t*)"street", retStr, NULL);
-                retStr=NULL;
-                NSString *city = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressCityKey) copy];
-                if(city)
-                    FRENewObjectFromUTF8(strlen([city UTF8String])+1, (const uint8_t*)[city UTF8String], &retStr);
-                FRESetObjectProperty(addressObj, (const uint8_t*)"city", retStr, NULL);
-                retStr=NULL;  
-                NSString *state = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressStateKey) copy];
-                if(state)
-                    FRENewObjectFromUTF8(strlen([state UTF8String])+1, (const uint8_t*)[state UTF8String], &retStr);
-                FRESetObjectProperty(addressObj, (const uint8_t*)"state", retStr, NULL);
-                retStr=NULL;  
-                NSString *zip = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressZIPKey) copy];
-                if(zip)
-                    FRENewObjectFromUTF8(strlen([zip UTF8String])+1, (const uint8_t*)[zip UTF8String], &retStr);
-                FRESetObjectProperty(addressObj, (const uint8_t*)"zip", retStr, NULL);
-                retStr=NULL;  
-                NSString *country = [(NSString *)CFDictionaryGetValue(dict, kABPersonAddressCountryKey) copy];
-                if(country)
-                    FRENewObjectFromUTF8(strlen([country UTF8String])+1, (const uint8_t*)[country UTF8String], &retStr);
-                FRESetObjectProperty(addressObj, (const uint8_t*)"country", retStr, NULL);
-                retStr=NULL;  
-                
-                FRESetArrayElementAt(addressesArray, k, addressObj);
-                //[street release];
-                //[city release];
-                //[state release];
-                //[zip release];
-                //[country release];
-                CFRelease(dict);
-                CFRelease(labeltype);
-                CFRelease(typeTmp);
-            }
-            CFRelease(addresses);
-            
-        }
-        //addContact to array*/
-        DLog(@"Adding element to array %ld",i);
-        FRESetArrayElementAt(returnedArray, j, contact);
-        j++;
-        CFRelease(person);
+    FREObject retVal;
+    if(createOwnAddressBook()){
+        FRENewObjectFromBool(YES, &retVal);
+        CFRelease(addressBook);
+        return retVal;
+    }else{
+        FRENewObjectFromBool(NO, &retVal);
+        return retVal;
     }
-    DLog(@"Release");
-    CFRelease(addressBook);
-    DLog(@"Return data");
-    return returnedArray;
+    
 }
 FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
@@ -427,7 +312,8 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
     FRENewObject((const uint8_t*)"Object", 0, NULL, &contact,NULL);
     if(FRE_OK==FREGetObjectAsUint32(argv[0], &argrecordId))
     {
-        addressBook=ABAddressBookCreate();
+        if(createOwnAddressBook())
+        {
         ABRecordID abrecordId=argrecordId;
         ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
         FREObject retStr=NULL;
@@ -600,11 +486,12 @@ FREObject getContactDetails(FREContext ctx, void* funcData, uint32_t argc, FREOb
                 addressNum++;
             }
             CFRelease(addresses);
-       
+        
         }
             FRESetObjectProperty(contact, (const uint8_t*)"addresses", addressesArray, NULL);
         
         CFRelease(addressBook);
+        }
     }
     return contact;
 }
@@ -614,7 +501,8 @@ FREObject getBitmapDimensions(FREContext ctx, void* funcData, uint32_t argc, FRE
     FRENewObject((const uint8_t*)"flash.geom.Point", 0, NULL, &size,NULL);
     if(FRE_OK==FREGetObjectAsUint32(argv[0], &argrecordId))
     {
-        addressBook=ABAddressBookCreate();
+        if(createOwnAddressBook())
+        {
         ABRecordID abrecordId=argrecordId;
         ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
         
@@ -650,14 +538,15 @@ FREObject getBitmapDimensions(FREContext ctx, void* funcData, uint32_t argc, FRE
             
         }
     }
+    }
     return size;
 }
 FREObject setContactImage(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
     uint32_t argrecordId;
     if(FRE_OK==FREGetObjectAsUint32(argv[1], &argrecordId))
     {
-        NSLog(@"found record id");
-        addressBook=ABAddressBookCreate();
+        if(createOwnAddressBook())
+        {
         ABRecordID abrecordId=argrecordId;
         ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
         FREBitmapData bitmapData;
@@ -703,6 +592,7 @@ FREObject setContactImage(FREContext ctx, void* funcData, uint32_t argc, FREObje
         CGDataProviderRelease(provider);   
         
     }
+    }
         return NULL;
 }
 FREObject drawToBitmap(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
@@ -712,7 +602,8 @@ FREObject drawToBitmap(FREContext ctx, void* funcData, uint32_t argc, FREObject 
     FRENewObject((const uint8_t*)"Object", 0, NULL, &contact,NULL);
     if(FRE_OK==FREGetObjectAsUint32(argv[1], &argrecordId))
     {
-        addressBook=ABAddressBookCreate();
+        if(createOwnAddressBook())
+        {
         ABRecordID abrecordId=argrecordId;
         ABRecordRef person = ABAddressBookGetPersonWithRecordID(addressBook, abrecordId);
         
@@ -789,6 +680,7 @@ FREObject drawToBitmap(FREContext ctx, void* funcData, uint32_t argc, FREObject 
     FREReleaseBitmapData(argv[0]);
          CFRelease(addressBook);
     }
+        }
     }
     return NULL;
 }
@@ -796,10 +688,12 @@ FREObject drawToBitmap(FREContext ctx, void* funcData, uint32_t argc, FREObject 
 FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
     DLog(@"Getting contact data");
-    addressBook=ABAddressBookCreate();
+    FREObject returnedArray = NULL;
+    
+    if(createOwnAddressBook())
+    {
     CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
     DLog(@"Parsing data");
-    FREObject returnedArray = NULL;
     FRENewObject((const uint8_t*)"Array", 0, NULL, &returnedArray, nil);
     FRESetArrayLength(returnedArray, CFArrayGetCount(people));
     int32_t j=0;
@@ -840,22 +734,29 @@ FREObject getContactsSimple(FREContext ctx, void* funcData, uint32_t argc, FREOb
     DLog(@"Release");
     CFRelease(addressBook);
     DLog(@"Return data");
+    }
     return returnedArray;
 }
 
 FREObject getContactCount(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
-    addressBook=ABAddressBookCreate();
-    DLog(@"Getting emails");
-    CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    
     FREObject contactCount;
-    FRENewObjectFromInt32(CFArrayGetCount(people), &contactCount);
-    // create an instance of Object and save it to FREObject position
-    DLog(@"Release");
-    CFRelease(addressBook);
-    DLog(@"Return data");
+    
+    if(createOwnAddressBook())
+    {
+        DLog(@"Getting emails");
+        CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
+        FRENewObjectFromInt32(CFArrayGetCount(people), &contactCount);
+        // create an instance of Object and save it to FREObject position
+        DLog(@"Release");
+        CFRelease(addressBook);
+        DLog(@"Return data");
+    }
+    else
+        FRENewObjectFromInt32(0, &contactCount);
+    
     return contactCount;
+    
 }
 
 // ContextInitializer()
@@ -872,9 +773,9 @@ void ContactEditorContextInitializer(void* extData, const uint8_t* ctxType, FREC
 	func[0].name = (const uint8_t*)"addContact";
 	func[0].functionData = NULL;
 	func[0].function = &addContact;
-    func[1].name = (const uint8_t*)"getContacts";
+    func[1].name = (const uint8_t*)"hasPermission";
 	func[1].functionData = NULL;
-	func[1].function = &getContacts;
+	func[1].function = &hasPermission;
     func[2].name = (const uint8_t*)"getContactCount";
 	func[2].functionData = NULL;
 	func[2].function = &getContactCount;
@@ -925,19 +826,16 @@ void ContactEditorContextFinalizer(FREContext ctx) {
 	if(contactEditorHelper)
     {
         [contactEditorHelper setContext:NULL];
-        //[contactEditorHelper release];
         contactEditorHelper = nil;
     }
     if(contactEditorAddContactHelper)
     {
         [contactEditorAddContactHelper setContext:NULL];
-        //[contactEditorAddContactHelper release];
         contactEditorHelper = nil;
     }
     if(contactEditorViewDetailsHelper)
     {
         [contactEditorViewDetailsHelper setContext:NULL];
-        //[contactEditorViewDetailsHelper release];
         contactEditorViewDetailsHelper = nil;
     }
         // Nothing to clean up.
