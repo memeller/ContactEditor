@@ -9,14 +9,14 @@
                 <finalizer>ContactEditorExtFinalizer</finalizer>
             </applicationDeployment>
         </platform>
-         <platform name="iPhone-x86">
+        <platform name="iPhone-x86">
             <applicationDeployment>
                 <nativeLibrary>libContactEditorSimulator.a</nativeLibrary>
                 <initializer>ContactEditorExtInitializer</initializer>
                 <finalizer>ContactEditorExtFinalizer</finalizer>
             </applicationDeployment>
         </platform>
-        <platform name="Android-ARM">
+                <platform name="Android-ARM">
             <applicationDeployment>
                 <nativeLibrary>contactEditor.jar</nativeLibrary>
                 <initializer>pl.mateuszmackowiak.nativeANE.contactManager.ContactEditor</initializer>
